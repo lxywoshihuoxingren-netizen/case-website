@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例10：中国电科第十四研究所</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif; background: #f5f6f7; color: #1f2329; min-height: 100vh; }
+        .header { background: linear-gradient(135deg, #1a1f2e 0%, #2d3748 100%); color: white; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .header a { color: white; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .hero { background: linear-gradient(135deg, #3370ff 0%, #2b5fd9 100%); color: white; padding: 60px 40px; }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero-number { display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em; margin-bottom: 20px; }
+        .hero-title { font-size: 2.5em; font-weight: 600; margin-bottom: 16px; }
+        .hero-industry { font-size: 1.1em; opacity: 0.9; }
+        
+        .background-section { background: #1a1f2e; color: white; padding: 40px; }
+        .background-content { max-width: 1200px; margin: 0 auto; padding-left: 40px; position: relative; }
+        .background-content::before { content: '"'; position: absolute; top: -20px; left: 0; font-size: 4em; color: rgba(255,255,255,0.1); font-family: Georgia, serif; }
+        .background-label { font-size: 0.85em; color: #3370ff; margin-bottom: 12px; font-weight: 500; }
+        .background-text { font-size: 1.1em; line-height: 1.8; opacity: 0.9; }
+        
+        .info-tags { background: white; padding: 30px 40px; border-bottom: 1px solid #dee0e3; }
+        .info-tags-content { max-width: 1200px; margin: 0 auto; display: flex; gap: 16px; flex-wrap: wrap; }
+        .info-tag { padding: 10px 20px; background: #f2f3f5; border-radius: 8px; font-size: 0.95em; }
+        .info-tag-label { color: #646a73; font-size: 0.85em; margin-right: 8px; }
+        .info-tag-value { color: #1f2329; font-weight: 500; }
+        
+        .main { max-width: 1200px; margin: 0 auto; padding: 40px; }
+        
+        .ppt-container { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 30px; }
+        .ppt-header { background: linear-gradient(135deg, #3370ff 0%, #2b5fd9 100%); color: white; padding: 20px 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center; }
+        .ppt-header-title { font-size: 1.1em; font-weight: 600; margin-bottom: 4px; }
+        .ppt-header-sub { font-size: 0.85em; opacity: 0.8; }
+        
+        .ppt-body { display: grid; grid-template-columns: repeat(3, 1fr); min-height: 400px; }
+        .ppt-column { padding: 30px; border-right: 1px solid #dee0e3; }
+        .ppt-column:last-child { border-right: none; }
+        .ppt-column-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 3px solid #3370ff; }
+        .ppt-column-icon { width: 36px; height: 36px; background: #3370ff; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2em; }
+        .ppt-column-title { font-size: 1.1em; font-weight: 600; }
+        .ppt-column-content { line-height: 1.9; color: #646a73; font-size: 0.95em; white-space: pre-wrap; }
+        
+        .action-bar { background: white; padding: 20px 40px; border-top: 1px solid #dee0e3; position: sticky; bottom: 0; display: flex; gap: 12px; justify-content: center; }
+        .btn { padding: 12px 32px; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: 500; transition: all 0.3s; display: flex; align-items: center; gap: 8px; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .btn-primary { background: #3370ff; color: white; }
+        .btn-secondary { background: #f2f3f5; color: #1f2329; }
+        
+        .section-card { background: white; border-radius: 16px; padding: 30px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section-title { font-size: 1.2em; font-weight: 600; color: #1f2329; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+        .section-title::before { content: ''; width: 4px; height: 20px; background: #3370ff; border-radius: 2px; }
+        .section-content { line-height: 1.9; color: #646a73; white-space: pre-wrap; }
+        
+        @media print { .header, .action-bar { display: none; } .ppt-container { box-shadow: none; } }
+        @media (max-width: 900px) { .ppt-body { grid-template-columns: 1fr; } .ppt-column { border-right: none; border-bottom: 1px solid #dee0e3; } .ppt-header { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="../index.html">← 返回案例库</a>
+    </div>
+    
+    <div class="hero">
+        <div class="hero-content">
+            <span class="hero-number">案例 #10</span>
+            <h1 class="hero-title">中国电科第十四研究所</h1>
+            <p class="hero-industry">科技互联网
+国央企</p>
+        </div>
+    </div>
+    
+    <div class="background-section">
+        <div class="background-content">
+            <div class="background-label">客户背景</div>
+            <div class="background-text">暂无客户背景信息</div>
+        </div>
+    </div>
+    
+    <div class="info-tags">
+        <div class="info-tags-content">
+            <div class="info-tag"><span class="info-tag-label">企业用量人数</span><span class="info-tag-value">8500</span></div>
+            
+            <div class="info-tag"><span class="info-tag-label">品类</span><span class="info-tag-value">用车+商旅</span></div>
+        </div>
+    </div>
+    
+    <div class="main">
+        <div class="ppt-container">
+            <div class="ppt-header">
+                <div>
+                    <div class="ppt-header-title">企业痛点问题</div>
+                    <div class="ppt-header-sub">Pain Points</div>
+                </div>
+                <div>
+                    <div class="ppt-header-title">解决方案</div>
+                    <div class="ppt-header-sub">Solution</div>
+                </div>
+                <div>
+                    <div class="ppt-header-title">效果收益</div>
+                    <div class="ppt-header-sub">Results</div>
+                </div>
+            </div>
+            <div class="ppt-body">
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">!</div>
+                        <div class="ppt-column-title">核心痛点</div>
+                    </div>
+                    <div class="ppt-column-content">1、多供应商服务不稳定，风险频发：携程擅自涨价、畅帆无故停服、空港酒店价高、火车票服务费高、退改繁琐，客户原话：“现有供应商服务质量差、体验不稳定，我们急需引入有实力的服务商补齐短板。”<br><br>2、差旅管控与合规要求极高：军工院所需先申请后预订、职级差标严格、票据 100% 合规，原供应商无法完美匹配。<br><br>3、火车票量大、票据管理压力巨大：月 GMV 300–350 万，无人脸核验易导致票据缺失、回款风险、对账困难。<br><br>4、多系统切换，员工体验割裂：用车、酒店、火车票分平台操作，流程繁琐、效率低。<br><br>5、交付周期极短、上线压力大：要求1 月 1 日必须上线，从中标到上线仅5 天，常规流程无法完成。<br><br>最低价格<br><br>API比价</div>
+                </div>
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">✓</div>
+                        <div class="ppt-column-title">我们的方案</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">📈</div>
+                        <div class="ppt-column-title">量化成果</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2 class="section-title">实施亮点</h2>
+            <div class="section-content">1、极速交付：4 天完成重大项目上线<br>突破中标晚、对接紧、人员信息不规范等难题，无感切换、零中断。<br><br>2、人脸核验分步落地，兼顾体验与合规<br>首周兜底开票→逐步引导→强制核验，风险可控、员工接受度高。<br><br>3、历史数据迁移方案：在途申请单 “重启配置”<br>针对上线前已存在的有效申请单，开发了“关闭-重启”功能，将历史数据平滑迁移至滴滴侧，不丢单、不影响员工春运出行。【用友侧关闭+重启申请单后，单子同步到滴滴】，避免了员工重新提报的繁琐流程。<br><br>4、火车定制化申请单管控开发<br>按十四所 “只管单程” 规则定制，完美适配军工管控流程。<br>弱弱管控<br><br>5、高频酒店集团协议托管落地<br>华住 / 锦江 / 如家/亚朵等直签托管，价格与总部一致、竞争力拉满。<br><br><br>酒店资源和价格用友，用车和火车H5<br>酒店我们空港 中旅并行<br>车上录音录像关闭</div>
+        </div>
+    </div>
+    
+    <div class="action-bar">
+        <button onclick="window.print()" class="btn btn-primary">📄 打印 / 保存PDF</button>
+        <button onclick="exportText()" class="btn btn-secondary">📥 导出文本</button>
+        <a href="../index.html" class="btn btn-secondary" style="text-decoration:none;">← 返回列表</a>
+    </div>
+    
+    <script>
+        function exportText() {
+            let text = "案例10：中国电科第十四研究所\n\n";
+            text += "行业：科技互联网
+国央企\n\n";
+            text += "序号：10\n\n";
+            text += "客户公司名称：中国电科第十四研究所\n\n";
+            text += "当前进度 （女警增列）：已出完案例\n\n";
+            text += "品类：用车+商旅\n\n";
+            text += "行业：科技互联网\n国央企\n\n";
+            text += "客龄（年）：1.3\n\n";
+            text += "用车CSM支持人员 （主负责人）：曹红霞\n\n";
+            text += "商旅CSM支持人员 （主负责人）：曹红霞\n\n";
+            text += "用车商机所有人：曹红霞\n\n";
+            text += "商旅商机所有人：徐德生\n\n";
+            text += "企业用量人数：8500\n\n";
+            text += "企业痛点：1、多供应商服务不稳定，风险频发：携程擅自涨价、畅帆无故停服、空港酒店价高、火车票服务费高、退改繁琐，客户原话：“现有供应商服务质量差、体验不稳定，我们急需引入有实力的服务商补齐短板。”\n\n2、差旅管控与合规要求极高：军工院所需先申请后预订、职级差标严格、票据 100% 合规，原供应商无法完美匹配。\n\n3、火车票量大、票据管理压力巨大：月 GMV 300–350 万，无人脸核验易导致票据缺失、回款风险、对账困难。\n\n4、多系统切换，员工体验割裂：用车、酒店、火车票分平台操作，流程繁琐、效率低。\n\n5、交付周期极短、上线压力大：要求1 月 1 日必须上线，从中标到上线仅5 天，常规流程无法完成。\n\n最低价格\n\nAPI比价\n\n";
+            text += "选择企业版原因 （行业、规模、员工数、出行／差旅年消费规模/我们优于竞品等 具体描述痛点，最好引用客户原话；避免泛化描述）：1、用友商旅云生态深度适配：API 成熟、案例丰富，可快速对接、稳定运行。\n\n2、对比竞品的关键优势：\n酒店聚合资源多、协议价托管后价格更低\n火车票中转 + 候补能力强，数电票方案解决报销痛点\n上线速度快：5 天完成全量上线\n专属服务 + 定制化能力强\n垫资对账\n\n3、从用车老客延伸，信任基础扎实：打车业务已验证体验，一站式差旅符合客户统一管理需求\n\n4、用车占比高，滴滴品牌力强，产研能力\n\n";
+            text += "实施-亮点：1、极速交付：4 天完成重大项目上线\n突破中标晚、对接紧、人员信息不规范等难题，无感切换、零中断。\n\n2、人脸核验分步落地，兼顾体验与合规\n首周兜底开票→逐步引导→强制核验，风险可控、员工接受度高。\n\n3、历史数据迁移方案：在途申请单 “重启配置”\n针对上线前已存在的有效申请单，开发了“关闭-重启”功能，将历史数据平滑迁移至滴滴侧，不丢单、不影响员工春运出行。【用友侧关闭+重启申请单后，单子同步到滴滴】，避免了员工重新提报的繁琐流程。\n\n4、火车定制化申请单管控开发\n按十四所 “只管单程” 规则定制，完美适配军工管控流程。\n弱弱管控\n\n5、高频酒店集团协议托管落地\n华住 / 锦江 / 如家/亚朵等直签托管，价格与总部一致、竞争力拉满。\n\n\n酒店资源和价格用友，用车和火车H5\n酒店我们空港 中旅并行\n车上录音录像关闭\n\n";
+            text += "策略亮点 （①确定性；②价格；③员工福利活动；④站牌；⑤因公因私等）：① 确定性： \n\n② 价格：酒店协议托管直签、均价低于竞品、会员酒店渗透 80%，价格优势明显\n\n③ 员工福利活动：\n\n④ 站牌 / 资源：华住 / 锦江 / 如家头部集团托管，资源全、协议稳、展示准\n\n⑤ 因公因私一体化：因公差旅强管控 + 自费出行发福利，双场景覆盖，粘性极强\n\n\n火车票独立候补功能于10月中旬上线，上线后第一时间为客户申请免费开通；\n上线前针对客户较为关注的部分城市（青岛、邢台、德州、沧州）叫车应答率，提供相关数据支撑，增强客户信心；\n用车线上优惠策略投放，持续影响客户心智\n\n一程通\n\n主端优惠（高层）\n\n";
+            text += "使用前vs使用后变化 ①使用前：财务、员工、企业成本、效率 ②使用后：财务、员工、企业成本、效率 ③可量化成果·核心 （①财务省时、财务提效%；②员工省时、提效、满意度；③企业降本；④企业合规；⑤碳排放等）：丰富了员工的可选择性\n机票节省\n\n① 使用前\n火车票月1万张，\n酒店\n用车：多 APP 切换、订房贵、抢票难、服务不稳定，满意度低\n企业：成本不可控、供应商风险高、合规压力大、管理效率低\n\n② 使用后\n财务提效：自动对账、数电票规范、人脸核验闭环，工作量节省 65%+\n员工体验：一站式预订、抢票更快、酒店更便宜、专属福利，满意度提升 40%+\n企业降本：酒店协议价落地，单均房费下降 10%–15%\n合规可控：先申请后预订、差标刚性管控、票据 100% 可审计\n业务份额：酒店上线即占40% 份额，托管华住后日均突破4.3 万\n\n③ 核心量化成果\n火车票：独家承接，月 GMV 300–350 万\n酒店：三家并行中份额第一梯队，托管后日均从 2.5 万→4.3 万\n上线速度：5 天完成全量上线，创用友商旅云大客户交付纪录\n协议酒店：华住 / 锦江 / 如家托管落地，价格与总部一致\n营销创新：API 客户首例定向发券，形成可复制打法\n\n阿里不行，同程平齐；\n\n";
+            text += "是否是 用车带动商旅/竞品切单：是·用车带动商旅\n\n";
+            text += "信息收集人：刘雪莹\n\n";
+            text += "备注 可嵌入文档/语音：录制：中电十四科 江苏美达案例-曹红霞、宏培沟通\n日期：2026-05-11 15:57:16\n录制文件：https://meeting.tencent.com/v2/cloud-record/share?id=44b4d126-180e-46cd-ae4f-71bfd1c74e85&from=3&is-single=false&record_type=2(https://meeting.tencent.com/v2/cloud-record/share?id=44b4d126-180e-46cd-ae4f-71bfd1c74e85&from=3&is-single=false&record_type=2)\n\n";
+            const blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '案例10_中国电科第十四研究所.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

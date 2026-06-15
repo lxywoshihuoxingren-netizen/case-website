@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例11：作业帮教育科技（北京）有限公司</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif; background: #f5f6f7; color: #1f2329; min-height: 100vh; }
+        .header { background: linear-gradient(135deg, #1a1f2e 0%, #2d3748 100%); color: white; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .header a { color: white; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .hero { background: linear-gradient(135deg, #3370ff 0%, #2b5fd9 100%); color: white; padding: 60px 40px; }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero-number { display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em; margin-bottom: 20px; }
+        .hero-title { font-size: 2.5em; font-weight: 600; margin-bottom: 16px; }
+        .hero-industry { font-size: 1.1em; opacity: 0.9; }
+        
+        .background-section { background: #1a1f2e; color: white; padding: 40px; }
+        .background-content { max-width: 1200px; margin: 0 auto; padding-left: 40px; position: relative; }
+        .background-content::before { content: '"'; position: absolute; top: -20px; left: 0; font-size: 4em; color: rgba(255,255,255,0.1); font-family: Georgia, serif; }
+        .background-label { font-size: 0.85em; color: #3370ff; margin-bottom: 12px; font-weight: 500; }
+        .background-text { font-size: 1.1em; line-height: 1.8; opacity: 0.9; }
+        
+        .info-tags { background: white; padding: 30px 40px; border-bottom: 1px solid #dee0e3; }
+        .info-tags-content { max-width: 1200px; margin: 0 auto; display: flex; gap: 16px; flex-wrap: wrap; }
+        .info-tag { padding: 10px 20px; background: #f2f3f5; border-radius: 8px; font-size: 0.95em; }
+        .info-tag-label { color: #646a73; font-size: 0.85em; margin-right: 8px; }
+        .info-tag-value { color: #1f2329; font-weight: 500; }
+        
+        .main { max-width: 1200px; margin: 0 auto; padding: 40px; }
+        
+        .ppt-container { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 30px; }
+        .ppt-header { background: linear-gradient(135deg, #3370ff 0%, #2b5fd9 100%); color: white; padding: 20px 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center; }
+        .ppt-header-title { font-size: 1.1em; font-weight: 600; margin-bottom: 4px; }
+        .ppt-header-sub { font-size: 0.85em; opacity: 0.8; }
+        
+        .ppt-body { display: grid; grid-template-columns: repeat(3, 1fr); min-height: 400px; }
+        .ppt-column { padding: 30px; border-right: 1px solid #dee0e3; }
+        .ppt-column:last-child { border-right: none; }
+        .ppt-column-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 3px solid #3370ff; }
+        .ppt-column-icon { width: 36px; height: 36px; background: #3370ff; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2em; }
+        .ppt-column-title { font-size: 1.1em; font-weight: 600; }
+        .ppt-column-content { line-height: 1.9; color: #646a73; font-size: 0.95em; white-space: pre-wrap; }
+        
+        .action-bar { background: white; padding: 20px 40px; border-top: 1px solid #dee0e3; position: sticky; bottom: 0; display: flex; gap: 12px; justify-content: center; }
+        .btn { padding: 12px 32px; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: 500; transition: all 0.3s; display: flex; align-items: center; gap: 8px; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .btn-primary { background: #3370ff; color: white; }
+        .btn-secondary { background: #f2f3f5; color: #1f2329; }
+        
+        .section-card { background: white; border-radius: 16px; padding: 30px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section-title { font-size: 1.2em; font-weight: 600; color: #1f2329; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+        .section-title::before { content: ''; width: 4px; height: 20px; background: #3370ff; border-radius: 2px; }
+        .section-content { line-height: 1.9; color: #646a73; white-space: pre-wrap; }
+        
+        @media print { .header, .action-bar { display: none; } .ppt-container { box-shadow: none; } }
+        @media (max-width: 900px) { .ppt-body { grid-template-columns: 1fr; } .ppt-column { border-right: none; border-bottom: 1px solid #dee0e3; } .ppt-header { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="../index.html">← 返回案例库</a>
+    </div>
+    
+    <div class="hero">
+        <div class="hero-content">
+            <span class="hero-number">案例 #11</span>
+            <h1 class="hero-title">作业帮教育科技（北京）有限公司</h1>
+            <p class="hero-industry">教育文化</p>
+        </div>
+    </div>
+    
+    <div class="background-section">
+        <div class="background-content">
+            <div class="background-label">客户背景</div>
+            <div class="background-text">暂无客户背景信息</div>
+        </div>
+    </div>
+    
+    <div class="info-tags">
+        <div class="info-tags-content">
+            <div class="info-tag"><span class="info-tag-label">企业用量人数</span><span class="info-tag-value">2w+</span></div>
+            
+            <div class="info-tag"><span class="info-tag-label">品类</span><span class="info-tag-value">用车+商旅</span></div>
+        </div>
+    </div>
+    
+    <div class="main">
+        <div class="ppt-container">
+            <div class="ppt-header">
+                <div>
+                    <div class="ppt-header-title">企业痛点问题</div>
+                    <div class="ppt-header-sub">Pain Points</div>
+                </div>
+                <div>
+                    <div class="ppt-header-title">解决方案</div>
+                    <div class="ppt-header-sub">Solution</div>
+                </div>
+                <div>
+                    <div class="ppt-header-title">效果收益</div>
+                    <div class="ppt-header-sub">Results</div>
+                </div>
+            </div>
+            <div class="ppt-body">
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">!</div>
+                        <div class="ppt-column-title">核心痛点</div>
+                    </div>
+                    <div class="ppt-column-content">核心痛点是集中夜间出行的运力保障 + 降本增效<br>1.教育行业员工轮班制，晚9-10点集中下班，高峰期七八百人在同一时段叫车，运力压力极大<br>2.员工垫资报销流程繁琐，员工反感，财务手工审核效率低<br>3.附加费异常无法排查，限额管控无数据支撑。</div>
+                </div>
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">✓</div>
+                        <div class="ppt-column-title">我们的方案</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">📈</div>
+                        <div class="ppt-column-title">量化成果</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2 class="section-title">实施亮点</h2>
+            <div class="section-content">基础功能即可满足，用车功能已足够全面，商旅需求也不复杂。<br>1.数据报告驱动的持续降本。每个月看里程均价趋势、附加费异常排查、年度累计节省报告，对比高德账单看里程均价优化。<br>2.商旅接入后接送机场景打通，差旅效率提升。</div>
+        </div>
+        <div class="section-card">
+            <h2 class="section-title">对标竞品分析</h2>
+            <div class="section-content">1.滴滴 vs 高德（用车侧）：高德价格更低（教育行业价格敏感），但滴滴拿下份额更多。高德仅投放郑州一个城市（按城市管控），滴滴覆盖北京、沈阳、成都、重庆、合肥、南京等所有核心城市。滴滴实际服务响应更快——安全事故跟进及时，附加费异常排查可追溯退费。滴滴贵但员工在日限额内不care价格差异，对接人看的是整体账单里程均价有没有省钱。<br>2.滴滴 vs 阿里商旅（商旅侧）：作业帮2024年底直接从阿里商旅切到滴滴，核心原因是一站式打通用车+商旅全场景（机酒火用车同一个平台，接送机方便）。阿里商旅成熟度高但分属不同供应商导致效率割裂，滴滴一站式解决了"用车+差旅"的全链路闭环。</div>
+        </div>
+    </div>
+    
+    <div class="action-bar">
+        <button onclick="window.print()" class="btn btn-primary">📄 打印 / 保存PDF</button>
+        <button onclick="exportText()" class="btn btn-secondary">📥 导出文本</button>
+        <a href="../index.html" class="btn btn-secondary" style="text-decoration:none;">← 返回列表</a>
+    </div>
+    
+    <script>
+        function exportText() {
+            let text = "案例11：作业帮教育科技（北京）有限公司\n\n";
+            text += "行业：教育文化\n\n";
+            text += "序号：11\n\n";
+            text += "客户公司名称：作业帮教育科技（北京）有限公司\n\n";
+            text += "当前进度 （女警增列）：已出完案例\n\n";
+            text += "品类：用车+商旅\n\n";
+            text += "行业：教育文化\n\n";
+            text += "客龄（年）：10.4\n\n";
+            text += "用车CSM支持人员 （主负责人）：车瑞楠\n\n";
+            text += "商旅CSM支持人员 （主负责人）：车瑞楠\n\n";
+            text += "用车商机所有人：车瑞楠\n\n";
+            text += "商旅商机所有人：车瑞楠\n\n";
+            text += "企业用量人数：2w+\n\n";
+            text += "客户钱包量 年维度：全年用车商旅过亿，车7000w（滴滴部分），商旅2400w\n\n";
+            text += "用量核心地区 用车核心地区/出差核心地区：北京沈阳郑州\n\n";
+            text += "企业痛点：核心痛点是集中夜间出行的运力保障 + 降本增效\n1.教育行业员工轮班制，晚9-10点集中下班，高峰期七八百人在同一时段叫车，运力压力极大\n2.员工垫资报销流程繁琐，员工反感，财务手工审核效率低\n3.附加费异常无法排查，限额管控无数据支撑。\n\n";
+            text += "选择企业版原因 （行业、规模、员工数、出行／差旅年消费规模/我们优于竞品等 具体描述痛点，最好引用客户原话；避免泛化描述）：2015年起先用滴滴用车，用车合作稳定、体验好，2024年底从阿里商旅直接切到滴滴\n原话是\"（滴滴）用车用得挺好的，然后一站式机酒火用车全在一个平台，接送机也方便\"。\n采购双开高德的原因是合规+运力补充（高德仅放郑州一个城市）\n相比高德，滴滴价格略贵但在教育行业可接受范围内；相比阿里商旅，滴滴一站式打通了用车+商旅全场景。\n\n";
+            text += "实施-亮点：基础功能即可满足，用车功能已足够全面，商旅需求也不复杂。\n1.数据报告驱动的持续降本。每个月看里程均价趋势、附加费异常排查、年度累计节省报告，对比高德账单看里程均价优化。\n2.商旅接入后接送机场景打通，差旅效率提升。\n\n";
+            text += "策略亮点 （①确定性；②价格；③员工福利活动；④站牌；⑤因公因私等）：① 确定性：员工深夜下班能确定打到车，可安心上班。\n② 价格： 教育行业价格敏感，通过企业自驾快车、远必省、拼车、运营卡券带来有效节省；日限额管控控制员工单均价，里程均价每月监控并对比高德优化。\n③ 员工福利活动： 作业帮是滴滴自费用车的头部活跃客户，员工自费渗透率极高（教育行业普遍如此），线上发券活动响应积极，对接行政会主动追问\"最近有没有什么活动\"，因私福利争取是行政向上汇报的亮点——他除了因公还要在因私端给员工争取福利。积分商城常态化参与，大力度活动时会内推宣传。\n原话：\"作业帮包括教育行业的所有客户，自费用车的渗透率都很好，一旦有活动的话，他这个量就会上去。\" \"从他们的角度，从你们这要一些券，他能够感觉到给员工发了很多福利，同时也能带到我们的自费。\"\n④ 站牌/行业交流： 对泛泛大会积极性不高，但对行业交流会（比如\"走进猿辅导/高途\"看同行怎么管差旅用车）非常积极。logo授权问题不大，但不爱参与演讲圆桌。线下进职场搞活动愿意开放，但需要力度够大、平衡多职场资源。\n⑤ 因公因私： 因公侧通过限额管控+数据报告持续降本；因私侧员工自费活跃、福利券转化率高。\n⑥ 有无用车带动商旅： 有， 用车2015年起合作→2024年底商旅从阿里切到滴滴。\n\n";
+            text += "使用前vs使用后变化 ①使用前：财务、员工、企业成本、效率 ②使用后：财务、员工、企业成本、效率 ③可量化成果·核心 （①财务省时、财务提效%；②员工省时、提效、满意度；③企业降本；④企业合规；⑤碳排放等）：1、满足了员工确定性车型出行需求\n2、通过单均价、月里程均价等管控和运营手段，全年为企业节省500w+（特价车型、运营车券、远必省）\n\n";
+            text += "对标竞品分析：1.滴滴 vs 高德（用车侧）：高德价格更低（教育行业价格敏感），但滴滴拿下份额更多。高德仅投放郑州一个城市（按城市管控），滴滴覆盖北京、沈阳、成都、重庆、合肥、南京等所有核心城市。滴滴实际服务响应更快——安全事故跟进及时，附加费异常排查可追溯退费。滴滴贵但员工在日限额内不care价格差异，对接人看的是整体账单里程均价有没有省钱。\n2.滴滴 vs 阿里商旅（商旅侧）：作业帮2024年底直接从阿里商旅切到滴滴，核心原因是一站式打通用车+商旅全场景（机酒火用车同一个平台，接送机方便）。阿里商旅成熟度高但分属不同供应商导致效率割裂，滴滴一站式解决了\"用车+差旅\"的全链路闭环。\n\n";
+            text += "是否是 用车带动商旅/竞品切单：是·用车带动商旅\n\n";
+            text += "信息收集人：李晓逍\n\n";
+            const blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '案例11_作业帮教育科技（北京）有限公司.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

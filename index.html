@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客户案例知识库 - 滴滴企业版</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #3370ff; --primary-dark: #2b5fd9; --bg: #f5f6f7; --card-bg: #fff; --text: #1f2329; --text-secondary: #646a73; --border: #dee0e3; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+        
+        .header { background: linear-gradient(135deg, #1a1f2e 0%, #2d3748 100%); color: white; padding: 60px 40px 80px; text-align: center; position: relative; overflow: hidden; }
+        .header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(51,112,255,0.1) 0%, transparent 70%); }
+        .header-content { position: relative; z-index: 1; }
+        .header h1 { font-size: 3em; font-weight: 600; margin-bottom: 16px; }
+        .header p { font-size: 1.2em; opacity: 0.8; }
+        .stats-bar { display: flex; justify-content: center; gap: 60px; margin-top: 40px; }
+        .stat-value { font-size: 2.5em; font-weight: 700; color: #3370ff; }
+        .stat-label { font-size: 0.9em; opacity: 0.7; margin-top: 4px; }
+        
+        .filter-section { background: white; padding: 20px 40px; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+        .filter-container { max-width: 1400px; margin: 0 auto; }
+        .filter-tabs { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 16px; }
+        .filter-tab { padding: 8px 16px; border-radius: 20px; cursor: pointer; transition: all 0.3s; font-size: 0.9em; color: var(--text-secondary); border: 1px solid var(--border); background: white; }
+        .filter-tab:hover { background: #f5f6f7; }
+        .filter-tab.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .filter-tab.priority { font-weight: 500; }
+        
+        .search-box { text-align: center; }
+        .search-box input { padding: 12px 24px; border: 1px solid var(--border); border-radius: 24px; width: 400px; font-size: 0.95em; outline: none; }
+        .search-box input:focus { border-color: var(--primary); }
+        
+        .main { max-width: 1400px; margin: 0 auto; padding: 40px; }
+        .category-section { margin-bottom: 60px; }
+        .category-header { display: flex; align-items: center; margin-bottom: 24px; }
+        .category-title { font-size: 1.5em; font-weight: 600; }
+        .category-count { margin-left: 12px; padding: 4px 12px; background: #e8eaf0; border-radius: 12px; font-size: 0.85em; color: var(--text-secondary); }
+        
+        .waterfall { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 24px; }
+        
+        .case-card { background: var(--card-bg); border-radius: 16px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: all 0.3s; cursor: pointer; text-decoration: none; color: inherit; display: block; }
+        .case-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+        .card-image { height: 180px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3em; font-weight: 700; position: relative; }
+        .card-number { position: absolute; top: 16px; left: 16px; background: rgba(255,255,255,0.2); padding: 6px 12px; border-radius: 20px; font-size: 0.85em; }
+        .card-category { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.9); color: var(--primary); padding: 6px 14px; border-radius: 20px; font-size: 0.8em; font-weight: 500; }
+        .card-content { padding: 24px; }
+        .card-industry { color: var(--primary); font-size: 0.9em; margin-bottom: 8px; font-weight: 500; }
+        .card-title { font-size: 1.2em; font-weight: 600; margin-bottom: 12px; line-height: 1.4; }
+        .card-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+        .card-tag { padding: 4px 10px; background: #f2f3f5; border-radius: 4px; font-size: 0.8em; color: var(--text-secondary); }
+        .card-footer { padding: 16px 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        .card-arrow { color: var(--primary); transition: transform 0.3s; }
+        .case-card:hover .card-arrow { transform: translateX(4px); }
+        
+        @media (max-width: 768px) { .waterfall { grid-template-columns: 1fr; } .search-box input { width: 100%; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>客户案例知识库</h1>
+            <p>企业版客户成功案例展示</p>
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-value">66</div>
+                    <div class="stat-label">成功案例</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">15</div>
+                    <div class="stat-label">行业覆盖</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="filter-section">
+        <div class="filter-container">
+            <div class="filter-tabs">
+                <div class="filter-tab active" onclick="filterCategory('all')">全部</div>
+                <div class="filter-tab priority" onclick="filterCategory('先进制造
+国央企
+（试点阶段）')">先进制造
+国央企
+（试点阶段）</div>
+                <div class="filter-tab priority" onclick="filterCategory('物流贸易
+国央企')">物流贸易
+国央企</div>
+                <div class="filter-tab priority" onclick="filterCategory('科技互联网
+国央企')">科技互联网
+国央企</div>
+                <div class="filter-tab priority" onclick="filterCategory('金融保险')">金融保险</div>
+                <div class="filter-tab priority" onclick="filterCategory('先进制造')">先进制造</div>
+                <div class="filter-tab priority" onclick="filterCategory('先进制造
+国央企
+（试点阶段）')">先进制造
+国央企
+（试点阶段）</div>
+                <div class="filter-tab priority" onclick="filterCategory('科技互联网')">科技互联网</div>
+                <div class="filter-tab priority" onclick="filterCategory('科技互联网
+国央企')">科技互联网
+国央企</div>
+                <div class="filter-tab " onclick="filterCategory('AI')">AI</div>
+                <div class="filter-tab " onclick="filterCategory('专业服务')">专业服务</div>
+                <div class="filter-tab " onclick="filterCategory('专业服务
+国企')">专业服务
+国企</div>
+                <div class="filter-tab " onclick="filterCategory('互联网
+招聘')">互联网
+招聘</div>
+                <div class="filter-tab " onclick="filterCategory('其他')">其他</div>
+                <div class="filter-tab " onclick="filterCategory('医疗健康')">医疗健康</div>
+                <div class="filter-tab " onclick="filterCategory('教育文化')">教育文化</div>
+                <div class="filter-tab " onclick="filterCategory('消费零售')">消费零售</div>
+                <div class="filter-tab " onclick="filterCategory('能源环保')">能源环保</div>
+            </div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="搜索公司名称..." oninput="searchCases()">
+            </div>
+        </div>
+    </div>
+    
+    <div class="main">
+
+        <div class="category-section" data-category="先进制造
+国央企
+（试点阶段）">
+            <div class="category-header">
+                <h2 class="category-title">先进制造
+国央企
+（试点阶段）</h2>
+                <span class="category-count">1个案例</span>
+            </div>
+            <div class="waterfall">
+
+                <a href="cases/case_20.html" class="case-card" data-name="新兴铸管股份有限公司" data-category="先进制造
+国央企
+（试点阶段）">
+                    <div class="card-image">
+                        新
+                        <span class="card-number">#20</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">先进制造
+国央企
+（试点阶段）</div>
+                        <h3 class="card-title">新兴铸管股份有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">14000人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" data-category="物流贸易
+国央企">
+            <div class="category-header">
+                <h2 class="category-title">物流贸易
+国央企</h2>
+                <span class="category-count">1个案例</span>
+            </div>
+            <div class="waterfall">
+
+                <a href="cases/case_9.html" class="case-card" data-name="江苏苏美达集团有限公司
+国企" data-category="物流贸易
+国央企">
+                    <div class="card-image">
+                        江
+                        <span class="card-number">#9</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">物流贸易
+国央企</div>
+                        <h3 class="card-title">江苏苏美达集团有限公司
+国企</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" data-category="科技互联网
+国央企">
+            <div class="category-header">
+                <h2 class="category-title">科技互联网
+国央企</h2>
+                <span class="category-count">2个案例</span>
+            </div>
+            <div class="waterfall">
+
+                <a href="cases/case_10.html" class="case-card" data-name="中国电科第十四研究所" data-category="科技互联网
+国央企">
+                    <div class="card-image">
+                        中
+                        <span class="card-number">#10</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">科技互联网
+国央企</div>
+                        <h3 class="card-title">中国电科第十四研究所</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">8500人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_41.html" class="case-card" data-name="中电科太力通信科技有限公司北京电科数智科技分公司" data-category="科技互联网
+国央企">
+                    <div class="card-image">
+                        中
+                        <span class="card-number">#41</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">科技互联网
+国央企</div>
+                        <h3 class="card-title">中电科太力通信科技有限公司北京电科数智科技分公司</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" data-category="金融保险">
+            <div class="category-header">
+                <h2 class="category-title">金融保险</h2>
+                <span class="category-count">5个案例</span>
+            </div>
+            <div class="waterfall">
+
+                <a href="cases/case_6.html" class="case-card" data-name="兴业证券股份有限公司" data-category="金融保险">
+                    <div class="card-image">
+                        兴
+                        <span class="card-number">#6</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">金融保险</div>
+                        <h3 class="card-title">兴业证券股份有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">单点登录，目前只是一部分，2000+
+（客户员工1w+）人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_26.html" class="case-card" data-name="中信证券股份有限公司" data-category="金融保险">
+                    <div class="card-image">
+                        中
+                        <span class="card-number">#26</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">金融保险</div>
+                        <h3 class="card-title">中信证券股份有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">约20000人人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_39.html" class="case-card" data-name="中国银河证券股份有限公司" data-category="金融保险">
+                    <div class="card-image">
+                        中
+                        <span class="card-number">#39</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">金融保险</div>
+                        <h3 class="card-title">中国银河证券股份有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">员工1.5万人，商旅约1万，用车1.25万人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_48.html" class="case-card" data-name="招商银行股份有限公司" data-category="金融保险">
+                    <div class="card-image">
+                        招
+                        <span class="card-number">#48</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">金融保险</div>
+                        <h3 class="card-title">招商银行股份有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">有权限账户数：37324
+激活账户数：51625
+激活率：91.2%人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_63.html" class="case-card" data-name="浙商银行股份有限公司（授信）" data-category="金融保险">
+                    <div class="card-image">
+                        浙
+                        <span class="card-number">#63</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">金融保险</div>
+                        <h3 class="card-title">浙商银行股份有限公司（授信）</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" data-category="先进制造">
+            <div class="category-header">
+                <h2 class="category-title">先进制造</h2>
+                <span class="category-count">4个案例</span>
+            </div>
+            <div class="waterfall">
+
+                <a href="cases/case_16.html" class="case-card" data-name="比亚迪汽车工业有限公司（新）" data-category="先进制造">
+                    <div class="card-image">
+                        比
+                        <span class="card-number">#16</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">先进制造</div>
+                        <h3 class="card-title">比亚迪汽车工业有限公司（新）</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">100万，激活率20%人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_29.html" class="case-card" data-name="赛力斯集团股份有限公司" data-category="先进制造">
+                    <div class="card-image">
+                        赛
+                        <span class="card-number">#29</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">先进制造</div>
+                        <h3 class="card-title">赛力斯集团股份有限公司</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_32.html" class="case-card" data-name="广州小鹏汽车科技有限公司" data-category="先进制造">
+                    <div class="card-image">
+                        广
+                        <span class="card-number">#32</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">先进制造</div>
+                        <h3 class="card-title">广州小鹏汽车科技有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">有权限账户数：24647
+激活账户数：13763
+激活率：55.8%人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_58.html" class="case-card" data-name="美的集团股份有限公司" data-category="先进制造">
+                    <div class="card-image">
+                        美
+                        <span class="card-number">#58</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">先进制造</div>
+                        <h3 class="card-title">美的集团股份有限公司</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" data-category="先进制造
+国央企
+（试点阶段）">
+            <div class="category-header">
+                <h2 class="category-title">先进制造
+国央企
+（试点阶段）</h2>
+                <span class="category-count">1个案例</span>
+            </div>
+            <div class="waterfall">
+
+                <a href="cases/case_20.html" class="case-card" data-name="新兴铸管股份有限公司" data-category="先进制造
+国央企
+（试点阶段）">
+                    <div class="card-image">
+                        新
+                        <span class="card-number">#20</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">先进制造
+国央企
+（试点阶段）</div>
+                        <h3 class="card-title">新兴铸管股份有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">14000人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" data-category="科技互联网">
+            <div class="category-header">
+                <h2 class="category-title">科技互联网</h2>
+                <span class="category-count">20个案例</span>
+            </div>
+            <div class="waterfall">
+
+                <a href="cases/case_15.html" class="case-card" data-name="小红书科技有限公司" data-category="科技互联网">
+                    <div class="card-image">
+                        小
+                        <span class="card-number">#15</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">科技互联网</div>
+                        <h3 class="card-title">小红书科技有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">1w人人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_17.html" class="case-card" data-name="北京字跳网络技术有限公司" data-category="科技互联网">
+                    <div class="card-image">
+                        北
+                        <span class="card-number">#17</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">科技互联网</div>
+                        <h3 class="card-title">北京字跳网络技术有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">11万，激活率90%人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_28.html" class="case-card" data-name="朗新科技集团股份有限公司" data-category="科技互联网">
+                    <div class="card-image">
+                        朗
+                        <span class="card-number">#28</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">科技互联网</div>
+                        <h3 class="card-title">朗新科技集团股份有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">5400人人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_33.html" class="case-card" data-name="维谛技术有限公司" data-category="科技互联网">
+                    <div class="card-image">
+                        维
+                        <span class="card-number">#33</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">科技互联网</div>
+                        <h3 class="card-title">维谛技术有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">有权限账户数：2264
+激活账户数：1761
+激活率：77.7%人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_37.html" class="case-card" data-name="中移动金融科技有限公司" data-category="科技互联网">
+                    <div class="card-image">
+                        中
+                        <span class="card-number">#37</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">科技互联网</div>
+                        <h3 class="card-title">中移动金融科技有限公司</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_42.html" class="case-card" data-name="上海宽娱数码科技有限公司" data-category="科技互联网">
+                    <div class="card-image">
+                        上
+                        <span class="card-number">#42</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">科技互联网</div>
+                        <h3 class="card-title">上海宽娱数码科技有限公司</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_43.html" class="case-card" data-name="吉姆西半导体科技（无锡）股份有限公司" data-category="科技互联网">
+                    <div class="card-image">
+                        吉
+                        <span class="card-number">#43</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">科技互联网</div>
+                        <h3 class="card-title">吉姆西半导体科技（无锡）股份有限公司</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_44.html" class="case-card" data-name="中企云链股份有限公司" data-category="科技互联网">
+                    <div class="card-image">
+                        中
+                        <span class="card-number">#44</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">科技互联网</div>
+                        <h3 class="card-title">中企云链股份有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">500-600人人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_45.html" class="case-card" data-name="亚信科技（中国）有限公司" data-category="科技互联网">
+                    <div class="card-image">
+                        亚
+                        <span class="card-number">#45</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">科技互联网</div>
+                        <h3 class="card-title">亚信科技（中国）有限公司</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_46.html" class="case-card" data-name="沈阳芯源微电子设备股份有限公司" data-category="科技互联网">
+                    <div class="card-image">
+                        沈
+                        <span class="card-number">#46</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">科技互联网</div>
+                        <h3 class="card-title">沈阳芯源微电子设备股份有限公司</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_49.html" class="case-card" data-name="上海识装信息科技有限公司" data-category="科技互联网">
+                    <div class="card-image">
+                        上
+                        <span class="card-number">#49</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">科技互联网</div>
+                        <h3 class="card-title">上海识装信息科技有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">10000人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_53.html" class="case-card" data-name="百度在线网络技术（北京）有限公司" data-category="科技互联网">
+                    <div class="card-image">
+                        百
+                        <span class="card-number">#53</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">科技互联网</div>
+                        <h3 class="card-title">百度在线网络技术（北京）有限公司</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_54.html" class="case-card" data-name="用友网络科技股份有限公司（集团）" data-category="科技互联网">
+                    <div class="card-image">
+                        用
+                        <span class="card-number">#54</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">科技互联网</div>
+                        <h3 class="card-title">用友网络科技股份有限公司（集团）</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_57.html" class="case-card" data-name="北京北方华创微电子装备有限公司" data-category="科技互联网">
+                    <div class="card-image">
+                        北
+                        <span class="card-number">#57</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">科技互联网</div>
+                        <h3 class="card-title">北京北方华创微电子装备有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">37家分子公司组成，总计人数20000人，有出差需求的大概5000人.人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_60.html" class="case-card" data-name="OPPO广东移动通信有限公司" data-category="科技互联网">
+                    <div class="card-image">
+                        O
+                        <span class="card-number">#60</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">科技互联网</div>
+                        <h3 class="card-title">OPPO广东移动通信有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">有权限账户数：30253
+激活账户数：22325
+激活率：73.8%人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_61.html" class="case-card" data-name="维沃移动通信有限公司" data-category="科技互联网">
+                    <div class="card-image">
+                        维
+                        <span class="card-number">#61</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">科技互联网</div>
+                        <h3 class="card-title">维沃移动通信有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">有权限用户数：21089
+激活账户数：11042
+激活率：52.2%人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_62.html" class="case-card" data-name="科大讯飞股份有限公司" data-category="科技互联网">
+                    <div class="card-image">
+                        科
+                        <span class="card-number">#62</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">科技互联网</div>
+                        <h3 class="card-title">科大讯飞股份有限公司</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_64.html" class="case-card" data-name="杭州海康威视数字技术股份有限公司" data-category="科技互联网">
+                    <div class="card-image">
+                        杭
+                        <span class="card-number">#64</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">科技互联网</div>
+                        <h3 class="card-title">杭州海康威视数字技术股份有限公司</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_65.html" class="case-card" data-name="新华三技术有限公司" data-category="科技互联网">
+                    <div class="card-image">
+                        新
+                        <span class="card-number">#65</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">科技互联网</div>
+                        <h3 class="card-title">新华三技术有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">17000+人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_66.html" class="case-card" data-name="浪潮电子信息产业股份有限公司" data-category="科技互联网">
+                    <div class="card-image">
+                        浪
+                        <span class="card-number">#66</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">科技互联网</div>
+                        <h3 class="card-title">浪潮电子信息产业股份有限公司</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" data-category="科技互联网
+国央企">
+            <div class="category-header">
+                <h2 class="category-title">科技互联网
+国央企</h2>
+                <span class="category-count">2个案例</span>
+            </div>
+            <div class="waterfall">
+
+                <a href="cases/case_10.html" class="case-card" data-name="中国电科第十四研究所" data-category="科技互联网
+国央企">
+                    <div class="card-image">
+                        中
+                        <span class="card-number">#10</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">科技互联网
+国央企</div>
+                        <h3 class="card-title">中国电科第十四研究所</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">8500人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_41.html" class="case-card" data-name="中电科太力通信科技有限公司北京电科数智科技分公司" data-category="科技互联网
+国央企">
+                    <div class="card-image">
+                        中
+                        <span class="card-number">#41</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">科技互联网
+国央企</div>
+                        <h3 class="card-title">中电科太力通信科技有限公司北京电科数智科技分公司</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" data-category="AI">
+            <div class="category-header">
+                <h2 class="category-title">AI</h2>
+                <span class="category-count">1个案例</span>
+            </div>
+            <div class="waterfall">
+
+                <a href="cases/case_7.html" class="case-card" data-name="上海风语筑文化科技股份有限公司" data-category="AI">
+                    <div class="card-image">
+                        上
+                        <span class="card-number">#7</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">AI</div>
+                        <h3 class="card-title">上海风语筑文化科技股份有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">940人左右人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" data-category="专业服务">
+            <div class="category-header">
+                <h2 class="category-title">专业服务</h2>
+                <span class="category-count">3个案例</span>
+            </div>
+            <div class="waterfall">
+
+                <a href="cases/case_34.html" class="case-card" data-name="华润集团" data-category="专业服务">
+                    <div class="card-image">
+                        华
+                        <span class="card-number">#34</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">专业服务</div>
+                        <h3 class="card-title">华润集团</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">有权限账户数：135534
+激活账户数：123233
+激活率：91.0%人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_35.html" class="case-card" data-name="北京京东-差旅用车" data-category="专业服务">
+                    <div class="card-image">
+                        北
+                        <span class="card-number">#35</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">专业服务</div>
+                        <h3 class="card-title">北京京东-差旅用车</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_36.html" class="case-card" data-name="安永（中国）企业咨询有限公司" data-category="专业服务">
+                    <div class="card-image">
+                        安
+                        <span class="card-number">#36</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">专业服务</div>
+                        <h3 class="card-title">安永（中国）企业咨询有限公司</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" data-category="专业服务
+国企">
+            <div class="category-header">
+                <h2 class="category-title">专业服务
+国企</h2>
+                <span class="category-count">1个案例</span>
+            </div>
+            <div class="waterfall">
+
+                <a href="cases/case_59.html" class="case-card" data-name="建发集团" data-category="专业服务
+国企">
+                    <div class="card-image">
+                        建
+                        <span class="card-number">#59</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">专业服务
+国企</div>
+                        <h3 class="card-title">建发集团</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">有权限账户数：14075
+激活账户数：13732
+激活率：97.5%人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" data-category="互联网
+招聘">
+            <div class="category-header">
+                <h2 class="category-title">互联网
+招聘</h2>
+                <span class="category-count">1个案例</span>
+            </div>
+            <div class="waterfall">
+
+                <a href="cases/case_1.html" class="case-card" data-name="前锦网络信息技术（上海）有限公司
+举例" data-category="互联网
+招聘">
+                    <div class="card-image">
+                        前
+                        <span class="card-number">#1</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">互联网
+招聘</div>
+                        <h3 class="card-title">前锦网络信息技术（上海）有限公司
+举例</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">4000人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" data-category="其他">
+            <div class="category-header">
+                <h2 class="category-title">其他</h2>
+                <span class="category-count">4个案例</span>
+            </div>
+            <div class="waterfall">
+
+                <a href="cases/case_2.html" class="case-card" data-name="魏桥新能源汽车科技（青岛）有限公司
+（国际）" data-category="其他">
+                    <div class="card-image">
+                        魏
+                        <span class="card-number">#2</span>
+                        <span class="card-category">商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">其他</div>
+                        <h3 class="card-title">魏桥新能源汽车科技（青岛）有限公司
+（国际）</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">5761人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_3.html" class="case-card" data-name="力高新能源技术股份有限公司" data-category="其他">
+                    <div class="card-image">
+                        力
+                        <span class="card-number">#3</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">其他</div>
+                        <h3 class="card-title">力高新能源技术股份有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">待csm给具体数值人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_8.html" class="case-card" data-name="四川德康农牧食品集团股份有限公司" data-category="其他">
+                    <div class="card-image">
+                        四
+                        <span class="card-number">#8</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">其他</div>
+                        <h3 class="card-title">四川德康农牧食品集团股份有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">12000+人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_55.html" class="case-card" data-name="岛津企业管理（中国）有限公司" data-category="其他">
+                    <div class="card-image">
+                        岛
+                        <span class="card-number">#55</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">其他</div>
+                        <h3 class="card-title">岛津企业管理（中国）有限公司</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" data-category="医疗健康">
+            <div class="category-header">
+                <h2 class="category-title">医疗健康</h2>
+                <span class="category-count">11个案例</span>
+            </div>
+            <div class="waterfall">
+
+                <a href="cases/case_4.html" class="case-card" data-name="强生（中国）投资有限公司" data-category="医疗健康">
+                    <div class="card-image">
+                        强
+                        <span class="card-number">#4</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">医疗健康</div>
+                        <h3 class="card-title">强生（中国）投资有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">1万人人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_5.html" class="case-card" data-name="武田制药
+武田（中国）投资有限公司" data-category="医疗健康">
+                    <div class="card-image">
+                        武
+                        <span class="card-number">#5</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">医疗健康</div>
+                        <h3 class="card-title">武田制药
+武田（中国）投资有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">2500人人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_12.html" class="case-card" data-name="上海时代天使医疗器械有限公司" data-category="医疗健康">
+                    <div class="card-image">
+                        上
+                        <span class="card-number">#12</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">医疗健康</div>
+                        <h3 class="card-title">上海时代天使医疗器械有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">1000人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_18.html" class="case-card" data-name="西安杨森制药有限公司" data-category="医疗健康">
+                    <div class="card-image">
+                        西
+                        <span class="card-number">#18</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">医疗健康</div>
+                        <h3 class="card-title">西安杨森制药有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">1650 人人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_19.html" class="case-card" data-name="长春金赛药业有限责任公司" data-category="医疗健康">
+                    <div class="card-image">
+                        长
+                        <span class="card-number">#19</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">医疗健康</div>
+                        <h3 class="card-title">长春金赛药业有限责任公司</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_24.html" class="case-card" data-name="扬子江药业集团有限公司" data-category="医疗健康">
+                    <div class="card-image">
+                        扬
+                        <span class="card-number">#24</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">医疗健康</div>
+                        <h3 class="card-title">扬子江药业集团有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">8000人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_27.html" class="case-card" data-name="爱尔康（中国）眼科产品有限公司" data-category="医疗健康">
+                    <div class="card-image">
+                        爱
+                        <span class="card-number">#27</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">医疗健康</div>
+                        <h3 class="card-title">爱尔康（中国）眼科产品有限公司</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_30.html" class="case-card" data-name="创业慧康科技股份有限公司" data-category="医疗健康">
+                    <div class="card-image">
+                        创
+                        <span class="card-number">#30</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">医疗健康</div>
+                        <h3 class="card-title">创业慧康科技股份有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">3500人人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_40.html" class="case-card" data-name="中山康方生物医药有限公司" data-category="医疗健康">
+                    <div class="card-image">
+                        中
+                        <span class="card-number">#40</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">医疗健康</div>
+                        <h3 class="card-title">中山康方生物医药有限公司</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_47.html" class="case-card" data-name="江苏知原药业股份有限公司" data-category="医疗健康">
+                    <div class="card-image">
+                        江
+                        <span class="card-number">#47</span>
+                        <span class="card-category">商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">医疗健康</div>
+                        <h3 class="card-title">江苏知原药业股份有限公司</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_50.html" class="case-card" data-name="诺和诺德（中国）制药有限公司" data-category="医疗健康">
+                    <div class="card-image">
+                        诺
+                        <span class="card-number">#50</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">医疗健康</div>
+                        <h3 class="card-title">诺和诺德（中国）制药有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">3300 人人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" data-category="教育文化">
+            <div class="category-header">
+                <h2 class="category-title">教育文化</h2>
+                <span class="category-count">2个案例</span>
+            </div>
+            <div class="waterfall">
+
+                <a href="cases/case_11.html" class="case-card" data-name="作业帮教育科技（北京）有限公司" data-category="教育文化">
+                    <div class="card-image">
+                        作
+                        <span class="card-number">#11</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">教育文化</div>
+                        <h3 class="card-title">作业帮教育科技（北京）有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">2w+人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_22.html" class="case-card" data-name="李宁（中国）体育用品有限公司" data-category="教育文化">
+                    <div class="card-image">
+                        李
+                        <span class="card-number">#22</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">教育文化</div>
+                        <h3 class="card-title">李宁（中国）体育用品有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">上万人人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" data-category="消费零售">
+            <div class="category-header">
+                <h2 class="category-title">消费零售</h2>
+                <span class="category-count">7个案例</span>
+            </div>
+            <div class="waterfall">
+
+                <a href="cases/case_13.html" class="case-card" data-name="沃尔玛（中国）投资有限公司" data-category="消费零售">
+                    <div class="card-image">
+                        沃
+                        <span class="card-number">#13</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">消费零售</div>
+                        <h3 class="card-title">沃尔玛（中国）投资有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">20000+人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_14.html" class="case-card" data-name="绫致时装（天津）有限公司" data-category="消费零售">
+                    <div class="card-image">
+                        绫
+                        <span class="card-number">#14</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">消费零售</div>
+                        <h3 class="card-title">绫致时装（天津）有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">1.5w左右人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_21.html" class="case-card" data-name="纳爱斯集团有限公司" data-category="消费零售">
+                    <div class="card-image">
+                        纳
+                        <span class="card-number">#21</span>
+                        <span class="card-category">商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">消费零售</div>
+                        <h3 class="card-title">纳爱斯集团有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">20000+人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_23.html" class="case-card" data-name="百胜集团" data-category="消费零售">
+                    <div class="card-image">
+                        百
+                        <span class="card-number">#23</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">消费零售</div>
+                        <h3 class="card-title">百胜集团</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">40000+人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_25.html" class="case-card" data-name="迅销（中国）商贸有限公司（店铺）" data-category="消费零售">
+                    <div class="card-image">
+                        迅
+                        <span class="card-number">#25</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">消费零售</div>
+                        <h3 class="card-title">迅销（中国）商贸有限公司（店铺）</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">20000+人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_38.html" class="case-card" data-name="中顺洁柔纸业股份有限公司" data-category="消费零售">
+                    <div class="card-image">
+                        中
+                        <span class="card-number">#38</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">消费零售</div>
+                        <h3 class="card-title">中顺洁柔纸业股份有限公司</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_51.html" class="case-card" data-name="华住企业管理有限公司" data-category="消费零售">
+                    <div class="card-image">
+                        华
+                        <span class="card-number">#51</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">消费零售</div>
+                        <h3 class="card-title">华住企业管理有限公司</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section" data-category="能源环保">
+            <div class="category-header">
+                <h2 class="category-title">能源环保</h2>
+                <span class="category-count">3个案例</span>
+            </div>
+            <div class="waterfall">
+
+                <a href="cases/case_31.html" class="case-card" data-name="三棵树涂料股份有限公司" data-category="能源环保">
+                    <div class="card-image">
+                        三
+                        <span class="card-number">#31</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">能源环保</div>
+                        <h3 class="card-title">三棵树涂料股份有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">8000人人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_52.html" class="case-card" data-name="万华化学（烟台）销售有限公司" data-category="能源环保">
+                    <div class="card-image">
+                        万
+                        <span class="card-number">#52</span>
+                        <span class="card-category">用车+商旅</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">能源环保</div>
+                        <h3 class="card-title">万华化学（烟台）销售有限公司</h3>
+                        <div class="card-tags">
+                            <span class="card-tag">全球员工约29000+人
+用车约10000人至15000人
+商旅人</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="cases/case_56.html" class="case-card" data-name="宁德时代新能源科技股份有限公司" data-category="能源环保">
+                    <div class="card-image">
+                        宁
+                        <span class="card-number">#56</span>
+                        <span class="card-category">用车</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-industry">能源环保</div>
+                        <h3 class="card-title">宁德时代新能源科技股份有限公司</h3>
+                        <div class="card-tags">
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span style="color:#646a73;font-size:0.9em;">查看详情</span>
+                        <span class="card-arrow">→</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function filterCategory(cat) {
+            document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            document.querySelectorAll('.category-section').forEach(section => {
+                if (cat === 'all' || section.dataset.category === cat) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+        
+        function searchCases() {
+            const filter = document.getElementById('searchInput').value.trim().toLowerCase().replace(/\s+/g, '');
+            document.querySelectorAll('.case-card').forEach(card => {
+                const name = card.dataset.name.toLowerCase();
+                card.style.display = !filter || name.includes(filter) ? 'block' : 'none';
+            });
+            document.querySelectorAll('.category-section').forEach(section => {
+                const visibleCards = section.querySelectorAll('.case-card[style="display: block;"], .case-card:not([style*="display: none"])');
+                section.style.display = visibleCards.length === 0 && filter ? 'none' : 'block';
+            });
+        }
+    </script>
+</body>
+</html>

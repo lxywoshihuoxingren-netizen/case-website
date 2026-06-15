@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例2：魏桥新能源汽车科技（青岛）有限公司
+（国际）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif; background: #f5f6f7; color: #1f2329; min-height: 100vh; }
+        .header { background: linear-gradient(135deg, #1a1f2e 0%, #2d3748 100%); color: white; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .header a { color: white; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .hero { background: linear-gradient(135deg, #3370ff 0%, #2b5fd9 100%); color: white; padding: 60px 40px; }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero-number { display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em; margin-bottom: 20px; }
+        .hero-title { font-size: 2.5em; font-weight: 600; margin-bottom: 16px; }
+        .hero-industry { font-size: 1.1em; opacity: 0.9; }
+        
+        .background-section { background: #1a1f2e; color: white; padding: 40px; }
+        .background-content { max-width: 1200px; margin: 0 auto; padding-left: 40px; position: relative; }
+        .background-content::before { content: '"'; position: absolute; top: -20px; left: 0; font-size: 4em; color: rgba(255,255,255,0.1); font-family: Georgia, serif; }
+        .background-label { font-size: 0.85em; color: #3370ff; margin-bottom: 12px; font-weight: 500; }
+        .background-text { font-size: 1.1em; line-height: 1.8; opacity: 0.9; }
+        
+        .info-tags { background: white; padding: 30px 40px; border-bottom: 1px solid #dee0e3; }
+        .info-tags-content { max-width: 1200px; margin: 0 auto; display: flex; gap: 16px; flex-wrap: wrap; }
+        .info-tag { padding: 10px 20px; background: #f2f3f5; border-radius: 8px; font-size: 0.95em; }
+        .info-tag-label { color: #646a73; font-size: 0.85em; margin-right: 8px; }
+        .info-tag-value { color: #1f2329; font-weight: 500; }
+        
+        .main { max-width: 1200px; margin: 0 auto; padding: 40px; }
+        
+        .ppt-container { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 30px; }
+        .ppt-header { background: linear-gradient(135deg, #3370ff 0%, #2b5fd9 100%); color: white; padding: 20px 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center; }
+        .ppt-header-title { font-size: 1.1em; font-weight: 600; margin-bottom: 4px; }
+        .ppt-header-sub { font-size: 0.85em; opacity: 0.8; }
+        
+        .ppt-body { display: grid; grid-template-columns: repeat(3, 1fr); min-height: 400px; }
+        .ppt-column { padding: 30px; border-right: 1px solid #dee0e3; }
+        .ppt-column:last-child { border-right: none; }
+        .ppt-column-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 3px solid #3370ff; }
+        .ppt-column-icon { width: 36px; height: 36px; background: #3370ff; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2em; }
+        .ppt-column-title { font-size: 1.1em; font-weight: 600; }
+        .ppt-column-content { line-height: 1.9; color: #646a73; font-size: 0.95em; white-space: pre-wrap; }
+        
+        .action-bar { background: white; padding: 20px 40px; border-top: 1px solid #dee0e3; position: sticky; bottom: 0; display: flex; gap: 12px; justify-content: center; }
+        .btn { padding: 12px 32px; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: 500; transition: all 0.3s; display: flex; align-items: center; gap: 8px; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .btn-primary { background: #3370ff; color: white; }
+        .btn-secondary { background: #f2f3f5; color: #1f2329; }
+        
+        .section-card { background: white; border-radius: 16px; padding: 30px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section-title { font-size: 1.2em; font-weight: 600; color: #1f2329; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+        .section-title::before { content: ''; width: 4px; height: 20px; background: #3370ff; border-radius: 2px; }
+        .section-content { line-height: 1.9; color: #646a73; white-space: pre-wrap; }
+        
+        @media print { .header, .action-bar { display: none; } .ppt-container { box-shadow: none; } }
+        @media (max-width: 900px) { .ppt-body { grid-template-columns: 1fr; } .ppt-column { border-right: none; border-bottom: 1px solid #dee0e3; } .ppt-header { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="../index.html">← 返回案例库</a>
+    </div>
+    
+    <div class="hero">
+        <div class="hero-content">
+            <span class="hero-number">案例 #2</span>
+            <h1 class="hero-title">魏桥新能源汽车科技（青岛）有限公司
+（国际）</h1>
+            <p class="hero-industry"></p>
+        </div>
+    </div>
+    
+    <div class="background-section">
+        <div class="background-content">
+            <div class="background-label">客户背景</div>
+            <div class="background-text">暂无客户背景信息</div>
+        </div>
+    </div>
+    
+    <div class="info-tags">
+        <div class="info-tags-content">
+            <div class="info-tag"><span class="info-tag-label">企业用量人数</span><span class="info-tag-value">5761</span></div>
+            
+            <div class="info-tag"><span class="info-tag-label">品类</span><span class="info-tag-value">商旅</span></div>
+        </div>
+    </div>
+    
+    <div class="main">
+        <div class="ppt-container">
+            <div class="ppt-header">
+                <div>
+                    <div class="ppt-header-title">企业痛点问题</div>
+                    <div class="ppt-header-sub">Pain Points</div>
+                </div>
+                <div>
+                    <div class="ppt-header-title">解决方案</div>
+                    <div class="ppt-header-sub">Solution</div>
+                </div>
+                <div>
+                    <div class="ppt-header-title">效果收益</div>
+                    <div class="ppt-header-sub">Results</div>
+                </div>
+            </div>
+            <div class="ppt-body">
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">!</div>
+                        <div class="ppt-column-title">核心痛点</div>
+                    </div>
+                    <div class="ppt-column-content">1、差旅场景极度复杂：研发测试需到高寒高温偏远地区路测、供应链寻源分散、多基地驻厂、海外建厂开拓、品牌宣传等多差旅场景，整体高频、周期长、区域跨度大、国际化出海。<br><br>2、（主要原因）平台独家被裹挟，成本与服务不可控：原独家使用同程 H5，单一供应商绑定，价格不透明、服务响应慢、资源不可比，我们没有议价权，服务费高，客户不满意。”<br><br>3、国际差旅无稳定方案：俄、非、尼日利亚等区域预订复杂、紧急单多、补单麻烦，原平台服务跟不上。</div>
+                </div>
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">✓</div>
+                        <div class="ppt-column-title">我们的方案</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">📈</div>
+                        <div class="ppt-column-title">量化成果</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2 class="section-title">实施亮点</h2>
+            <div class="section-content">1、API+H5 混合架构<br>国内机酒 API 接入，车(已不合作)火 H5 测试，防重机制、映射逻辑、价格同步全跑通。<br><br>2、Mapping 准确率与资源露出拉满<br>酒店数据 Mapping 优化，确保协议价稳定、房型完整、低价优先展示。<br><br>3、国际机票业务前置备战<br>专属国际客服群、紧急预订流程、补单 SOP，虚拟行程单以真实出票替代。手工补单<br><br>4、全场景回归测试<br>联合用友 + 客户 + 集成三方，提前解决下单失败、重复订单、价格波动等卡点。<br><br>5、常态化资源巡检<br>核心航司（东航 / 山航）、核心酒店（汉庭 / 全季）每日巡检，保障协议价在线。<br><br>6、线下客服组驻场支持<br>内部宣导 + 使用培训，确保员工快速上手、问题即时解决<br><br>7、同屏比价 低价优先</div>
+        </div>
+        <div class="section-card">
+            <h2 class="section-title">对标竞品分析</h2>
+            <div class="section-content">对比同程<br>1、机酒资源全、低价优先排序友好，API 稳定性与酒店 Mapping 准确率领先<br>2、国际机酒客服专属支持，联动客户侧和生态侧紧急预订/ 补单 / 特殊行程单处理能力强<br>3、低价优势：报价，合同对赌策略，机酒0报价</div>
+        </div>
+    </div>
+    
+    <div class="action-bar">
+        <button onclick="window.print()" class="btn btn-primary">📄 打印 / 保存PDF</button>
+        <button onclick="exportText()" class="btn btn-secondary">📥 导出文本</button>
+        <a href="../index.html" class="btn btn-secondary" style="text-decoration:none;">← 返回列表</a>
+    </div>
+    
+    <script>
+        function exportText() {
+            let text = "案例2：魏桥新能源汽车科技（青岛）有限公司
+（国际）\n\n";
+            text += "行业：\n\n";
+            text += "序号：2\n\n";
+            text += "客户公司名称：魏桥新能源汽车科技（青岛）有限公司\n（国际）\n\n";
+            text += "当前进度 （女警增列）：已出完案例\n\n";
+            text += "品类：商旅\n\n";
+            text += "客龄（年）：1\n\n";
+            text += "用车CSM支持人员 （主负责人）：赵天斯\n\n";
+            text += "商旅CSM支持人员 （主负责人）：赵天斯\n\n";
+            text += "用车商机所有人：陈鑫\n\n";
+            text += "商旅商机所有人：陈鑫\n\n";
+            text += "企业用量人数：5761\n\n";
+            text += "客户钱包量 年维度：5400w\n\n";
+            text += "用量核心地区 用车核心地区/出差核心地区：青岛市\n合肥市\n北京市\n德州市\n成都市\n邢台市\n\n";
+            text += "企业痛点：1、差旅场景极度复杂：研发测试需到高寒高温偏远地区路测、供应链寻源分散、多基地驻厂、海外建厂开拓、品牌宣传等多差旅场景，整体高频、周期长、区域跨度大、国际化出海。\n\n2、（主要原因）平台独家被裹挟，成本与服务不可控：原独家使用同程 H5，单一供应商绑定，价格不透明、服务响应慢、资源不可比，我们没有议价权，服务费高，客户不满意。”\n\n3、国际差旅无稳定方案：俄、非、尼日利亚等区域预订复杂、紧急单多、补单麻烦，原平台服务跟不上。\n\n";
+            text += "选择企业版原因 （行业、规模、员工数、出行／差旅年消费规模/我们优于竞品等 具体描述痛点，最好引用客户原话；避免泛化描述）：1、行业高度匹配：\n新能源汽车多基地、研发测试、供应链长、出海扩张的差旅特征，滴滴全场景覆盖最适配。\n\n2、规模与预算匹配\n月差旅 450 万、年消费超 5000 万级大客户，需要稳定资源 + 强管控 + 对公结算。\n差标不高，酒店资源聚合\n\n3、用友生态深度整合\n滴滴是用友商旅云战略级生态，生态强背书，API 成熟、交付快、问题协同效率最高。API+H5 灵活兼容\n满足客户 “机酒三家并行、车火二选一” 的强管控架构。\n\n4、对比竞品的关键优势\n机酒资源全、低价优先排序友好，API 稳定性与酒店 Mapping 准确率领先\n国际机酒客服专属支持，联动客户侧和生态侧紧急预订/ 补单 / 特殊行程单处理能力强\n\n5、低价优势：报价，合同对赌策略，机酒0报价\n\n\n\n赢单关键点待补充；\n阿里 同程 美团 初版价格优势不高，机票和酒店服务费拉到0\n\n";
+            text += "实施-亮点：1、API+H5 混合架构\n国内机酒 API 接入，车(已不合作)火 H5 测试，防重机制、映射逻辑、价格同步全跑通。\n\n2、Mapping 准确率与资源露出拉满\n酒店数据 Mapping 优化，确保协议价稳定、房型完整、低价优先展示。\n\n3、国际机票业务前置备战\n专属国际客服群、紧急预订流程、补单 SOP，虚拟行程单以真实出票替代。手工补单\n\n4、全场景回归测试\n联合用友 + 客户 + 集成三方，提前解决下单失败、重复订单、价格波动等卡点。\n\n5、常态化资源巡检\n核心航司（东航 / 山航）、核心酒店（汉庭 / 全季）每日巡检，保障协议价在线。\n\n6、线下客服组驻场支持\n内部宣导 + 使用培训，确保员工快速上手、问题即时解决\n\n7、同屏比价 低价优先\n\n";
+            text += "策略亮点 （①确定性；②价格；③员工福利活动；④站牌；⑤因公因私等）：策略定位：维稳API（国内机酒），竞争H5（国内车火），H5独家；\n\n1、API对接方面注重资源“可用性”及系统“稳定性”：\n确保API对接流程顺畅，上线使用无卡点；\n提升酒店数据映射准确性（Mapping率），保证酒店资源露出完整性；\n了解客户侧API资源展示规则（供应商是否露名/如何排序），获知排序规则为低价优先\n\n2、H5对接方面注重“政策优”及“服务好”：\n火车票独立候补功能于10月中旬上线，上线后第一时间为客户申请免费开通；\n上线前针对客户较为关注的部分城市（青岛、邢台、德州、沧州）叫车应答率，提供相关数据支撑，增强客户信心；\n用车线上优惠策略投放，持续影响客户心智；\n\n3、酒店协议价向下取整：\n低价优先的排序，内部员工会首选我们\n\n";
+            text += "使用前vs使用后变化 ①使用前：财务、员工、企业成本、效率 ②使用后：财务、员工、企业成本、效率 ③可量化成果·核心 （①财务省时、财务提效%；②员工省时、提效、满意度；③企业降本；④企业合规；⑤碳排放等）：·员工侧：使用前无同屏比价、原每人每次预订+报销xxx时间，使用后预订时间xxx时间，缩短xxx，效率提升%\n\n·差旅降本：（企业版国内机酒份额从 0→40%，滴滴企业版成为第二大供应商，商旅肯定是有节省）使用前差旅xx金额，使用后xxx金额，节省xx%\n\n·国际预订：使用前国际预订复杂，紧急单多、补单原平台服务跟不上。出票率xxx%，使用后，组建专属国际客服群、定制手工补单，紧急预订流程、补单 SOP完成特殊预订，出票率100%，对比之前提升%\n\n\n使用前后，管理侧更优，报价收益，服务收益\n同程 阿里竞争，酒店价格降低\n\n";
+            text += "对标竞品分析：对比同程\n1、机酒资源全、低价优先排序友好，API 稳定性与酒店 Mapping 准确率领先\n2、国际机酒客服专属支持，联动客户侧和生态侧紧急预订/ 补单 / 特殊行程单处理能力强\n3、低价优势：报价，合同对赌策略，机酒0报价\n\n";
+            text += "是否是 用车带动商旅/竞品切单：是·竞品切单\n\n";
+            text += "信息收集人：刘雪莹\n\n";
+            text += "备注 可嵌入文档/语音：录制：魏桥新源沟通-陈鑫沟通\n日期：2026-05-08 15:30:42\n录制文件：https://meeting.tencent.com/v2/cloud-record/share?id=a03cacf5-1cf9-4499-b7f1-88073b851f16&from=3&is-single=false&record_type=2(https://meeting.tencent.com/v2/cloud-record/share?id=a03cacf5-1cf9-4499-b7f1-88073b851f16&from=3&is-single=false&record_type=2)\n\n\n录制：魏桥新源沟通-天斯沟通\n日期：2026-05-07 21:52:30\n录制文件：https://meeting.tencent.com/v2/cloud-record/share?id=86_ILYRvOB9UiU7PfK_4lnpz0mxf80KEX6T1dwgnS30&from=3&is-single=false&record_type=1(https://meeting.tencent.com/v2/cloud-record/share?id=86_ILYRvOB9UiU7PfK_4lnpz0mxf80KEX6T1dwgnS30&from=3&is-single=false&record_type=1)\n\n";
+            const blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '案例2_魏桥新能源汽车科技（青岛）有限公司
+（国.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

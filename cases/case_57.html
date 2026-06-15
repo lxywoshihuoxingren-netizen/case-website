@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例57：北京北方华创微电子装备有限公司</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif; background: #f5f6f7; color: #1f2329; min-height: 100vh; }
+        .header { background: linear-gradient(135deg, #1a1f2e 0%, #2d3748 100%); color: white; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .header a { color: white; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .hero { background: linear-gradient(135deg, #3370ff 0%, #2b5fd9 100%); color: white; padding: 60px 40px; }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero-number { display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em; margin-bottom: 20px; }
+        .hero-title { font-size: 2.5em; font-weight: 600; margin-bottom: 16px; }
+        .hero-industry { font-size: 1.1em; opacity: 0.9; }
+        
+        .background-section { background: #1a1f2e; color: white; padding: 40px; }
+        .background-content { max-width: 1200px; margin: 0 auto; padding-left: 40px; position: relative; }
+        .background-content::before { content: '"'; position: absolute; top: -20px; left: 0; font-size: 4em; color: rgba(255,255,255,0.1); font-family: Georgia, serif; }
+        .background-label { font-size: 0.85em; color: #3370ff; margin-bottom: 12px; font-weight: 500; }
+        .background-text { font-size: 1.1em; line-height: 1.8; opacity: 0.9; }
+        
+        .info-tags { background: white; padding: 30px 40px; border-bottom: 1px solid #dee0e3; }
+        .info-tags-content { max-width: 1200px; margin: 0 auto; display: flex; gap: 16px; flex-wrap: wrap; }
+        .info-tag { padding: 10px 20px; background: #f2f3f5; border-radius: 8px; font-size: 0.95em; }
+        .info-tag-label { color: #646a73; font-size: 0.85em; margin-right: 8px; }
+        .info-tag-value { color: #1f2329; font-weight: 500; }
+        
+        .main { max-width: 1200px; margin: 0 auto; padding: 40px; }
+        
+        .ppt-container { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 30px; }
+        .ppt-header { background: linear-gradient(135deg, #3370ff 0%, #2b5fd9 100%); color: white; padding: 20px 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center; }
+        .ppt-header-title { font-size: 1.1em; font-weight: 600; margin-bottom: 4px; }
+        .ppt-header-sub { font-size: 0.85em; opacity: 0.8; }
+        
+        .ppt-body { display: grid; grid-template-columns: repeat(3, 1fr); min-height: 400px; }
+        .ppt-column { padding: 30px; border-right: 1px solid #dee0e3; }
+        .ppt-column:last-child { border-right: none; }
+        .ppt-column-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 3px solid #3370ff; }
+        .ppt-column-icon { width: 36px; height: 36px; background: #3370ff; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2em; }
+        .ppt-column-title { font-size: 1.1em; font-weight: 600; }
+        .ppt-column-content { line-height: 1.9; color: #646a73; font-size: 0.95em; white-space: pre-wrap; }
+        
+        .action-bar { background: white; padding: 20px 40px; border-top: 1px solid #dee0e3; position: sticky; bottom: 0; display: flex; gap: 12px; justify-content: center; }
+        .btn { padding: 12px 32px; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: 500; transition: all 0.3s; display: flex; align-items: center; gap: 8px; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .btn-primary { background: #3370ff; color: white; }
+        .btn-secondary { background: #f2f3f5; color: #1f2329; }
+        
+        .section-card { background: white; border-radius: 16px; padding: 30px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section-title { font-size: 1.2em; font-weight: 600; color: #1f2329; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+        .section-title::before { content: ''; width: 4px; height: 20px; background: #3370ff; border-radius: 2px; }
+        .section-content { line-height: 1.9; color: #646a73; white-space: pre-wrap; }
+        
+        @media print { .header, .action-bar { display: none; } .ppt-container { box-shadow: none; } }
+        @media (max-width: 900px) { .ppt-body { grid-template-columns: 1fr; } .ppt-column { border-right: none; border-bottom: 1px solid #dee0e3; } .ppt-header { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="../index.html">← 返回案例库</a>
+    </div>
+    
+    <div class="hero">
+        <div class="hero-content">
+            <span class="hero-number">案例 #57</span>
+            <h1 class="hero-title">北京北方华创微电子装备有限公司</h1>
+            <p class="hero-industry">科技互联网</p>
+        </div>
+    </div>
+    
+    <div class="background-section">
+        <div class="background-content">
+            <div class="background-label">客户背景</div>
+            <div class="background-text">暂无客户背景信息</div>
+        </div>
+    </div>
+    
+    <div class="info-tags">
+        <div class="info-tags-content">
+            <div class="info-tag"><span class="info-tag-label">企业用量人数</span><span class="info-tag-value">37家分子公司组成，总计人数20000人，有出差需求的大概5000人.</span></div>
+            
+            <div class="info-tag"><span class="info-tag-label">品类</span><span class="info-tag-value">用车+商旅</span></div>
+        </div>
+    </div>
+    
+    <div class="main">
+        <div class="ppt-container">
+            <div class="ppt-header">
+                <div>
+                    <div class="ppt-header-title">企业痛点问题</div>
+                    <div class="ppt-header-sub">Pain Points</div>
+                </div>
+                <div>
+                    <div class="ppt-header-title">解决方案</div>
+                    <div class="ppt-header-sub">Solution</div>
+                </div>
+                <div>
+                    <div class="ppt-header-title">效果收益</div>
+                    <div class="ppt-header-sub">Results</div>
+                </div>
+            </div>
+            <div class="ppt-body">
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">!</div>
+                        <div class="ppt-column-title">核心痛点</div>
+                    </div>
+                    <div class="ppt-column-content">作为国内集成电路高端工艺装备的先进企业及上市股份有限公司，需要推进内部平台的线上化和合规化，而滴滴在出行行业为最大品牌，有合作必要性<br>1、组织持续壮大，内部管理成本高，且效率低下<br>2、特定时间周期的高频商旅需求，需要强大的供应商支持<br>3、关注员工出行安全</div>
+                </div>
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">✓</div>
+                        <div class="ppt-column-title">我们的方案</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">📈</div>
+                        <div class="ppt-column-title">量化成果</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2 class="section-title">实施亮点</h2>
+            <div class="section-content">1、制度：<br>1）机票：单前后浮动三天，按职级配置舱等管控，所选航班前后一小时最低价，超标不可预订<br>2）酒店：单前后浮动三天、按职级配置差标（一线城市750-330、二线城市550-260、三线城市450-230）、超标审批<br>3）火车票：单前后浮动三天、按职级配置坐席、超标不可预订<br>4）用车：9：30限额50元 11点无限额，车型：快车、特快；差旅用车，因公个垫入口：（因公垫付）；<br>2、系统：管控和结算上，汇联易接口对接；改造汇联易，解决无制度人员无法开通企业支付的问题；通过人工手动配置的方式满足特殊人员制度配置问题<br>3、报销模式：20名高管（持卡人）部分高管无申请单模式预定；代订，秘书为高管提交申请单预定，代订人给出行人提交申请单执行出行人差标、代订人协助预定，多人多差标；出差申请单，职级绑定差标，申请单部门主管在汇联易审批，酒店超标在滴滴审批。<br><br>汇联易&滴滴对接需对接以下内容：单点登录H5、人事信息、部门信息、申请单对接、订单取数（机票、酒店）、账单接口<br>汇联易：开通滴滴商旅应用、推送主数据（人员/部门）信息至滴滴侧、制度匹配人员<br>滴滴：  出差申请单配置严格管控模式、创建职级信息、创建制度信息</div>
+        </div>
+        <div class="section-card">
+            <h2 class="section-title">对标竞品分析</h2>
+            <div class="section-content">供应商选择：原服务商携程、同程、美亚，后舍弃同程、美亚；滴滴一站式方案pk分贝通、在路上、甄选，最终滴滴+携程两家并行<br>现行商旅服务商：【机票、酒店：滴滴+携程】、【火车票：滴滴】（汇联易生态对接）<br>原3家并行-携程、同程、美亚，线上预订率仅30%，差标低，存在不合理报销行为<br>火车票选择滴滴：主要是收费标准低，有对比优势</div>
+        </div>
+    </div>
+    
+    <div class="action-bar">
+        <button onclick="window.print()" class="btn btn-primary">📄 打印 / 保存PDF</button>
+        <button onclick="exportText()" class="btn btn-secondary">📥 导出文本</button>
+        <a href="../index.html" class="btn btn-secondary" style="text-decoration:none;">← 返回列表</a>
+    </div>
+    
+    <script>
+        function exportText() {
+            let text = "案例57：北京北方华创微电子装备有限公司\n\n";
+            text += "行业：科技互联网\n\n";
+            text += "序号：57\n\n";
+            text += "客户公司名称：北京北方华创微电子装备有限公司\n\n";
+            text += "当前进度 （女警增列）：已出完案例\n\n";
+            text += "品类：用车+商旅\n\n";
+            text += "行业：科技互联网\n\n";
+            text += "客龄（年）：7.3\n\n";
+            text += "用车CSM支持人员 （主负责人）：于丹\n\n";
+            text += "用车商机所有人：于丹\n\n";
+            text += "企业用量人数：37家分子公司组成，总计人数20000人，有出差需求的大概5000人.\n\n";
+            text += "客户钱包量 年维度：商旅规模及份额：商旅全品类年化1.2亿，合作初期，线上化率仅30%，25年全年线上化率已提升至70%。25年年底，客户再次发力，提升线上化率，截至26年3月份，线上率提升至约90%。25年全年，滴滴：携程份额占比为48%:52%，客户在滴滴的商旅GMV为4254万，月均350W+，26年目标为500万/月均，渗透空间较大。\n\n";
+            text += "用量核心地区 用车核心地区/出差核心地区：北京、上海、武汉、合肥、无锡、深圳、青岛\n\n";
+            text += "企业痛点：作为国内集成电路高端工艺装备的先进企业及上市股份有限公司，需要推进内部平台的线上化和合规化，而滴滴在出行行业为最大品牌，有合作必要性\n1、组织持续壮大，内部管理成本高，且效率低下\n2、特定时间周期的高频商旅需求，需要强大的供应商支持\n3、关注员工出行安全\n\n";
+            text += "选择企业版原因 （行业、规模、员工数、出行／差旅年消费规模/我们优于竞品等 具体描述痛点，最好引用客户原话；避免泛化描述）：1.价值认可：渗透获取商机\n      ①省心——省立返、积分商城运营方案、协助酒店资源库搭建获得客户认可\n      ②省事——原生态系统对接，客户侧无需改造，无IT成本\n      ③省麻烦——去同程和美亚留携程，一站式方案pk分贝通、在路上、甄选\n2.产研保障，快速确定商旅方案，成功的Mice服务不仅保障员工展会的顺利进行，还为公司降本提效获得员工及领导高度信任，从而推动商旅测试上线\n3.卡点分析通道及解决方案：①搭建员工微信群&技术运维支持群，快速响应解决预订问题、②定时分析客诉工单&客服DC工单流转\n4.酒店资源优化、建立客诉问题服务保障机制建立、地推等方案、结算流程定制化提升票据时效性\n\n";
+            text += "实施-亮点：1、制度：\n1）机票：单前后浮动三天，按职级配置舱等管控，所选航班前后一小时最低价，超标不可预订\n2）酒店：单前后浮动三天、按职级配置差标（一线城市750-330、二线城市550-260、三线城市450-230）、超标审批\n3）火车票：单前后浮动三天、按职级配置坐席、超标不可预订\n4）用车：9：30限额50元 11点无限额，车型：快车、特快；差旅用车，因公个垫入口：（因公垫付）；\n2、系统：管控和结算上，汇联易接口对接；改造汇联易，解决无制度人员无法开通企业支付的问题；通过人工手动配置的方式满足特殊人员制度配置问题\n3、报销模式：20名高管（持卡人）部分高管无申请单模式预定；代订，秘书为高管提交申请单预定，代订人给出行人提交申请单执行出行人差标、代订人协助预定，多人多差标；出差申请单，职级绑定差标，申请单部门主管在汇联易审批，酒店超标在滴滴审批。\n\n汇联易&滴滴对接需对接以下内容：单点登录H5、人事信息、部门信息、申请单对接、订单取数（机票、酒店）、账单接口\n汇联易：开通滴滴商旅应用、推送主数据（人员/部门）信息至滴滴侧、制度匹配人员\n滴滴：  出差申请单配置严格管控模式、创建职级信息、创建制度信息\n\n";
+            text += "策略亮点 （①确定性；②价格；③员工福利活动；④站牌；⑤因公因私等）：产品与价格：省立返、积分商城运营方案、协助酒店资源库搭建获得客户认可，服务费合理，性价比高。\n系统与数据：原生态系统对接，客户侧无需改造，无IT成本\n汇联易预订入口、实现对公结算，一站式差旅预订（机，酒，火，车）\n通过费控系统（汇联易）提交出差申请单，执行差标+超标审批，完单后汇联易拉回数据\n服务与管理：员工微信群+专属客服团队提供全方位服务支持，高效响应解决使用问题\n\n";
+            text += "使用前vs使用后变化 ①使用前：财务、员工、企业成本、效率 ②使用后：财务、员工、企业成本、效率 ③可量化成果·核心 （①财务省时、财务提效%；②员工省时、提效、满意度；③企业降本；④企业合规；⑤碳排放等）：使用前：成本不可控、合规压力大且管理效率低；员工使用时多APP切换、订房贵、抢票难、服务不稳定，满意度低\n使用后\n1）员工体验：一站式预订、抢票更快、酒店更便宜、专属福利，满意度提升 40%+\n2）企业降本：酒店协议价落地，单均房费下降 10%\n3）合规可控：先申请后预订、差标刚性管控\n4）财务提效：自动对账、数电票规范、人脸核验闭环，工作量节省 65%+\n\n③ 核心量化成果\n火车票：100%独家，线下基本无\n用车：100%线上化\n商旅：线上化率高，滴滴和携程并行\n\n";
+            text += "对标竞品分析：供应商选择：原服务商携程、同程、美亚，后舍弃同程、美亚；滴滴一站式方案pk分贝通、在路上、甄选，最终滴滴+携程两家并行\n现行商旅服务商：【机票、酒店：滴滴+携程】、【火车票：滴滴】（汇联易生态对接）\n原3家并行-携程、同程、美亚，线上预订率仅30%，差标低，存在不合理报销行为\n火车票选择滴滴：主要是收费标准低，有对比优势\n\n";
+            text += "是否是 用车带动商旅/竞品切单：是·用车带动商旅\n\n";
+            text += "信息收集人：赵校杰\n\n";
+            const blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '案例57_北京北方华创微电子装备有限公司.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

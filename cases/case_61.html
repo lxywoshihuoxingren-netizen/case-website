@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例61：维沃移动通信有限公司</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif; background: #f5f6f7; color: #1f2329; min-height: 100vh; }
+        .header { background: linear-gradient(135deg, #1a1f2e 0%, #2d3748 100%); color: white; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .header a { color: white; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .hero { background: linear-gradient(135deg, #3370ff 0%, #2b5fd9 100%); color: white; padding: 60px 40px; }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero-number { display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em; margin-bottom: 20px; }
+        .hero-title { font-size: 2.5em; font-weight: 600; margin-bottom: 16px; }
+        .hero-industry { font-size: 1.1em; opacity: 0.9; }
+        
+        .background-section { background: #1a1f2e; color: white; padding: 40px; }
+        .background-content { max-width: 1200px; margin: 0 auto; padding-left: 40px; position: relative; }
+        .background-content::before { content: '"'; position: absolute; top: -20px; left: 0; font-size: 4em; color: rgba(255,255,255,0.1); font-family: Georgia, serif; }
+        .background-label { font-size: 0.85em; color: #3370ff; margin-bottom: 12px; font-weight: 500; }
+        .background-text { font-size: 1.1em; line-height: 1.8; opacity: 0.9; }
+        
+        .info-tags { background: white; padding: 30px 40px; border-bottom: 1px solid #dee0e3; }
+        .info-tags-content { max-width: 1200px; margin: 0 auto; display: flex; gap: 16px; flex-wrap: wrap; }
+        .info-tag { padding: 10px 20px; background: #f2f3f5; border-radius: 8px; font-size: 0.95em; }
+        .info-tag-label { color: #646a73; font-size: 0.85em; margin-right: 8px; }
+        .info-tag-value { color: #1f2329; font-weight: 500; }
+        
+        .main { max-width: 1200px; margin: 0 auto; padding: 40px; }
+        
+        .ppt-container { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 30px; }
+        .ppt-header { background: linear-gradient(135deg, #3370ff 0%, #2b5fd9 100%); color: white; padding: 20px 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center; }
+        .ppt-header-title { font-size: 1.1em; font-weight: 600; margin-bottom: 4px; }
+        .ppt-header-sub { font-size: 0.85em; opacity: 0.8; }
+        
+        .ppt-body { display: grid; grid-template-columns: repeat(3, 1fr); min-height: 400px; }
+        .ppt-column { padding: 30px; border-right: 1px solid #dee0e3; }
+        .ppt-column:last-child { border-right: none; }
+        .ppt-column-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 3px solid #3370ff; }
+        .ppt-column-icon { width: 36px; height: 36px; background: #3370ff; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2em; }
+        .ppt-column-title { font-size: 1.1em; font-weight: 600; }
+        .ppt-column-content { line-height: 1.9; color: #646a73; font-size: 0.95em; white-space: pre-wrap; }
+        
+        .action-bar { background: white; padding: 20px 40px; border-top: 1px solid #dee0e3; position: sticky; bottom: 0; display: flex; gap: 12px; justify-content: center; }
+        .btn { padding: 12px 32px; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: 500; transition: all 0.3s; display: flex; align-items: center; gap: 8px; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .btn-primary { background: #3370ff; color: white; }
+        .btn-secondary { background: #f2f3f5; color: #1f2329; }
+        
+        .section-card { background: white; border-radius: 16px; padding: 30px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section-title { font-size: 1.2em; font-weight: 600; color: #1f2329; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+        .section-title::before { content: ''; width: 4px; height: 20px; background: #3370ff; border-radius: 2px; }
+        .section-content { line-height: 1.9; color: #646a73; white-space: pre-wrap; }
+        
+        @media print { .header, .action-bar { display: none; } .ppt-container { box-shadow: none; } }
+        @media (max-width: 900px) { .ppt-body { grid-template-columns: 1fr; } .ppt-column { border-right: none; border-bottom: 1px solid #dee0e3; } .ppt-header { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="../index.html">← 返回案例库</a>
+    </div>
+    
+    <div class="hero">
+        <div class="hero-content">
+            <span class="hero-number">案例 #61</span>
+            <h1 class="hero-title">维沃移动通信有限公司</h1>
+            <p class="hero-industry">科技互联网</p>
+        </div>
+    </div>
+    
+    <div class="background-section">
+        <div class="background-content">
+            <div class="background-label">客户背景</div>
+            <div class="background-text">暂无客户背景信息</div>
+        </div>
+    </div>
+    
+    <div class="info-tags">
+        <div class="info-tags-content">
+            <div class="info-tag"><span class="info-tag-label">企业用量人数</span><span class="info-tag-value">有权限用户数：21089
+激活账户数：11042
+激活率：52.2%</span></div>
+            
+            <div class="info-tag"><span class="info-tag-label">品类</span><span class="info-tag-value">用车</span></div>
+        </div>
+    </div>
+    
+    <div class="main">
+        <div class="ppt-container">
+            <div class="ppt-header">
+                <div>
+                    <div class="ppt-header-title">企业痛点问题</div>
+                    <div class="ppt-header-sub">Pain Points</div>
+                </div>
+                <div>
+                    <div class="ppt-header-title">解决方案</div>
+                    <div class="ppt-header-sub">Solution</div>
+                </div>
+                <div>
+                    <div class="ppt-header-title">效果收益</div>
+                    <div class="ppt-header-sub">Results</div>
+                </div>
+            </div>
+            <div class="ppt-body">
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">!</div>
+                        <div class="ppt-column-title">核心痛点</div>
+                    </div>
+                    <div class="ppt-column-content">1、返程高速费问题：东莞地区返程高速费处理导致员工投诉频繁，管理员需手动处理，工作量大，影响员工体验<br>2、包车需求挑战：手机测试包车依赖C端价格结构，无法根据客户实际诉求定制套餐价格，客户希望增加套餐时间。当前包车年化80w+，存在约20w增长空间但受限于价格结构<br>3、管控合规问题：跨城双向限额需求困扰一年，影响用车管理规范性<br>4、体验卡点：高速费问题成为当前最大体验卡点，不仅增加管理员工作量，还影响员工满意度</div>
+                </div>
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">✓</div>
+                        <div class="ppt-column-title">我们的方案</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">📈</div>
+                        <div class="ppt-column-title">量化成果</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2 class="section-title">对标竞品分析</h2>
+            <div class="section-content">DD份额占比74%</div>
+        </div>
+    </div>
+    
+    <div class="action-bar">
+        <button onclick="window.print()" class="btn btn-primary">📄 打印 / 保存PDF</button>
+        <button onclick="exportText()" class="btn btn-secondary">📥 导出文本</button>
+        <a href="../index.html" class="btn btn-secondary" style="text-decoration:none;">← 返回列表</a>
+    </div>
+    
+    <script>
+        function exportText() {
+            let text = "案例61：维沃移动通信有限公司\n\n";
+            text += "行业：科技互联网\n\n";
+            text += "序号：61\n\n";
+            text += "客户公司名称：维沃移动通信有限公司\n\n";
+            text += "当前进度 （女警增列）：部分信息待补充\n\n";
+            text += "品类：用车\n\n";
+            text += "行业：科技互联网\n\n";
+            text += "客龄（年）：3.1\n\n";
+            text += "用车CSM支持人员 （主负责人）：黄文富\n\n";
+            text += "用车商机所有人：黄文富\n\n";
+            text += "企业用量人数：有权限用户数：21089\n激活账户数：11042\n激活率：52.2%\n\n";
+            text += "客户钱包量 年维度：-\n\n";
+            text += "用量核心地区 用车核心地区/出差核心地区：深圳市、东莞市、上海市、南京市、北京市\n\n";
+            text += "企业痛点：1、返程高速费问题：东莞地区返程高速费处理导致员工投诉频繁，管理员需手动处理，工作量大，影响员工体验\n2、包车需求挑战：手机测试包车依赖C端价格结构，无法根据客户实际诉求定制套餐价格，客户希望增加套餐时间。当前包车年化80w+，存在约20w增长空间但受限于价格结构\n3、管控合规问题：跨城双向限额需求困扰一年，影响用车管理规范性\n4、体验卡点：高速费问题成为当前最大体验卡点，不仅增加管理员工作量，还影响员工满意度\n\n";
+            text += "选择企业版原因 （行业、规模、员工数、出行／差旅年消费规模/我们优于竞品等 具体描述痛点，最好引用客户原话；避免泛化描述）：1、品牌匹配度高：vivo作为全球领先智能终端公司（全球市场份额7%-9%，位列全球前五；中国市场份额15%-18%；营业额约4000亿人民币），选择滴滴作为用车服务商基于品牌信任和资源保障\n2、场景覆盖全面：用车场景覆盖加班用车、商务出行、差旅用车、包车服务（特别用于手机测试），滴滴能全面覆盖多元化用车需求\n3、管控需求匹配：跨城双向限额需求落地，提升用车管理规范性；审批单对接汇联易，实现OA入口跳转滴滴H5首页\n4、系统对接顺畅：通过内部OA入口跳转至滴滴H5首页，审批单对接汇联易，为后续运营增长奠定基础\n5、增长潜力明确：份额提升至70%是核心目标，增长机会明确（灵动岛集成、包车定制化、高速费优化）\n\n";
+            text += "策略亮点 （①确定性；②价格；③员工福利活动；④站牌；⑤因公因私等）：1、自费与升舱活动推广：每月定期推广，支持员工自费升舱，提升用车体验，刺激了额外消费，但增长空间有限。\n2、包车定制化方案探索：当前包车年化80w+，存在约20w增长空间，客户诉求希望增加套餐时间\n3、灵动岛集成规划：vivo计划全员推广手机原子通知功能，如企业滴滴能实现与之集成，预计提升份额5-10%\n\n";
+            text += "使用前vs使用后变化 ①使用前：财务、员工、企业成本、效率 ②使用后：财务、员工、企业成本、效率 ③可量化成果·核心 （①财务省时、财务提效%；②员工省时、提效、满意度；③企业降本；④企业合规；⑤碳排放等）：①使用前：\n管控合规：跨城双向限额问题困扰一年，影响用车管理规范性\n高速费处理：员工投诉频繁，管理员需手动处理，工作量大\n包车服务：依赖C端价格结构，无法定制套餐，限制增长\n月度消费：不稳定，有波动\n\n②使用后：\n月度消费：稳定在约180万元，份额约65%\n2025年趋势：已恢复至25年月度峰值，持续增长\n管控规范：跨城双向限额成功上线，提升用车管理规范性\n2025年特价补贴：总计52.5万，补贴率12.77%\n推广效果：差旅月活动覆盖3000名员工\n\n③可量化成果·核心：\n月度消费稳定：180万/月，份额65%-75%\n年度消费：约2160万/年\n包车业务：年化80w+，增长空间20w\n推广覆盖：3000名员工\n\n";
+            text += "对标竞品分析：DD份额占比74%\n\n";
+            text += "信息收集人：王冬雪\n\n";
+            const blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '案例61_维沃移动通信有限公司.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

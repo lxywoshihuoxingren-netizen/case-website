@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例1：前锦网络信息技术（上海）有限公司
+举例</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif; background: #f5f6f7; color: #1f2329; min-height: 100vh; }
+        .header { background: linear-gradient(135deg, #1a1f2e 0%, #2d3748 100%); color: white; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .header a { color: white; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .hero { background: linear-gradient(135deg, #3370ff 0%, #2b5fd9 100%); color: white; padding: 60px 40px; }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero-number { display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em; margin-bottom: 20px; }
+        .hero-title { font-size: 2.5em; font-weight: 600; margin-bottom: 16px; }
+        .hero-industry { font-size: 1.1em; opacity: 0.9; }
+        
+        .background-section { background: #1a1f2e; color: white; padding: 40px; }
+        .background-content { max-width: 1200px; margin: 0 auto; padding-left: 40px; position: relative; }
+        .background-content::before { content: '"'; position: absolute; top: -20px; left: 0; font-size: 4em; color: rgba(255,255,255,0.1); font-family: Georgia, serif; }
+        .background-label { font-size: 0.85em; color: #3370ff; margin-bottom: 12px; font-weight: 500; }
+        .background-text { font-size: 1.1em; line-height: 1.8; opacity: 0.9; }
+        
+        .info-tags { background: white; padding: 30px 40px; border-bottom: 1px solid #dee0e3; }
+        .info-tags-content { max-width: 1200px; margin: 0 auto; display: flex; gap: 16px; flex-wrap: wrap; }
+        .info-tag { padding: 10px 20px; background: #f2f3f5; border-radius: 8px; font-size: 0.95em; }
+        .info-tag-label { color: #646a73; font-size: 0.85em; margin-right: 8px; }
+        .info-tag-value { color: #1f2329; font-weight: 500; }
+        
+        .main { max-width: 1200px; margin: 0 auto; padding: 40px; }
+        
+        .ppt-container { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 30px; }
+        .ppt-header { background: linear-gradient(135deg, #3370ff 0%, #2b5fd9 100%); color: white; padding: 20px 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center; }
+        .ppt-header-title { font-size: 1.1em; font-weight: 600; margin-bottom: 4px; }
+        .ppt-header-sub { font-size: 0.85em; opacity: 0.8; }
+        
+        .ppt-body { display: grid; grid-template-columns: repeat(3, 1fr); min-height: 400px; }
+        .ppt-column { padding: 30px; border-right: 1px solid #dee0e3; }
+        .ppt-column:last-child { border-right: none; }
+        .ppt-column-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 3px solid #3370ff; }
+        .ppt-column-icon { width: 36px; height: 36px; background: #3370ff; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2em; }
+        .ppt-column-title { font-size: 1.1em; font-weight: 600; }
+        .ppt-column-content { line-height: 1.9; color: #646a73; font-size: 0.95em; white-space: pre-wrap; }
+        
+        .action-bar { background: white; padding: 20px 40px; border-top: 1px solid #dee0e3; position: sticky; bottom: 0; display: flex; gap: 12px; justify-content: center; }
+        .btn { padding: 12px 32px; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: 500; transition: all 0.3s; display: flex; align-items: center; gap: 8px; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .btn-primary { background: #3370ff; color: white; }
+        .btn-secondary { background: #f2f3f5; color: #1f2329; }
+        
+        .section-card { background: white; border-radius: 16px; padding: 30px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section-title { font-size: 1.2em; font-weight: 600; color: #1f2329; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+        .section-title::before { content: ''; width: 4px; height: 20px; background: #3370ff; border-radius: 2px; }
+        .section-content { line-height: 1.9; color: #646a73; white-space: pre-wrap; }
+        
+        @media print { .header, .action-bar { display: none; } .ppt-container { box-shadow: none; } }
+        @media (max-width: 900px) { .ppt-body { grid-template-columns: 1fr; } .ppt-column { border-right: none; border-bottom: 1px solid #dee0e3; } .ppt-header { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="../index.html">← 返回案例库</a>
+    </div>
+    
+    <div class="hero">
+        <div class="hero-content">
+            <span class="hero-number">案例 #1</span>
+            <h1 class="hero-title">前锦网络信息技术（上海）有限公司
+举例</h1>
+            <p class="hero-industry">互联网
+招聘</p>
+        </div>
+    </div>
+    
+    <div class="background-section">
+        <div class="background-content">
+            <div class="background-label">客户背景</div>
+            <div class="background-text">暂无客户背景信息</div>
+        </div>
+    </div>
+    
+    <div class="info-tags">
+        <div class="info-tags-content">
+            <div class="info-tag"><span class="info-tag-label">企业用量人数</span><span class="info-tag-value">4000</span></div>
+            
+            <div class="info-tag"><span class="info-tag-label">品类</span><span class="info-tag-value">用车+商旅</span></div>
+        </div>
+    </div>
+    
+    <div class="main">
+        <div class="ppt-container">
+            <div class="ppt-header">
+                <div>
+                    <div class="ppt-header-title">企业痛点问题</div>
+                    <div class="ppt-header-sub">Pain Points</div>
+                </div>
+                <div>
+                    <div class="ppt-header-title">解决方案</div>
+                    <div class="ppt-header-sub">Solution</div>
+                </div>
+                <div>
+                    <div class="ppt-header-title">效果收益</div>
+                    <div class="ppt-header-sub">Results</div>
+                </div>
+            </div>
+            <div class="ppt-body">
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">!</div>
+                        <div class="ppt-column-title">核心痛点</div>
+                    </div>
+                    <div class="ppt-column-content">1、财务报销流程高度线下化，成本高企：企业差旅需求多但差旅费用报销流程下沉线下，消耗财务人力和时间<br><br>2、员工手动申请、比价、贴票、报销繁琐流程，差旅体验差：员工全流程线下化，需跨 3–5 个平台比价预订、填单、手工贴票、审批多重审核<br><br>3、合规性：灰色不透明报销真实性难核验<br>线下审核节点分散，灰色不透明报销真实性难核验，合规风险高<br><br>4、数据孤岛：多平台预订数据分散，无法支撑决策<br>差旅数据分散在多个平台，无法统一归集，财务报表无法自动生成；对账周期长、差错率高，CFO 层面需要的经营决策数据严重滞后。<br><br>5、内部费控系统效果不好，商旅管理能力不够完善，内控内审不方便</div>
+                </div>
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">✓</div>
+                        <div class="ppt-column-title">我们的方案</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">📈</div>
+                        <div class="ppt-column-title">量化成果</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2 class="section-title">实施亮点</h2>
+            <div class="section-content">1、与内部自研系统外部生态部署深度打通，从0-1实现线上差旅数智化。<br>2、为解决差旅结算需求，定制化费用分摊规则， CRM系统上研发手工出凭证功能，通过代码自动生成凭证，生成时间从半个月缩短到3天，领先行业内；<br>3、结合商旅综合分析功能，整合账单明细，将订单费用化，支持数据权限划分和同步数据更新，每月可自动处理约8万条数据，大幅释放财务精力；管控规则前置，数智风控全流程稽核，数据报告科学支撑企业决策。<br>4、提供AI智能小助手、机火同屏比价、支持企业员工外部客户会议/招聘活动的一键代订，解决员工垫付挤压问题，提升预订提效，提升体验；</div>
+        </div>
+    </div>
+    
+    <div class="action-bar">
+        <button onclick="window.print()" class="btn btn-primary">📄 打印 / 保存PDF</button>
+        <button onclick="exportText()" class="btn btn-secondary">📥 导出文本</button>
+        <a href="../index.html" class="btn btn-secondary" style="text-decoration:none;">← 返回列表</a>
+    </div>
+    
+    <script>
+        function exportText() {
+            let text = "案例1：前锦网络信息技术（上海）有限公司
+举例\n\n";
+            text += "行业：互联网
+招聘\n\n";
+            text += "序号：1\n\n";
+            text += "客户公司名称：前锦网络信息技术（上海）有限公司\n举例\n\n";
+            text += "当前进度 （女警增列）：已出完案例\n\n";
+            text += "品类：用车+商旅\n\n";
+            text += "行业：互联网\n招聘\n\n";
+            text += "用车CSM支持人员 （主负责人）：曹红霞\n\n";
+            text += "商旅CSM支持人员 （主负责人）：曹红霞\n\n";
+            text += "用车商机所有人：曹红霞\n\n";
+            text += "商旅商机所有人：曹红霞\n\n";
+            text += "企业用量人数：4000\n\n";
+            text += "客户钱包量 年维度：1200W\n\n";
+            text += "用量核心地区 用车核心地区/出差核心地区：用车：\n上海\n北京\n深圳\n武汉\n广州\n\n\n\n\n商旅：\n上海\n北京\n深圳\n杭州\n重庆\n\n";
+            text += "企业痛点：1、财务报销流程高度线下化，成本高企：企业差旅需求多但差旅费用报销流程下沉线下，消耗财务人力和时间\n\n2、员工手动申请、比价、贴票、报销繁琐流程，差旅体验差：员工全流程线下化，需跨 3–5 个平台比价预订、填单、手工贴票、审批多重审核\n\n3、合规性：灰色不透明报销真实性难核验\n线下审核节点分散，灰色不透明报销真实性难核验，合规风险高\n\n4、数据孤岛：多平台预订数据分散，无法支撑决策\n差旅数据分散在多个平台，无法统一归集，财务报表无法自动生成；对账周期长、差错率高，CFO 层面需要的经营决策数据严重滞后。\n\n5、内部费控系统效果不好，商旅管理能力不够完善，内控内审不方便\n\n";
+            text += "选择企业版原因 （行业、规模、员工数、出行／差旅年消费规模/我们优于竞品等 具体描述痛点，最好引用客户原话；避免泛化描述）：采用背景： 前程无忧在2023年2月至3月进行了财务部结构调整，新CFO入职后推动改革，重点优化费用报销流程，且差旅费、交通费报销占比非常大，因为滴滴有自己的费控系统，于是费控系统+商旅一并买下来。于2023年6月启用滴滴企业版项目，并经三方比价后选定滴滴企业版。\n\n·滴滴企业版提供了费控+商旅功能，解决了财务管控需求且报价优于携程\n·用车比例超过机票、酒店和火车票的总和，滴滴在用车领域的优势成首选\n·对接顺畅，可以对接内部企业系统，共研共磨合\n\n";
+            text += "实施-亮点：1、与内部自研系统外部生态部署深度打通，从0-1实现线上差旅数智化。\n2、为解决差旅结算需求，定制化费用分摊规则， CRM系统上研发手工出凭证功能，通过代码自动生成凭证，生成时间从半个月缩短到3天，领先行业内；\n3、结合商旅综合分析功能，整合账单明细，将订单费用化，支持数据权限划分和同步数据更新，每月可自动处理约8万条数据，大幅释放财务精力；管控规则前置，数智风控全流程稽核，数据报告科学支撑企业决策。\n4、提供AI智能小助手、机火同屏比价、支持企业员工外部客户会议/招聘活动的一键代订，解决员工垫付挤压问题，提升预订提效，提升体验；\n\n";
+            text += "策略亮点 （①确定性；②价格；③员工福利活动；④站牌；⑤因公因私等）：/\n\n";
+            text += "使用前vs使用后变化 ①使用前：财务、员工、企业成本、效率 ②使用后：财务、员工、企业成本、效率 ③可量化成果·核心 （①财务省时、财务提效%；②员工省时、提效、满意度；③企业降本；④企业合规；⑤碳排放等）：测算推演：https://cooper.didichuxing.com/docs2/document/2207447356658(https://cooper.didichuxing.com/docs2/document/2207447356658)\n\n①使用前：\n财务：原报销流程高度线下化，员工需打印发票并手工贴单，每月30多名财务人员中约18 名财务每月处理 1467 单报销，单张报销单处理耗时 10分钟，月度总耗时高达244.5 小时（30.5 个工作日）；\n员工：预订环节无同屏比价时，员工需跨 3-5 个平台手动比价，单场差旅预订耗时约 20分钟；线下报销环节需员工贴票、填单、跟进审批，单场报销耗时约15分钟；\n\n\n②使用后：\n员工：员工单场差旅全流程耗时从 35分钟降至10分钟，单次出差省时25分钟，整体时间效率提升71.4%，工作效率提升250%，员工满意度大幅提升。\n财务：线下报销单清零，系统自动对账、批量入账，单张报销单处理耗时压缩至 1 分钟，月度总耗时仅24.45小时，每月释放220.05小时财务人力，财务处理效率提升900%，彻底解放财务人力，聚焦高价值工作。\n全流程：原线下报销模式下，每张单据经员工端、财务端处理，单张报销单处理耗时45分钟，18人每月共1467张单据，月度总耗时高达1100.25小时（137.5个工作日）；\n接入滴滴企业版后，线下报销单清零，系统自动对账、批量入账，单张报销单处理耗时压缩至11分钟，月度总耗时仅268.95小时，每月释放831.3小时人力，报销工作处理效率提升309%。\n合规性提升： 接入滴滴企业版后，原一年超标等不合规订单共计3522份，接入后合规提升20%。\n差旅成本优化：全流程数字化后，员工+财务整体效率提升309%。每年为企业释放超1247.5小时人力成本，同时通过同屏比价实现差旅采购最优价，差旅综合成本下降 10%-15%，真正实现 “提效 + 降本” 双丰收。\n\n";
+            text += "是否是 用车带动商旅/竞品切单：否\n\n";
+            text += "信息收集人：刘雪莹\n\n";
+            const blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '案例1_前锦网络信息技术（上海）有限公司
+举例.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
