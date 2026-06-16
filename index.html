@@ -20,7 +20,14 @@
         .search-bar input { flex: 1; padding: 12px 20px; border: none; border-radius: 25px; font-size: 0.95em; box-shadow: 0 3px 15px rgba(0,0,0,0.1); outline: none; }
         .clear-btn { background: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; color: #667eea; box-shadow: 0 2px 10px rgba(0,0,0,0.08); font-size: 0.9em; }
         .search-status { text-align: center; margin-top: 10px; color: rgba(255,255,255,0.8); font-size: 0.85em; }
-        .cases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        .cases-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            grid-auto-flow: column;
+            gap: 12px; 
+            max-width: 1200px;
+            margin: 0 auto;
+        }
         .case-card { background: white; border-radius: 10px; padding: 12px; box-shadow: 0 3px 12px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
         .case-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
         .case-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
@@ -150,78 +157,6 @@
                 </div>
                 <div class="case-meta">
                     <span class="tag tag-industry">金融保险</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(15)" data-name="比亚迪汽车工业有限公司（新）" data-industry="先进制造">
-                <div class="case-header">
-                    <span class="case-number">#16</span>
-                    <span class="case-category">用车+商旅</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=比亚迪汽" alt="比亚迪汽">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">比亚迪汽车工业有限公司（新）</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">先进制造</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(19)" data-name="新兴铸管股份有限公司" data-industry="先进制造
-国央企
-（试点阶段）">
-                <div class="case-header">
-                    <span class="case-number">#20</span>
-                    <span class="case-category">用车+商旅</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=新兴铸管" alt="新兴铸管">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">新兴铸管股份有限公司</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">先进制造</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(28)" data-name="赛力斯集团股份有限公司" data-industry="先进制造">
-                <div class="case-header">
-                    <span class="case-number">#29</span>
-                    <span class="case-category">用车</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=赛力斯集" alt="赛力斯集">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">赛力斯集团股份有限公司</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">先进制造</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(31)" data-name="广州小鹏汽车科技有限公司" data-industry="先进制造">
-                <div class="case-header">
-                    <span class="case-number">#32</span>
-                    <span class="case-category">用车+商旅</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=广州小鹏" alt="广州小鹏">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">广州小鹏汽车科技有限公司</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">先进制造</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(57)" data-name="美的集团股份有限公司" data-industry="先进制造">
-                <div class="case-header">
-                    <span class="case-number">#58</span>
-                    <span class="case-category">用车</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=美的集团" alt="美的集团">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">美的集团股份有限公司</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">先进制造</span>
                 </div>
             </div>
 <div class="case-card" onclick="openCase(3)" data-name="强生（中国）投资有限公司" data-industry="医疗健康">
@@ -378,6 +313,78 @@
                 </div>
                 <div class="case-meta">
                     <span class="tag tag-industry">医药健康</span>
+                </div>
+            </div>
+<div class="case-card" onclick="openCase(15)" data-name="比亚迪汽车工业有限公司（新）" data-industry="先进制造">
+                <div class="case-header">
+                    <span class="case-number">#16</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=比亚迪汽" alt="比亚迪汽">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">比亚迪汽车工业有限公司（新）</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">先进制造</span>
+                </div>
+            </div>
+<div class="case-card" onclick="openCase(19)" data-name="新兴铸管股份有限公司" data-industry="先进制造
+国央企
+（试点阶段）">
+                <div class="case-header">
+                    <span class="case-number">#20</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=新兴铸管" alt="新兴铸管">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">新兴铸管股份有限公司</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">先进制造</span>
+                </div>
+            </div>
+<div class="case-card" onclick="openCase(28)" data-name="赛力斯集团股份有限公司" data-industry="先进制造">
+                <div class="case-header">
+                    <span class="case-number">#29</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=赛力斯集" alt="赛力斯集">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">赛力斯集团股份有限公司</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">先进制造</span>
+                </div>
+            </div>
+<div class="case-card" onclick="openCase(31)" data-name="广州小鹏汽车科技有限公司" data-industry="先进制造">
+                <div class="case-header">
+                    <span class="case-number">#32</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=广州小鹏" alt="广州小鹏">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">广州小鹏汽车科技有限公司</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">先进制造</span>
+                </div>
+            </div>
+<div class="case-card" onclick="openCase(57)" data-name="美的集团股份有限公司" data-industry="先进制造">
+                <div class="case-header">
+                    <span class="case-number">#58</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=美的集团" alt="美的集团">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">美的集团股份有限公司</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">先进制造</span>
                 </div>
             </div>
 <div class="case-card" onclick="openCase(9)" data-name="中国电科第十四研究所" data-industry="科技互联网
