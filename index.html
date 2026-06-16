@@ -20,7 +20,7 @@
         .search-bar input { flex: 1; padding: 12px 20px; border: none; border-radius: 25px; font-size: 0.95em; box-shadow: 0 3px 15px rgba(0,0,0,0.1); outline: none; }
         .clear-btn { background: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; color: #667eea; box-shadow: 0 2px 10px rgba(0,0,0,0.08); font-size: 0.9em; }
         .search-status { text-align: center; margin-top: 10px; color: rgba(255,255,255,0.8); font-size: 0.85em; }
-        .cases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        .cases-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; max-width: 1400px; margin: 0 auto; }
         .case-card { background: white; border-radius: 10px; padding: 12px; box-shadow: 0 3px 12px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
         .case-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
         .case-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
@@ -104,9 +104,6 @@
             <div class="search-status" id="searchStatus">显示全部 66 个案例</div>
         </div>
         <div class="cases-grid" id="casesGrid">
-<div class="industry-section">
-            <h2 class="industry-title">金融保险</h2>
-            <div class="industry-grid">
 <div class="case-card" onclick="openCase(5)" data-name="兴业证券股份有限公司" data-industry="金融保险">
                 <div class="case-header">
                     <span class="case-number">#6</span>
@@ -177,10 +174,6 @@
                     <span class="tag tag-industry">金融保险</span>
                 </div>
             </div>
-</div></div>
-<div class="industry-section">
-            <h2 class="industry-title">先进制造</h2>
-            <div class="industry-grid">
 <div class="case-card" onclick="openCase(15)" data-name="比亚迪汽车工业有限公司（新）" data-industry="先进制造">
                 <div class="case-header">
                     <span class="case-number">#16</span>
@@ -253,10 +246,6 @@
                     <span class="tag tag-industry">先进制造</span>
                 </div>
             </div>
-</div></div>
-<div class="industry-section">
-            <h2 class="industry-title">医药健康</h2>
-            <div class="industry-grid">
 <div class="case-card" onclick="openCase(3)" data-name="强生（中国）投资有限公司" data-industry="医疗健康">
                 <div class="case-header">
                     <span class="case-number">#4</span>
@@ -413,10 +402,6 @@
                     <span class="tag tag-industry">医药健康</span>
                 </div>
             </div>
-</div></div>
-<div class="industry-section">
-            <h2 class="industry-title">互联网科技</h2>
-            <div class="industry-grid">
 <div class="case-card" onclick="openCase(9)" data-name="中国电科第十四研究所" data-industry="科技互联网
 国央企">
                 <div class="case-header">
@@ -727,10 +712,6 @@
                     <span class="tag tag-industry">互联网科技</span>
                 </div>
             </div>
-</div></div>
-<div class="industry-section">
-            <h2 class="industry-title">其他行业</h2>
-            <div class="industry-grid">
 <div class="case-card" onclick="openCase(0)" data-name="前锦网络信息技术（上海）有限公司
 举例" data-industry="互联网
 招聘">
@@ -1062,7 +1043,6 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
-</div></div>
         </div>
         <div class="no-results" id="noResults">
             <p>未找到匹配的案例</p>
