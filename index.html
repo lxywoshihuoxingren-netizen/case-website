@@ -59,6 +59,43 @@
             .cases-grid { grid-template-columns: 1fr; }
             header h1 { font-size: 1.4em; }
         }
+        .section-wrapper { margin-bottom: 50px; }
+        .section-header { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            gap: 15px;
+            margin: 40px 0 25px;
+        }
+        .section-title { 
+            font-size: 1.5em; 
+            color: white; 
+            font-weight: 600;
+        }
+        .section-count { 
+            background: rgba(255,255,255,0.2); 
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+        }
+        .section-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        @media (max-width: 1000px) { 
+            .section-grid { grid-template-columns: repeat(3, 1fr); } 
+        }
+        @media (max-width: 768px) { 
+            .section-grid { grid-template-columns: repeat(2, 1fr); } 
+        }
+        @media (max-width: 500px) { 
+            .section-grid { grid-template-columns: 1fr; } 
+        }
+
         .industry-section { margin-bottom: 40px; }
         .industry-title { 
             font-size: 1.4em; 
@@ -104,6 +141,12 @@
             <div class="search-status" id="searchStatus">显示全部 66 个案例</div>
         </div>
         <div class="cases-grid" id="casesGrid">
+<div class="section-wrapper">
+            <div class="section-header">
+                <h2 class="section-title">金融保险</h2>
+                <span class="section-count">5家</span>
+            </div>
+            <div class="section-grid">
 <div class="case-card" onclick="openCase(5)" data-name="兴业证券股份有限公司" data-industry="金融保险">
                 <div class="case-header">
                     <span class="case-number">#6</span>
@@ -174,6 +217,13 @@
                     <span class="tag tag-industry">金融保险</span>
                 </div>
             </div>
+</div></div>
+<div class="section-wrapper">
+            <div class="section-header">
+                <h2 class="section-title">先进制造</h2>
+                <span class="section-count">5家</span>
+            </div>
+            <div class="section-grid">
 <div class="case-card" onclick="openCase(15)" data-name="比亚迪汽车工业有限公司（新）" data-industry="先进制造">
                 <div class="case-header">
                     <span class="case-number">#16</span>
@@ -246,6 +296,13 @@
                     <span class="tag tag-industry">先进制造</span>
                 </div>
             </div>
+</div></div>
+<div class="section-wrapper">
+            <div class="section-header">
+                <h2 class="section-title">医药健康</h2>
+                <span class="section-count">11家</span>
+            </div>
+            <div class="section-grid">
 <div class="case-card" onclick="openCase(3)" data-name="强生（中国）投资有限公司" data-industry="医疗健康">
                 <div class="case-header">
                     <span class="case-number">#4</span>
@@ -402,6 +459,13 @@
                     <span class="tag tag-industry">医药健康</span>
                 </div>
             </div>
+</div></div>
+<div class="section-wrapper">
+            <div class="section-header">
+                <h2 class="section-title">互联网科技</h2>
+                <span class="section-count">22家</span>
+            </div>
+            <div class="section-grid">
 <div class="case-card" onclick="openCase(9)" data-name="中国电科第十四研究所" data-industry="科技互联网
 国央企">
                 <div class="case-header">
@@ -712,6 +776,13 @@
                     <span class="tag tag-industry">互联网科技</span>
                 </div>
             </div>
+</div></div>
+<div class="section-wrapper">
+            <div class="section-header">
+                <h2 class="section-title">其他行业</h2>
+                <span class="section-count">23家</span>
+            </div>
+            <div class="section-grid">
 <div class="case-card" onclick="openCase(0)" data-name="前锦网络信息技术（上海）有限公司
 举例" data-industry="互联网
 招聘">
@@ -1043,6 +1114,7 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
+</div></div>
         </div>
         <div class="no-results" id="noResults">
             <p>未找到匹配的案例</p>
