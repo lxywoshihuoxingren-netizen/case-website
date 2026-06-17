@@ -59,6 +59,49 @@
             .cases-grid { grid-template-columns: 1fr; }
             header h1 { font-size: 1.4em; }
         }
+        .columns-container {
+            display: flex;
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: flex-start;
+        }
+        .column {
+            flex: 1;
+            min-width: 0;
+        }
+        .column-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding-left: 5px;
+        }
+        .column-title {
+            font-size: 1.2em;
+            color: white;
+            font-weight: 600;
+        }
+        .column-count {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+        }
+        .column-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        @media (max-width: 900px) {
+            .columns-container { flex-wrap: wrap; }
+            .column { flex: 1 1 45%; }
+        }
+        @media (max-width: 600px) {
+            .column { flex: 1 1 100%; }
+        }
+
         .section-wrapper { margin-bottom: 50px; }
         .section-header { 
             display: flex; 
@@ -141,13 +184,14 @@
             <div class="search-status" id="searchStatus">显示全部 66 个案例</div>
         </div>
         <div class="cases-grid" id="casesGrid">
-<div class="section-wrapper">
-            <div class="section-header">
-                <h2 class="section-title">金融保险</h2>
-                <span class="section-count">5家</span>
-            </div>
-            <div class="section-grid">
-<div class="case-card" onclick="openCase(5)" data-name="兴业证券股份有限公司" data-industry="金融保险">
+<div class="columns-container">
+    <div class="column">
+        <div class="column-header">
+            <h3 class="column-title">金融保险</h3>
+            <span class="column-count">5家</span>
+        </div>
+        <div class="column-cards">
+            <div class="case-card" onclick="openCase(5)" data-name="兴业证券股份有限公司" data-industry="金融保险">
                 <div class="case-header">
                     <span class="case-number">#6</span>
                     <span class="case-category">用车</span>
@@ -161,7 +205,7 @@
                     <span class="tag tag-industry">金融保险</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(25)" data-name="中信证券股份有限公司" data-industry="金融保险">
+            <div class="case-card" onclick="openCase(25)" data-name="中信证券股份有限公司" data-industry="金融保险">
                 <div class="case-header">
                     <span class="case-number">#26</span>
                     <span class="case-category">用车+商旅</span>
@@ -175,7 +219,7 @@
                     <span class="tag tag-industry">金融保险</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(38)" data-name="中国银河证券股份有限公司" data-industry="金融保险">
+            <div class="case-card" onclick="openCase(38)" data-name="中国银河证券股份有限公司" data-industry="金融保险">
                 <div class="case-header">
                     <span class="case-number">#39</span>
                     <span class="case-category">用车+商旅</span>
@@ -189,7 +233,7 @@
                     <span class="tag tag-industry">金融保险</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(47)" data-name="招商银行股份有限公司" data-industry="金融保险">
+            <div class="case-card" onclick="openCase(47)" data-name="招商银行股份有限公司" data-industry="金融保险">
                 <div class="case-header">
                     <span class="case-number">#48</span>
                     <span class="case-category">用车</span>
@@ -203,7 +247,7 @@
                     <span class="tag tag-industry">金融保险</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(62)" data-name="浙商银行股份有限公司（授信）" data-industry="金融保险">
+            <div class="case-card" onclick="openCase(62)" data-name="浙商银行股份有限公司（授信）" data-industry="金融保险">
                 <div class="case-header">
                     <span class="case-number">#63</span>
                     <span class="case-category">用车</span>
@@ -217,14 +261,15 @@
                     <span class="tag tag-industry">金融保险</span>
                 </div>
             </div>
-</div></div>
-<div class="section-wrapper">
-            <div class="section-header">
-                <h2 class="section-title">先进制造</h2>
-                <span class="section-count">5家</span>
-            </div>
-            <div class="section-grid">
-<div class="case-card" onclick="openCase(15)" data-name="比亚迪汽车工业有限公司（新）" data-industry="先进制造">
+        </div>
+    </div>
+    <div class="column">
+        <div class="column-header">
+            <h3 class="column-title">先进制造</h3>
+            <span class="column-count">5家</span>
+        </div>
+        <div class="column-cards">
+            <div class="case-card" onclick="openCase(15)" data-name="比亚迪汽车工业有限公司（新）" data-industry="先进制造">
                 <div class="case-header">
                     <span class="case-number">#16</span>
                     <span class="case-category">用车+商旅</span>
@@ -238,7 +283,7 @@
                     <span class="tag tag-industry">先进制造</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(19)" data-name="新兴铸管股份有限公司" data-industry="先进制造
+            <div class="case-card" onclick="openCase(19)" data-name="新兴铸管股份有限公司" data-industry="先进制造
 国央企
 （试点阶段）">
                 <div class="case-header">
@@ -254,7 +299,7 @@
                     <span class="tag tag-industry">先进制造</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(28)" data-name="赛力斯集团股份有限公司" data-industry="先进制造">
+            <div class="case-card" onclick="openCase(28)" data-name="赛力斯集团股份有限公司" data-industry="先进制造">
                 <div class="case-header">
                     <span class="case-number">#29</span>
                     <span class="case-category">用车</span>
@@ -268,7 +313,7 @@
                     <span class="tag tag-industry">先进制造</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(31)" data-name="广州小鹏汽车科技有限公司" data-industry="先进制造">
+            <div class="case-card" onclick="openCase(31)" data-name="广州小鹏汽车科技有限公司" data-industry="先进制造">
                 <div class="case-header">
                     <span class="case-number">#32</span>
                     <span class="case-category">用车+商旅</span>
@@ -282,7 +327,7 @@
                     <span class="tag tag-industry">先进制造</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(57)" data-name="美的集团股份有限公司" data-industry="先进制造">
+            <div class="case-card" onclick="openCase(57)" data-name="美的集团股份有限公司" data-industry="先进制造">
                 <div class="case-header">
                     <span class="case-number">#58</span>
                     <span class="case-category">用车</span>
@@ -296,14 +341,15 @@
                     <span class="tag tag-industry">先进制造</span>
                 </div>
             </div>
-</div></div>
-<div class="section-wrapper">
-            <div class="section-header">
-                <h2 class="section-title">医药健康</h2>
-                <span class="section-count">11家</span>
-            </div>
-            <div class="section-grid">
-<div class="case-card" onclick="openCase(3)" data-name="强生（中国）投资有限公司" data-industry="医疗健康">
+        </div>
+    </div>
+    <div class="column">
+        <div class="column-header">
+            <h3 class="column-title">医药健康</h3>
+            <span class="column-count">11家</span>
+        </div>
+        <div class="column-cards">
+            <div class="case-card" onclick="openCase(3)" data-name="强生（中国）投资有限公司" data-industry="医疗健康">
                 <div class="case-header">
                     <span class="case-number">#4</span>
                     <span class="case-category">用车</span>
@@ -317,7 +363,7 @@
                     <span class="tag tag-industry">医药健康</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(4)" data-name="武田制药
+            <div class="case-card" onclick="openCase(4)" data-name="武田制药
 武田（中国）投资有限公司" data-industry="医疗健康">
                 <div class="case-header">
                     <span class="case-number">#5</span>
@@ -333,7 +379,7 @@
                     <span class="tag tag-industry">医药健康</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(11)" data-name="上海时代天使医疗器械有限公司" data-industry="医疗健康">
+            <div class="case-card" onclick="openCase(11)" data-name="上海时代天使医疗器械有限公司" data-industry="医疗健康">
                 <div class="case-header">
                     <span class="case-number">#12</span>
                     <span class="case-category">用车+商旅</span>
@@ -347,7 +393,7 @@
                     <span class="tag tag-industry">医药健康</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(17)" data-name="西安杨森制药有限公司" data-industry="医疗健康">
+            <div class="case-card" onclick="openCase(17)" data-name="西安杨森制药有限公司" data-industry="医疗健康">
                 <div class="case-header">
                     <span class="case-number">#18</span>
                     <span class="case-category">用车</span>
@@ -361,7 +407,7 @@
                     <span class="tag tag-industry">医药健康</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(18)" data-name="长春金赛药业有限责任公司" data-industry="医疗健康">
+            <div class="case-card" onclick="openCase(18)" data-name="长春金赛药业有限责任公司" data-industry="医疗健康">
                 <div class="case-header">
                     <span class="case-number">#19</span>
                     <span class="case-category">用车</span>
@@ -375,7 +421,7 @@
                     <span class="tag tag-industry">医药健康</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(23)" data-name="扬子江药业集团有限公司" data-industry="医疗健康">
+            <div class="case-card" onclick="openCase(23)" data-name="扬子江药业集团有限公司" data-industry="医疗健康">
                 <div class="case-header">
                     <span class="case-number">#24</span>
                     <span class="case-category">用车</span>
@@ -389,7 +435,7 @@
                     <span class="tag tag-industry">医药健康</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(26)" data-name="爱尔康（中国）眼科产品有限公司" data-industry="医疗健康">
+            <div class="case-card" onclick="openCase(26)" data-name="爱尔康（中国）眼科产品有限公司" data-industry="医疗健康">
                 <div class="case-header">
                     <span class="case-number">#27</span>
                     <span class="case-category">用车</span>
@@ -403,7 +449,7 @@
                     <span class="tag tag-industry">医药健康</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(29)" data-name="创业慧康科技股份有限公司" data-industry="医疗健康">
+            <div class="case-card" onclick="openCase(29)" data-name="创业慧康科技股份有限公司" data-industry="医疗健康">
                 <div class="case-header">
                     <span class="case-number">#30</span>
                     <span class="case-category">用车+商旅</span>
@@ -417,7 +463,7 @@
                     <span class="tag tag-industry">医药健康</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(39)" data-name="中山康方生物医药有限公司" data-industry="医疗健康">
+            <div class="case-card" onclick="openCase(39)" data-name="中山康方生物医药有限公司" data-industry="医疗健康">
                 <div class="case-header">
                     <span class="case-number">#40</span>
                     <span class="case-category">用车</span>
@@ -431,7 +477,7 @@
                     <span class="tag tag-industry">医药健康</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(46)" data-name="江苏知原药业股份有限公司" data-industry="医疗健康">
+            <div class="case-card" onclick="openCase(46)" data-name="江苏知原药业股份有限公司" data-industry="医疗健康">
                 <div class="case-header">
                     <span class="case-number">#47</span>
                     <span class="case-category">商旅</span>
@@ -445,7 +491,7 @@
                     <span class="tag tag-industry">医药健康</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(49)" data-name="诺和诺德（中国）制药有限公司" data-industry="医疗健康">
+            <div class="case-card" onclick="openCase(49)" data-name="诺和诺德（中国）制药有限公司" data-industry="医疗健康">
                 <div class="case-header">
                     <span class="case-number">#50</span>
                     <span class="case-category">用车</span>
@@ -459,331 +505,15 @@
                     <span class="tag tag-industry">医药健康</span>
                 </div>
             </div>
-</div></div>
-<div class="section-wrapper">
-            <div class="section-header">
-                <h2 class="section-title">互联网科技</h2>
-                <span class="section-count">22家</span>
-            </div>
-            <div class="section-grid">
-<div class="case-card" onclick="openCase(9)" data-name="中国电科第十四研究所" data-industry="科技互联网
-国央企">
-                <div class="case-header">
-                    <span class="case-number">#10</span>
-                    <span class="case-category">用车+商旅</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=中国电科" alt="中国电科">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">中国电科第十四研究所</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">互联网科技</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(14)" data-name="小红书科技有限公司" data-industry="科技互联网">
-                <div class="case-header">
-                    <span class="case-number">#15</span>
-                    <span class="case-category">用车+商旅</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=小红书科" alt="小红书科">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">小红书科技有限公司</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">互联网科技</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(16)" data-name="北京字跳网络技术有限公司" data-industry="科技互联网">
-                <div class="case-header">
-                    <span class="case-number">#17</span>
-                    <span class="case-category">用车</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=北京字跳" alt="北京字跳">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">北京字跳网络技术有限公司</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">互联网科技</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(27)" data-name="朗新科技集团股份有限公司" data-industry="科技互联网">
-                <div class="case-header">
-                    <span class="case-number">#28</span>
-                    <span class="case-category">用车+商旅</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=朗新科技" alt="朗新科技">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">朗新科技集团股份有限公司</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">互联网科技</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(32)" data-name="维谛技术有限公司" data-industry="科技互联网">
-                <div class="case-header">
-                    <span class="case-number">#33</span>
-                    <span class="case-category">用车+商旅</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=维谛技术" alt="维谛技术">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">维谛技术有限公司</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">互联网科技</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(36)" data-name="中移动金融科技有限公司" data-industry="科技互联网">
-                <div class="case-header">
-                    <span class="case-number">#37</span>
-                    <span class="case-category">用车</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=中移动金" alt="中移动金">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">中移动金融科技有限公司</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">互联网科技</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(40)" data-name="中电科太力通信科技有限公司北京电科数智科技分公司" data-industry="科技互联网
-国央企">
-                <div class="case-header">
-                    <span class="case-number">#41</span>
-                    <span class="case-category">用车</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=中电科太" alt="中电科太">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">中电科太力通信科技有限公司北京电科数智科技分公司</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">互联网科技</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(41)" data-name="上海宽娱数码科技有限公司" data-industry="科技互联网">
-                <div class="case-header">
-                    <span class="case-number">#42</span>
-                    <span class="case-category">用车+商旅</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=上海宽娱" alt="上海宽娱">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">上海宽娱数码科技有限公司</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">互联网科技</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(42)" data-name="吉姆西半导体科技（无锡）股份有限公司" data-industry="科技互联网">
-                <div class="case-header">
-                    <span class="case-number">#43</span>
-                    <span class="case-category">用车+商旅</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=吉姆西半" alt="吉姆西半">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">吉姆西半导体科技（无锡）股份有限公司</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">互联网科技</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(43)" data-name="中企云链股份有限公司" data-industry="科技互联网">
-                <div class="case-header">
-                    <span class="case-number">#44</span>
-                    <span class="case-category">用车+商旅</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=中企云链" alt="中企云链">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">中企云链股份有限公司</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">互联网科技</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(44)" data-name="亚信科技（中国）有限公司" data-industry="科技互联网">
-                <div class="case-header">
-                    <span class="case-number">#45</span>
-                    <span class="case-category">用车+商旅</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=亚信科技" alt="亚信科技">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">亚信科技（中国）有限公司</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">互联网科技</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(45)" data-name="沈阳芯源微电子设备股份有限公司" data-industry="科技互联网">
-                <div class="case-header">
-                    <span class="case-number">#46</span>
-                    <span class="case-category">用车+商旅</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=沈阳芯源" alt="沈阳芯源">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">沈阳芯源微电子设备股份有限公司</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">互联网科技</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(48)" data-name="上海识装信息科技有限公司" data-industry="科技互联网">
-                <div class="case-header">
-                    <span class="case-number">#49</span>
-                    <span class="case-category">用车</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=上海识装" alt="上海识装">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">上海识装信息科技有限公司</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">互联网科技</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(52)" data-name="百度在线网络技术（北京）有限公司" data-industry="科技互联网">
-                <div class="case-header">
-                    <span class="case-number">#53</span>
-                    <span class="case-category">用车</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=百度在线" alt="百度在线">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">百度在线网络技术（北京）有限公司</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">互联网科技</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(53)" data-name="用友网络科技股份有限公司（集团）" data-industry="科技互联网">
-                <div class="case-header">
-                    <span class="case-number">#54</span>
-                    <span class="case-category">用车</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=用友网络" alt="用友网络">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">用友网络科技股份有限公司（集团）</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">互联网科技</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(56)" data-name="北京北方华创微电子装备有限公司" data-industry="科技互联网">
-                <div class="case-header">
-                    <span class="case-number">#57</span>
-                    <span class="case-category">用车+商旅</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=北京北方" alt="北京北方">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">北京北方华创微电子装备有限公司</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">互联网科技</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(59)" data-name="OPPO广东移动通信有限公司" data-industry="科技互联网">
-                <div class="case-header">
-                    <span class="case-number">#60</span>
-                    <span class="case-category">用车</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=OPPO" alt="OPPO">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">OPPO广东移动通信有限公司</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">互联网科技</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(60)" data-name="维沃移动通信有限公司" data-industry="科技互联网">
-                <div class="case-header">
-                    <span class="case-number">#61</span>
-                    <span class="case-category">用车</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=维沃移动" alt="维沃移动">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">维沃移动通信有限公司</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">互联网科技</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(61)" data-name="科大讯飞股份有限公司" data-industry="科技互联网">
-                <div class="case-header">
-                    <span class="case-number">#62</span>
-                    <span class="case-category">用车+商旅</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=科大讯飞" alt="科大讯飞">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">科大讯飞股份有限公司</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">互联网科技</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(63)" data-name="杭州海康威视数字技术股份有限公司" data-industry="科技互联网">
-                <div class="case-header">
-                    <span class="case-number">#64</span>
-                    <span class="case-category">用车</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=杭州海康" alt="杭州海康">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">杭州海康威视数字技术股份有限公司</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">互联网科技</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(64)" data-name="新华三技术有限公司" data-industry="科技互联网">
-                <div class="case-header">
-                    <span class="case-number">#65</span>
-                    <span class="case-category">用车</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=新华三技" alt="新华三技">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">新华三技术有限公司</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">互联网科技</span>
-                </div>
-            </div>
-<div class="case-card" onclick="openCase(65)" data-name="浪潮电子信息产业股份有限公司" data-industry="科技互联网">
-                <div class="case-header">
-                    <span class="case-number">#66</span>
-                    <span class="case-category">用车</span>
-                </div>
-                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=浪潮电子" alt="浪潮电子">
-                <div class="case-title-row">
-                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
-                    <h3 class="case-title">浪潮电子信息产业股份有限公司</h3>
-                </div>
-                <div class="case-meta">
-                    <span class="tag tag-industry">互联网科技</span>
-                </div>
-            </div>
-</div></div>
-<div class="section-wrapper">
-            <div class="section-header">
-                <h2 class="section-title">其他行业</h2>
-                <span class="section-count">23家</span>
-            </div>
-            <div class="section-grid">
-<div class="case-card" onclick="openCase(0)" data-name="前锦网络信息技术（上海）有限公司
+        </div>
+    </div>
+    <div class="column">
+        <div class="column-header">
+            <h3 class="column-title">互联网/其他</h3>
+            <span class="column-count">45家</span>
+        </div>
+        <div class="column-cards">
+            <div class="case-card" onclick="openCase(0)" data-name="前锦网络信息技术（上海）有限公司
 举例" data-industry="互联网
 招聘">
                 <div class="case-header">
@@ -800,7 +530,7 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(1)" data-name="魏桥新能源汽车科技（青岛）有限公司
+            <div class="case-card" onclick="openCase(1)" data-name="魏桥新能源汽车科技（青岛）有限公司
 （国际）" data-industry="其他">
                 <div class="case-header">
                     <span class="case-number">#2</span>
@@ -816,7 +546,7 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(2)" data-name="力高新能源技术股份有限公司" data-industry="其他">
+            <div class="case-card" onclick="openCase(2)" data-name="力高新能源技术股份有限公司" data-industry="其他">
                 <div class="case-header">
                     <span class="case-number">#3</span>
                     <span class="case-category">用车+商旅</span>
@@ -830,7 +560,7 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(6)" data-name="上海风语筑文化科技股份有限公司" data-industry="AI">
+            <div class="case-card" onclick="openCase(6)" data-name="上海风语筑文化科技股份有限公司" data-industry="AI">
                 <div class="case-header">
                     <span class="case-number">#7</span>
                     <span class="case-category">用车+商旅</span>
@@ -844,7 +574,7 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(7)" data-name="四川德康农牧食品集团股份有限公司" data-industry="其他">
+            <div class="case-card" onclick="openCase(7)" data-name="四川德康农牧食品集团股份有限公司" data-industry="其他">
                 <div class="case-header">
                     <span class="case-number">#8</span>
                     <span class="case-category">用车+商旅</span>
@@ -858,7 +588,7 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(8)" data-name="江苏苏美达集团有限公司
+            <div class="case-card" onclick="openCase(8)" data-name="江苏苏美达集团有限公司
 国企" data-industry="物流贸易
 国央企">
                 <div class="case-header">
@@ -875,7 +605,22 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(10)" data-name="作业帮教育科技（北京）有限公司" data-industry="教育文化">
+            <div class="case-card" onclick="openCase(9)" data-name="中国电科第十四研究所" data-industry="科技互联网
+国央企">
+                <div class="case-header">
+                    <span class="case-number">#10</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=中国电科" alt="中国电科">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">中国电科第十四研究所</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">互联网科技</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(10)" data-name="作业帮教育科技（北京）有限公司" data-industry="教育文化">
                 <div class="case-header">
                     <span class="case-number">#11</span>
                     <span class="case-category">用车+商旅</span>
@@ -889,7 +634,7 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(12)" data-name="沃尔玛（中国）投资有限公司" data-industry="消费零售">
+            <div class="case-card" onclick="openCase(12)" data-name="沃尔玛（中国）投资有限公司" data-industry="消费零售">
                 <div class="case-header">
                     <span class="case-number">#13</span>
                     <span class="case-category">用车</span>
@@ -903,7 +648,7 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(13)" data-name="绫致时装（天津）有限公司" data-industry="消费零售">
+            <div class="case-card" onclick="openCase(13)" data-name="绫致时装（天津）有限公司" data-industry="消费零售">
                 <div class="case-header">
                     <span class="case-number">#14</span>
                     <span class="case-category">用车</span>
@@ -917,7 +662,35 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(20)" data-name="纳爱斯集团有限公司" data-industry="消费零售">
+            <div class="case-card" onclick="openCase(14)" data-name="小红书科技有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#15</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=小红书科" alt="小红书科">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">小红书科技有限公司</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">互联网科技</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(16)" data-name="北京字跳网络技术有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#17</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=北京字跳" alt="北京字跳">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">北京字跳网络技术有限公司</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">互联网科技</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(20)" data-name="纳爱斯集团有限公司" data-industry="消费零售">
                 <div class="case-header">
                     <span class="case-number">#21</span>
                     <span class="case-category">商旅</span>
@@ -931,7 +704,7 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(21)" data-name="李宁（中国）体育用品有限公司" data-industry="教育文化">
+            <div class="case-card" onclick="openCase(21)" data-name="李宁（中国）体育用品有限公司" data-industry="教育文化">
                 <div class="case-header">
                     <span class="case-number">#22</span>
                     <span class="case-category">用车</span>
@@ -945,7 +718,7 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(22)" data-name="百胜集团" data-industry="消费零售">
+            <div class="case-card" onclick="openCase(22)" data-name="百胜集团" data-industry="消费零售">
                 <div class="case-header">
                     <span class="case-number">#23</span>
                     <span class="case-category">用车</span>
@@ -959,7 +732,7 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(24)" data-name="迅销（中国）商贸有限公司（店铺）" data-industry="消费零售">
+            <div class="case-card" onclick="openCase(24)" data-name="迅销（中国）商贸有限公司（店铺）" data-industry="消费零售">
                 <div class="case-header">
                     <span class="case-number">#25</span>
                     <span class="case-category">用车</span>
@@ -973,7 +746,21 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(30)" data-name="三棵树涂料股份有限公司" data-industry="能源环保">
+            <div class="case-card" onclick="openCase(27)" data-name="朗新科技集团股份有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#28</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=朗新科技" alt="朗新科技">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">朗新科技集团股份有限公司</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">互联网科技</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(30)" data-name="三棵树涂料股份有限公司" data-industry="能源环保">
                 <div class="case-header">
                     <span class="case-number">#31</span>
                     <span class="case-category">用车+商旅</span>
@@ -987,7 +774,21 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(33)" data-name="华润集团" data-industry="专业服务">
+            <div class="case-card" onclick="openCase(32)" data-name="维谛技术有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#33</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=维谛技术" alt="维谛技术">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">维谛技术有限公司</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">互联网科技</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(33)" data-name="华润集团" data-industry="专业服务">
                 <div class="case-header">
                     <span class="case-number">#34</span>
                     <span class="case-category">用车</span>
@@ -1001,7 +802,7 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(34)" data-name="北京京东-差旅用车" data-industry="专业服务">
+            <div class="case-card" onclick="openCase(34)" data-name="北京京东-差旅用车" data-industry="专业服务">
                 <div class="case-header">
                     <span class="case-number">#35</span>
                     <span class="case-category">用车</span>
@@ -1015,7 +816,7 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(35)" data-name="安永（中国）企业咨询有限公司" data-industry="专业服务">
+            <div class="case-card" onclick="openCase(35)" data-name="安永（中国）企业咨询有限公司" data-industry="专业服务">
                 <div class="case-header">
                     <span class="case-number">#36</span>
                     <span class="case-category">用车</span>
@@ -1029,7 +830,21 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(37)" data-name="中顺洁柔纸业股份有限公司" data-industry="消费零售">
+            <div class="case-card" onclick="openCase(36)" data-name="中移动金融科技有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#37</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=中移动金" alt="中移动金">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">中移动金融科技有限公司</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">互联网科技</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(37)" data-name="中顺洁柔纸业股份有限公司" data-industry="消费零售">
                 <div class="case-header">
                     <span class="case-number">#38</span>
                     <span class="case-category">用车+商旅</span>
@@ -1043,7 +858,106 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(50)" data-name="华住企业管理有限公司" data-industry="消费零售">
+            <div class="case-card" onclick="openCase(40)" data-name="中电科太力通信科技有限公司北京电科数智科技分公司" data-industry="科技互联网
+国央企">
+                <div class="case-header">
+                    <span class="case-number">#41</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=中电科太" alt="中电科太">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">中电科太力通信科技有限公司北京电科数智科技分公司</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">互联网科技</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(41)" data-name="上海宽娱数码科技有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#42</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=上海宽娱" alt="上海宽娱">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">上海宽娱数码科技有限公司</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">互联网科技</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(42)" data-name="吉姆西半导体科技（无锡）股份有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#43</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=吉姆西半" alt="吉姆西半">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">吉姆西半导体科技（无锡）股份有限公司</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">互联网科技</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(43)" data-name="中企云链股份有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#44</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=中企云链" alt="中企云链">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">中企云链股份有限公司</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">互联网科技</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(44)" data-name="亚信科技（中国）有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#45</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=亚信科技" alt="亚信科技">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">亚信科技（中国）有限公司</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">互联网科技</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(45)" data-name="沈阳芯源微电子设备股份有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#46</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=沈阳芯源" alt="沈阳芯源">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">沈阳芯源微电子设备股份有限公司</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">互联网科技</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(48)" data-name="上海识装信息科技有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#49</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=上海识装" alt="上海识装">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">上海识装信息科技有限公司</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">互联网科技</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(50)" data-name="华住企业管理有限公司" data-industry="消费零售">
                 <div class="case-header">
                     <span class="case-number">#51</span>
                     <span class="case-category">用车+商旅</span>
@@ -1057,7 +971,7 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(51)" data-name="万华化学（烟台）销售有限公司" data-industry="能源环保">
+            <div class="case-card" onclick="openCase(51)" data-name="万华化学（烟台）销售有限公司" data-industry="能源环保">
                 <div class="case-header">
                     <span class="case-number">#52</span>
                     <span class="case-category">用车+商旅</span>
@@ -1071,7 +985,35 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(54)" data-name="岛津企业管理（中国）有限公司" data-industry="其他">
+            <div class="case-card" onclick="openCase(52)" data-name="百度在线网络技术（北京）有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#53</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=百度在线" alt="百度在线">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">百度在线网络技术（北京）有限公司</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">互联网科技</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(53)" data-name="用友网络科技股份有限公司（集团）" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#54</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=用友网络" alt="用友网络">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">用友网络科技股份有限公司（集团）</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">互联网科技</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(54)" data-name="岛津企业管理（中国）有限公司" data-industry="其他">
                 <div class="case-header">
                     <span class="case-number">#55</span>
                     <span class="case-category">用车</span>
@@ -1085,7 +1027,7 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(55)" data-name="宁德时代新能源科技股份有限公司" data-industry="能源环保">
+            <div class="case-card" onclick="openCase(55)" data-name="宁德时代新能源科技股份有限公司" data-industry="能源环保">
                 <div class="case-header">
                     <span class="case-number">#56</span>
                     <span class="case-category">用车</span>
@@ -1099,7 +1041,21 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
-<div class="case-card" onclick="openCase(58)" data-name="建发集团" data-industry="专业服务
+            <div class="case-card" onclick="openCase(56)" data-name="北京北方华创微电子装备有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#57</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=北京北方" alt="北京北方">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">北京北方华创微电子装备有限公司</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">互联网科技</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(58)" data-name="建发集团" data-industry="专业服务
 国企">
                 <div class="case-header">
                     <span class="case-number">#59</span>
@@ -1114,7 +1070,93 @@
                     <span class="tag tag-industry">其他行业</span>
                 </div>
             </div>
-</div></div>
+            <div class="case-card" onclick="openCase(59)" data-name="OPPO广东移动通信有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#60</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=OPPO" alt="OPPO">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">OPPO广东移动通信有限公司</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">互联网科技</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(60)" data-name="维沃移动通信有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#61</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=维沃移动" alt="维沃移动">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">维沃移动通信有限公司</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">互联网科技</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(61)" data-name="科大讯飞股份有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#62</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=科大讯飞" alt="科大讯飞">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">科大讯飞股份有限公司</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">互联网科技</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(63)" data-name="杭州海康威视数字技术股份有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#64</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=杭州海康" alt="杭州海康">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">杭州海康威视数字技术股份有限公司</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">互联网科技</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(64)" data-name="新华三技术有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#65</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=新华三技" alt="新华三技">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">新华三技术有限公司</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">互联网科技</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(65)" data-name="浪潮电子信息产业股份有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#66</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <img class="case-img" src="https://via.placeholder.com/300x80/667eea/ffffff?text=浪潮电子" alt="浪潮电子">
+                <div class="case-title-row">
+                    <img class="case-logo" src="https://via.placeholder.com/36/667eea/ffffff?text=LOGO" alt="logo">
+                    <h3 class="case-title">浪潮电子信息产业股份有限公司</h3>
+                </div>
+                <div class="case-meta">
+                    <span class="tag tag-industry">互联网科技</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
         </div>
         <div class="no-results" id="noResults">
             <p>未找到匹配的案例</p>
