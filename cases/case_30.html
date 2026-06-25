@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例30：创业慧康科技股份有限公司</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif; background: #f5f6f7; color: #1f2329; min-height: 100vh; }
+        .header { background: linear-gradient(135deg, #1a1f2e 0%, #2d3748 100%); color: white; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .header a { color: white; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .hero { background: linear-gradient(135deg, #3370ff 0%, #2b5fd9 100%); color: white; padding: 60px 40px; }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero-number { display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em; margin-bottom: 20px; }
+        .hero-title { font-size: 2.5em; font-weight: 600; margin-bottom: 16px; }
+        .hero-industry { font-size: 1.1em; opacity: 0.9; }
+        
+        .background-section { background: #1a1f2e; color: white; padding: 40px; }
+        .background-content { max-width: 1200px; margin: 0 auto; padding-left: 40px; position: relative; }
+        .background-content::before { content: '"'; position: absolute; top: -20px; left: 0; font-size: 4em; color: rgba(255,255,255,0.1); font-family: Georgia, serif; }
+        .background-label { font-size: 0.85em; color: #3370ff; margin-bottom: 12px; font-weight: 500; }
+        .background-text { font-size: 1.1em; line-height: 1.8; opacity: 0.9; }
+        
+        .info-tags { background: white; padding: 30px 40px; border-bottom: 1px solid #dee0e3; }
+        .info-tags-content { max-width: 1200px; margin: 0 auto; display: flex; gap: 16px; flex-wrap: wrap; }
+        .info-tag { padding: 10px 20px; background: #f2f3f5; border-radius: 8px; font-size: 0.95em; }
+        .info-tag-label { color: #646a73; font-size: 0.85em; margin-right: 8px; }
+        .info-tag-value { color: #1f2329; font-weight: 500; }
+        
+        .main { max-width: 1200px; margin: 0 auto; padding: 40px; }
+        
+        .ppt-container { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 30px; }
+        .ppt-header { background: linear-gradient(135deg, #3370ff 0%, #2b5fd9 100%); color: white; padding: 20px 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center; }
+        .ppt-header-title { font-size: 1.1em; font-weight: 600; margin-bottom: 4px; }
+        .ppt-header-sub { font-size: 0.85em; opacity: 0.8; }
+        
+        .ppt-body { display: grid; grid-template-columns: repeat(3, 1fr); min-height: 400px; }
+        .ppt-column { padding: 30px; border-right: 1px solid #dee0e3; }
+        .ppt-column:last-child { border-right: none; }
+        .ppt-column-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 3px solid #3370ff; }
+        .ppt-column-icon { width: 36px; height: 36px; background: #3370ff; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2em; }
+        .ppt-column-title { font-size: 1.1em; font-weight: 600; }
+        .ppt-column-content { line-height: 1.9; color: #646a73; font-size: 0.95em; white-space: pre-wrap; }
+        
+        .action-bar { background: white; padding: 20px 40px; border-top: 1px solid #dee0e3; position: sticky; bottom: 0; display: flex; gap: 12px; justify-content: center; }
+        .btn { padding: 12px 32px; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: 500; transition: all 0.3s; display: flex; align-items: center; gap: 8px; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .btn-primary { background: #3370ff; color: white; }
+        .btn-secondary { background: #f2f3f5; color: #1f2329; }
+        
+        .section-card { background: white; border-radius: 16px; padding: 30px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section-title { font-size: 1.2em; font-weight: 600; color: #1f2329; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+        .section-title::before { content: ''; width: 4px; height: 20px; background: #3370ff; border-radius: 2px; }
+        .section-content { line-height: 1.9; color: #646a73; white-space: pre-wrap; }
+        
+        @media print { .header, .action-bar { display: none; } .ppt-container { box-shadow: none; } }
+        @media (max-width: 900px) { .ppt-body { grid-template-columns: 1fr; } .ppt-column { border-right: none; border-bottom: 1px solid #dee0e3; } .ppt-header { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="../index.html">← 返回案例库</a>
+    </div>
+    
+    <div class="hero">
+        <div class="hero-content">
+            <span class="hero-number">案例 #30</span>
+            <h1 class="hero-title">创业慧康科技股份有限公司</h1>
+            <p class="hero-industry">医疗健康</p>
+        </div>
+    </div>
+    
+    <div class="background-section">
+        <div class="background-content">
+            <div class="background-label">客户背景</div>
+            <div class="background-text">暂无客户背景信息</div>
+        </div>
+    </div>
+    
+    <div class="info-tags">
+        <div class="info-tags-content">
+            <div class="info-tag"><span class="info-tag-label">企业用量人数</span><span class="info-tag-value">3500人</span></div>
+            
+            <div class="info-tag"><span class="info-tag-label">品类</span><span class="info-tag-value">用车+商旅</span></div>
+        </div>
+    </div>
+    
+    <div class="main">
+        <div class="ppt-container">
+            <div class="ppt-header">
+                <div>
+                    <div class="ppt-header-title">企业痛点问题</div>
+                    <div class="ppt-header-sub">Pain Points</div>
+                </div>
+                <div>
+                    <div class="ppt-header-title">解决方案</div>
+                    <div class="ppt-header-sub">Solution</div>
+                </div>
+                <div>
+                    <div class="ppt-header-title">效果收益</div>
+                    <div class="ppt-header-sub">Results</div>
+                </div>
+            </div>
+            <div class="ppt-body">
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">!</div>
+                        <div class="ppt-column-title">核心痛点</div>
+                    </div>
+                    <div class="ppt-column-content">差旅标准严格，分级管控复杂：<br>员工差旅实行精细化职级管控，不同职级对应的差旅标准、出行规则差异较大；公务用车、机票、酒店、火车等差旅标准管控严格，规则体系复杂<br><br>传统线下报销模式，合规与效率缺失：<br>商旅及公务用车长期采用线下报销模式，伴随企业规模扩张，管理成本持续攀升；财务端差旅成本核算、单据人工核对工作量大，员工垫资报销流程繁琐，合规管控难度高。<br><br>业务布局分散，出行结构特征明显：<br>全国设有大区，服务医疗机构多分布于非一线城市；且近年西北区域业务快速增长，员工差旅出行以高铁、火车为主<br><br>项目制驻场需求突出，单体酒店托管量大：<br>因项目制长期驻场需求，员工对定点协议酒店依赖度高，需大量酒店资源托管与统一管理，现有模式难以高效支撑。</div>
+                </div>
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">✓</div>
+                        <div class="ppt-column-title">我们的方案</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">📈</div>
+                        <div class="ppt-column-title">量化成果</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2 class="section-title">实施亮点</h2>
+            <div class="section-content">管控类需求定制开发且快速上线：<br><br>① 分级差旅管控定制：例如针对特定高管和普通员工的机票舱位、折扣、以及混合支付的差异化管控，高管可预订的舱位是经济舱全价及以下；<br><br>② 超标混合支付定制需求：例如机票混支场景，个人支付的费用=所选公务舱价格-所选航班经济舱最低价；<br><br>③ 非最低价经济舱企业支付支持：经济舱但非最低价，可支持企业支付。</div>
+        </div>
+        <div class="section-card">
+            <h2 class="section-title">对标竞品分析</h2>
+            <div class="section-content">商旅+用车滴滴独家</div>
+        </div>
+    </div>
+    
+    <div class="action-bar">
+        <button onclick="window.print()" class="btn btn-primary">📄 打印 / 保存PDF</button>
+        <button onclick="exportText()" class="btn btn-secondary">📥 导出文本</button>
+        <a href="../index.html" class="btn btn-secondary" style="text-decoration:none;">← 返回列表</a>
+    </div>
+    
+    <script>
+        function exportText() {
+            let text = "案例30：创业慧康科技股份有限公司\n\n";
+            text += "行业：医疗健康\n\n";
+            text += "序号：30\n\n";
+            text += "客户公司名称：创业慧康科技股份有限公司\n\n";
+            text += "当前进度 （女警增列）：已出完案例\n\n";
+            text += "品类：用车+商旅\n\n";
+            text += "行业：医疗健康\n\n";
+            text += "客龄（年）：2\n\n";
+            text += "用车CSM支持人员 （主负责人）：孙田田\n\n";
+            text += "商旅CSM支持人员 （主负责人）：孙田田\n\n";
+            text += "用车商机所有人：孙田田\n\n";
+            text += "商旅商机所有人：丁烨\n\n";
+            text += "企业用量人数：3500人\n\n";
+            text += "客户钱包量 年维度：4800w\n\n";
+            text += "用量核心地区 用车核心地区/出差核心地区：杭州\n北京\n南京\n武汉\n\n";
+            text += "企业痛点：差旅标准严格，分级管控复杂：\n员工差旅实行精细化职级管控，不同职级对应的差旅标准、出行规则差异较大；公务用车、机票、酒店、火车等差旅标准管控严格，规则体系复杂\n\n传统线下报销模式，合规与效率缺失：\n商旅及公务用车长期采用线下报销模式，伴随企业规模扩张，管理成本持续攀升；财务端差旅成本核算、单据人工核对工作量大，员工垫资报销流程繁琐，合规管控难度高。\n\n业务布局分散，出行结构特征明显：\n全国设有大区，服务医疗机构多分布于非一线城市；且近年西北区域业务快速增长，员工差旅出行以高铁、火车为主\n\n项目制驻场需求突出，单体酒店托管量大：\n因项目制长期驻场需求，员工对定点协议酒店依赖度高，需大量酒店资源托管与统一管理，现有模式难以高效支撑。\n\n";
+            text += "选择企业版原因 （行业、规模、员工数、出行／差旅年消费规模/我们优于竞品等 具体描述痛点，最好引用客户原话；避免泛化描述）：滴滴用车品牌力：品牌可信度与服务稳定性强；\n\n提供专属定制化解决方案：实施团队专业度高，可高效协助完成与致远 OA 等系统的对接集成，落地能力突出\n\n团队服务： 销售、实施、客成效率响应高，客户体感好\n\n";
+            text += "实施-亮点：管控类需求定制开发且快速上线：\n\n① 分级差旅管控定制：例如针对特定高管和普通员工的机票舱位、折扣、以及混合支付的差异化管控，高管可预订的舱位是经济舱全价及以下；\n\n② 超标混合支付定制需求：例如机票混支场景，个人支付的费用=所选公务舱价格-所选航班经济舱最低价；\n\n③ 非最低价经济舱企业支付支持：经济舱但非最低价，可支持企业支付。\n\n";
+            text += "策略亮点 （①确定性；②价格；③员工福利活动；④站牌；⑤因公因私等）：商旅降本：滴滴酒店合住管控，为企业带来节省，反馈较好；\n\n运营放量：由于地区分布限制，地推无法有效组织的情况下。利用线上阶段性员工培训，发起线上抽奖活动巩固客情，有效的进行员工触达；\n\n其他福利：滴滴酒店「贵必赔」活动政策宣传，客户比较buy in，进行内部宣传。\n\n";
+            text += "使用前vs使用后变化 ①使用前：财务、员工、企业成本、效率 ②使用后：财务、员工、企业成本、效率 ③可量化成果·核心 （①财务省时、财务提效%；②员工省时、提效、满意度；③企业降本；④企业合规；⑤碳排放等）：报销效率提升：报销由线下转线上，通过系统对接极大提升财务、员工效率；\n\n用车成本节省：企业级特价远比省，用车全年带来财务成本节省31w\n\n酒店节省：其中协议酒店带来节省120w，酒店合住累计为客户带来90w的成本节省；\n\n";
+            text += "对标竞品分析：商旅+用车滴滴独家\n\n";
+            text += "是否是 用车带动商旅/竞品切单：是·用车带动商旅\n\n";
+            text += "信息收集人：邓续\n\n";
+            const blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '案例30_创业慧康科技股份有限公司.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

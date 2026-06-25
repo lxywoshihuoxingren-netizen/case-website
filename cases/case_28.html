@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例28：朗新科技集团股份有限公司</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif; background: #f5f6f7; color: #1f2329; min-height: 100vh; }
+        .header { background: linear-gradient(135deg, #1a1f2e 0%, #2d3748 100%); color: white; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .header a { color: white; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .hero { background: linear-gradient(135deg, #3370ff 0%, #2b5fd9 100%); color: white; padding: 60px 40px; }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero-number { display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em; margin-bottom: 20px; }
+        .hero-title { font-size: 2.5em; font-weight: 600; margin-bottom: 16px; }
+        .hero-industry { font-size: 1.1em; opacity: 0.9; }
+        
+        .background-section { background: #1a1f2e; color: white; padding: 40px; }
+        .background-content { max-width: 1200px; margin: 0 auto; padding-left: 40px; position: relative; }
+        .background-content::before { content: '"'; position: absolute; top: -20px; left: 0; font-size: 4em; color: rgba(255,255,255,0.1); font-family: Georgia, serif; }
+        .background-label { font-size: 0.85em; color: #3370ff; margin-bottom: 12px; font-weight: 500; }
+        .background-text { font-size: 1.1em; line-height: 1.8; opacity: 0.9; }
+        
+        .info-tags { background: white; padding: 30px 40px; border-bottom: 1px solid #dee0e3; }
+        .info-tags-content { max-width: 1200px; margin: 0 auto; display: flex; gap: 16px; flex-wrap: wrap; }
+        .info-tag { padding: 10px 20px; background: #f2f3f5; border-radius: 8px; font-size: 0.95em; }
+        .info-tag-label { color: #646a73; font-size: 0.85em; margin-right: 8px; }
+        .info-tag-value { color: #1f2329; font-weight: 500; }
+        
+        .main { max-width: 1200px; margin: 0 auto; padding: 40px; }
+        
+        .ppt-container { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 30px; }
+        .ppt-header { background: linear-gradient(135deg, #3370ff 0%, #2b5fd9 100%); color: white; padding: 20px 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center; }
+        .ppt-header-title { font-size: 1.1em; font-weight: 600; margin-bottom: 4px; }
+        .ppt-header-sub { font-size: 0.85em; opacity: 0.8; }
+        
+        .ppt-body { display: grid; grid-template-columns: repeat(3, 1fr); min-height: 400px; }
+        .ppt-column { padding: 30px; border-right: 1px solid #dee0e3; }
+        .ppt-column:last-child { border-right: none; }
+        .ppt-column-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 3px solid #3370ff; }
+        .ppt-column-icon { width: 36px; height: 36px; background: #3370ff; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2em; }
+        .ppt-column-title { font-size: 1.1em; font-weight: 600; }
+        .ppt-column-content { line-height: 1.9; color: #646a73; font-size: 0.95em; white-space: pre-wrap; }
+        
+        .action-bar { background: white; padding: 20px 40px; border-top: 1px solid #dee0e3; position: sticky; bottom: 0; display: flex; gap: 12px; justify-content: center; }
+        .btn { padding: 12px 32px; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: 500; transition: all 0.3s; display: flex; align-items: center; gap: 8px; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .btn-primary { background: #3370ff; color: white; }
+        .btn-secondary { background: #f2f3f5; color: #1f2329; }
+        
+        .section-card { background: white; border-radius: 16px; padding: 30px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section-title { font-size: 1.2em; font-weight: 600; color: #1f2329; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+        .section-title::before { content: ''; width: 4px; height: 20px; background: #3370ff; border-radius: 2px; }
+        .section-content { line-height: 1.9; color: #646a73; white-space: pre-wrap; }
+        
+        @media print { .header, .action-bar { display: none; } .ppt-container { box-shadow: none; } }
+        @media (max-width: 900px) { .ppt-body { grid-template-columns: 1fr; } .ppt-column { border-right: none; border-bottom: 1px solid #dee0e3; } .ppt-header { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="../index.html">← 返回案例库</a>
+    </div>
+    
+    <div class="hero">
+        <div class="hero-content">
+            <span class="hero-number">案例 #28</span>
+            <h1 class="hero-title">朗新科技集团股份有限公司</h1>
+            <p class="hero-industry">科技互联网</p>
+        </div>
+    </div>
+    
+    <div class="background-section">
+        <div class="background-content">
+            <div class="background-label">客户背景</div>
+            <div class="background-text">暂无客户背景信息</div>
+        </div>
+    </div>
+    
+    <div class="info-tags">
+        <div class="info-tags-content">
+            <div class="info-tag"><span class="info-tag-label">企业用量人数</span><span class="info-tag-value">5400人</span></div>
+            
+            <div class="info-tag"><span class="info-tag-label">品类</span><span class="info-tag-value">用车+商旅</span></div>
+        </div>
+    </div>
+    
+    <div class="main">
+        <div class="ppt-container">
+            <div class="ppt-header">
+                <div>
+                    <div class="ppt-header-title">企业痛点问题</div>
+                    <div class="ppt-header-sub">Pain Points</div>
+                </div>
+                <div>
+                    <div class="ppt-header-title">解决方案</div>
+                    <div class="ppt-header-sub">Solution</div>
+                </div>
+                <div>
+                    <div class="ppt-header-title">效果收益</div>
+                    <div class="ppt-header-sub">Results</div>
+                </div>
+            </div>
+            <div class="ppt-body">
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">!</div>
+                        <div class="ppt-column-title">核心痛点</div>
+                    </div>
+                    <div class="ppt-column-content">合规管控缺失：朗新历史没接过任何TMC，是线下转线上的典型客户（包括费控系统）；员工分级管控，不允许超标预订，因公因私必须分开。<br><br>财务&员工报销体验差：相比合规问题，企业更关注流程体验的升级：员工贴票流程繁琐，财务人员审核工作量大；由于历史金蝶对接问题，对账付款流程繁琐冗长，因此费控系统随项目整体由金蝶转用友；<br><br>采购合规要求：品类供应商至少要求两家；<br><br>对ESG数据额外关注：客户立足新能源充电行业，关注公益、碳减排相关贡献；<br><br>供应商服务质量和响应能力：大量托管需求，仅单体酒店需托管20家左右；</div>
+                </div>
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">✓</div>
+                        <div class="ppt-column-title">我们的方案</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">📈</div>
+                        <div class="ppt-column-title">量化成果</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2 class="section-title">实施亮点</h2>
+            <div class="section-content">企业级标杆案例，创造了企业级两个第一：<br>企业级第一个商旅API的客户（2024年11月到2025年3月12日）<br>企业级第一个从用友API模式切换用友商旅h5模式的客户</div>
+        </div>
+        <div class="section-card">
+            <h2 class="section-title">对标竞品分析</h2>
+            <div class="section-content">用车：滴滴+高德，滴滴85%+份额。员工对滴滴认可度高，习惯用滴滴；且有员工反馈高德预估实付不准的情况（高德准确率3%，滴滴能到1%）<br><br>商旅：滴滴具备入场早的优势，但25年携程入局后，滴滴面临强竞争，商旅份额有所下降。<br>① 酒店：滴滴、携程、梓如、华住。滴滴有先发优势（入场早），其中华住的托管只有滴滴和华住有，并且客户签了20家单体酒店；目前滴滴托管费4元，其他供应商6元<br>② 机票：滴滴、携程、梓如。拖管8个航司集团；滴滴5块服务费/航段，其他不清楚；<br>③ 火车票：滴滴、梓如。滴滴3块服务费，其他不清楚</div>
+        </div>
+    </div>
+    
+    <div class="action-bar">
+        <button onclick="window.print()" class="btn btn-primary">📄 打印 / 保存PDF</button>
+        <button onclick="exportText()" class="btn btn-secondary">📥 导出文本</button>
+        <a href="../index.html" class="btn btn-secondary" style="text-decoration:none;">← 返回列表</a>
+    </div>
+    
+    <script>
+        function exportText() {
+            let text = "案例28：朗新科技集团股份有限公司\n\n";
+            text += "行业：科技互联网\n\n";
+            text += "序号：28\n\n";
+            text += "客户公司名称：朗新科技集团股份有限公司\n\n";
+            text += "当前进度 （女警增列）：已出完案例\n\n";
+            text += "品类：用车+商旅\n\n";
+            text += "行业：科技互联网\n\n";
+            text += "客龄（年）：1.1\n\n";
+            text += "用车CSM支持人员 （主负责人）：沈雁琳\n\n";
+            text += "商旅CSM支持人员 （主负责人）：沈雁琳\n\n";
+            text += "用车商机所有人：徐德生\n\n";
+            text += "商旅商机所有人：徐德生\n\n";
+            text += "企业用量人数：5400人\n\n";
+            text += "客户钱包量 年维度：1、商旅6000w，滴滴目前份额占比80%左右\n① 酒店：滴滴、携程、梓如、华住；② 机票：滴滴、携程、梓如；\n③ 火车票：滴滴、梓如；\n\n\n2、用车900w/年，滴滴份额85%左右\n滴滴+高德并行\n\n";
+            text += "用量核心地区 用车核心地区/出差核心地区：无锡\n北京\n杭州\n广州\n天津\n\n";
+            text += "企业痛点：合规管控缺失：朗新历史没接过任何TMC，是线下转线上的典型客户（包括费控系统）；员工分级管控，不允许超标预订，因公因私必须分开。\n\n财务&员工报销体验差：相比合规问题，企业更关注流程体验的升级：员工贴票流程繁琐，财务人员审核工作量大；由于历史金蝶对接问题，对账付款流程繁琐冗长，因此费控系统随项目整体由金蝶转用友；\n\n采购合规要求：品类供应商至少要求两家；\n\n对ESG数据额外关注：客户立足新能源充电行业，关注公益、碳减排相关贡献；\n\n供应商服务质量和响应能力：大量托管需求，仅单体酒店需托管20家左右；\n\n";
+            text += "选择企业版原因 （行业、规模、员工数、出行／差旅年消费规模/我们优于竞品等 具体描述痛点，最好引用客户原话；避免泛化描述）：用车：滴滴和高德。除了考虑采购合规要求外，滴滴在用车领域内的品牌力和资源能力受客户认可。当前滴滴用车份额占比85%+，员工信任滴滴\n\n\n商旅：\n\n① 滴滴和用友系统有成熟的对接经验，且有服务费报价优势：客户底座切换为用友，滴滴实施经验丰富；且不收取实施服务费，有效的降低企业成本；\n② 服务团队专业性强、有耐心，获得客户认可：销售整体客情很好，实施能力很过硬，CSM响应及时；客户配套有专门的客服群，第一时间接收员工反馈，帮忙处理问题；\n\n";
+            text += "实施-亮点：企业级标杆案例，创造了企业级两个第一：\n企业级第一个商旅API的客户（2024年11月到2025年3月12日）\n企业级第一个从用友API模式切换用友商旅h5模式的客户\n\n";
+            text += "策略亮点 （①确定性；②价格；③员工福利活动；④站牌；⑤因公因私等）：多路径推广：线上因私活动受限；利用线下推广机会宣传商旅+用车（客户内部有年货节活动）；\n价格降本：特价+远必省上线，满足客户降本需求；\n\n";
+            text += "使用前vs使用后变化 ①使用前：财务、员工、企业成本、效率 ②使用后：财务、员工、企业成本、效率 ③可量化成果·核心 （①财务省时、财务提效%；②员工省时、提效、满意度；③企业降本；④企业合规；⑤碳排放等）：财务提效：商旅+用车由线下报销全面切换线上，节省了财务人力和员工报销时间。单月预估报销时间节省约6,000个小时，节省财务人力3人\n\n价格降本：特远品类带来节省5.3w/月，其中远必省3.9w/月\n\n碳排放：单月带来碳减排19,000kg=19吨（客户新能源行业，关注减排和公益产出）\n\n";
+            text += "对标竞品分析：用车：滴滴+高德，滴滴85%+份额。员工对滴滴认可度高，习惯用滴滴；且有员工反馈高德预估实付不准的情况（高德准确率3%，滴滴能到1%）\n\n商旅：滴滴具备入场早的优势，但25年携程入局后，滴滴面临强竞争，商旅份额有所下降。\n① 酒店：滴滴、携程、梓如、华住。滴滴有先发优势（入场早），其中华住的托管只有滴滴和华住有，并且客户签了20家单体酒店；目前滴滴托管费4元，其他供应商6元\n② 机票：滴滴、携程、梓如。拖管8个航司集团；滴滴5块服务费/航段，其他不清楚；\n③ 火车票：滴滴、梓如。滴滴3块服务费，其他不清楚\n\n";
+            text += "是否是 用车带动商旅/竞品切单：否\n\n";
+            text += "信息收集人：邓续\n\n";
+            const blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '案例28_朗新科技集团股份有限公司.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

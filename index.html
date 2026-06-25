@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客户案例知识库</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary-blue: #2563eb;
+            --primary-light: #3b82f6;
+            --primary-gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            --bg-gradient: linear-gradient(180deg, #f0f7ff 0%, #e0f2fe 50%, #f0f9ff 100%);
+            --card-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --border-light: #e2e8f0;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+        
+        body { 
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            font-size: 1.1em;
+            color: var(--primary-blue);
+        }
+        
+        .nav-brand-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary-gradient);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+        
+        .nav-menu { display: flex; gap: 32px; }
+        
+        .nav-menu a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-menu a:hover, .nav-menu a.active { color: var(--primary-blue); }
+        
+        .hero {
+            padding: 60px 24px 40px;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(37, 99, 235, 0.08);
+            color: var(--primary-blue);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        
+        .hero h1 span { color: var(--primary-blue); }
+        .hero-subtitle { color: var(--text-secondary); font-size: 1.1em; margin-bottom: 24px; }
+        
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-item { text-align: center; }
+        .stat-value { font-size: 2.2em; font-weight: 700; color: var(--primary-blue); line-height: 1; }
+        .stat-label { color: var(--text-muted); font-size: 0.85em; margin-top: 4px; }
+        
+        .search-section { max-width: 600px; margin: 0 auto 40px; padding: 0 24px; }
+        
+        .search-box {
+            display: flex;
+            gap: 12px;
+            background: white;
+            padding: 6px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-light);
+        }
+        
+        .search-box input {
+            flex: 1;
+            border: none;
+            padding: 12px 16px;
+            font-size: 0.95em;
+            outline: none;
+            background: transparent;
+        }
+        
+        .search-box input::placeholder { color: var(--text-muted); }
+        
+        .search-btn, .clear-btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            font-size: 0.9em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .search-btn {
+            background: var(--primary-gradient);
+            color: white;
+        }
+        
+        .search-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        
+        .clear-btn { background: #f1f5f9; color: var(--text-secondary); }
+        .clear-btn:hover { background: #e2e8f0; }
+        
+        .search-status {
+            text-align: center;
+            margin-top: 12px;
+            color: var(--text-muted);
+            font-size: 0.85em;
+        }
+        
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding: 0 24px;
+            margin-bottom: 32px;
+        }
+        
+        .tab-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 24px;
+            border: 1px solid var(--border-light);
+            background: white;
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .tab-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
+        .tab-btn.active { background: var(--primary-blue); color: white; border-color: var(--primary-blue); }
+        .tab-icon { width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; }
+        
+        .section-header {
+            text-align: center;
+            margin: 48px 0 32px;
+            padding: 0 24px;
+        }
+        
+        .section-title { font-size: 1.6em; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; }
+        .section-title span { color: var(--primary-blue); }
+        .section-subtitle { color: var(--text-muted); font-size: 0.9em; }
+        
+        .cases-container { max-width: 1400px; margin: 0 auto; padding: 0 24px 60px; }
+        
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        @media (max-width: 1200px) { .cases-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 900px) { .cases-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .cases-grid { grid-template-columns: 1fr; } }
+        
+        .case-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .case-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(37, 99, 235, 0.2);
+        }
+        
+        .case-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .case-card:hover::before { opacity: 1; }
+        
+        .case-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .case-number {
+            font-size: 0.75em;
+            font-weight: 600;
+            color: var(--primary-blue);
+            background: rgba(37, 99, 235, 0.08);
+            padding: 4px 10px;
+            border-radius: 12px;
+        }
+        
+        .case-category {
+            font-size: 0.7em;
+            font-weight: 500;
+            color: var(--text-muted);
+            background: #f8fafc;
+            padding: 3px 10px;
+            border-radius: 10px;
+        }
+        
+        .case-logo-wrap {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            border: 1px solid var(--border-light);
+        }
+        
+        .case-logo { width: 40px; height: 40px; object-fit: contain; }
+        
+        .case-title {
+            font-size: 1em;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .case-industry {
+            display: inline-block;
+            font-size: 0.75em;
+            color: var(--primary-blue);
+            background: rgba(37, 99, 235, 0.08);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+        
+        .case-meta {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .case-year { font-size: 0.75em; color: var(--text-muted); }
+        .case-year span { color: var(--text-secondary); font-weight: 500; }
+        
+        .case-arrow {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            transition: all 0.2s;
+        }
+        
+        .case-card:hover .case-arrow { color: var(--primary-blue); transform: translateX(4px); }
+        
+        .no-results {
+            text-align: center;
+            padding: 80px 24px;
+            display: none;
+        }
+        
+        .no-results-icon {
+            width: 80px;
+            height: 80px;
+            background: #f8fafc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2em;
+        }
+        
+        .no-results h3 { color: var(--text-primary); margin-bottom: 8px; }
+        .no-results p { color: var(--text-muted); }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+        
+        .modal-content {
+            background: white;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: var(--radius-lg);
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            overflow: hidden;
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 32px;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .modal-title { font-size: 1.5em; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; }
+        .modal-subtitle { color: var(--text-secondary); font-size: 0.95em; }
+        
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4em;
+            color: var(--text-muted);
+            transition: all 0.2s;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .close-btn:hover { background: #f8fafc; color: var(--text-primary); }
+        
+        .modal-body {
+            padding: 32px;
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+        }
+        
+        .detail-section { margin-bottom: 28px; }
+        .detail-section:last-child { margin-bottom: 0; }
+        
+        .detail-section h3 {
+            font-size: 0.9em;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .detail-section h3::before {
+            content: '';
+            width: 4px;
+            height: 16px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+        
+        .detail-content {
+            background: #f8fafc;
+            padding: 16px 20px;
+            border-radius: var(--radius-sm);
+            color: var(--text-secondary);
+            line-height: 1.8;
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-size: 0.9em;
+        }
+        
+        .detail-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        
+        .detail-item {
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: var(--radius-sm);
+        }
+        
+        .detail-item-label { font-size: 0.75em; color: var(--text-muted); margin-bottom: 4px; }
+        .detail-item-value { font-size: 0.95em; font-weight: 600; color: var(--text-primary); }
+        
+        .modal-footer {
+            padding: 24px 32px;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            font-size: 0.9em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-secondary { background: #f1f5f9; color: var(--text-secondary); }
+        .btn-secondary:hover { background: #e2e8f0; }
+        
+        .footer {
+            text-align: center;
+            padding: 40px 24px;
+            color: var(--text-muted);
+            font-size: 0.85em;
+            border-top: 1px solid var(--border-light);
+            background: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="nav-brand">
+                <div class="nav-brand-icon">客</div>
+                <span>客户案例知识库</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#" class="active">案例展示</a>
+                <a href="#" onclick="alert('功能开发中')">数据分析</a>
+                <a href="#" onclick="alert('功能开发中')">行业洞察</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-badge">
+            <span>📊</span>
+            <span>企业版客户成功案例库</span>
+        </div>
+        <h1>赋能企业数字化转型<br><span>共建智慧出行新生态</span></h1>
+        <p class="hero-subtitle">汇聚各行业头部企业成功案例，展示数字化转型最佳实践</p>
+    </section>
+    
+    <div class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-value">66</div>
+            <div class="stat-label">成功案例</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">8+</div>
+            <div class="stat-label">覆盖行业</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">10年</div>
+            <div class="stat-label">服务经验</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">99%</div>
+            <div class="stat-label">客户满意度</div>
+        </div>
+    </div>
+    
+    <div class="search-section">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="搜索公司名称、行业关键词...">
+            <button class="clear-btn" onclick="clearSearch()">清除</button>
+            <button class="search-btn" onclick="filterCases
+()">搜索</button>
+        </div>
+        <div class="search-status" id="searchStatus">显示全部 66 个案例</div>
+    </div>
+    
+    <div class="category-tabs">
+        <button class="tab-btn active" onclick="filterByCategory('all')">
+            <span class="tab-icon">🏢</span>
+            <span>全部案例</span>
+        </button>
+        <button class="tab-btn" onclick="filterByCategory('金融保险')">
+            <span class="tab-icon">🏦</span>
+            <span>金融保险</span>
+        </button>
+        <button class="tab-btn" onclick="filterByCategory('科技互联网')">
+            <span class="tab-icon">💻</span>
+            <span>科技互联网</span>
+        </button>
+        <button class="tab-btn" onclick="filterByCategory('先进制造')">
+            <span class="tab-icon">🏭</span>
+            <span>先进制造</span>
+        </button>
+        <button class="tab-btn" onclick="filterByCategory('医药健康')">
+            <span class="tab-icon">🏥</span>
+            <span>医药健康</span>
+        </button>
+        <button class="tab-btn" onclick="filterByCategory('国央企')">
+            <span class="tab-icon">🏛️</span>
+            <span>国央企</span>
+        </button>
+    </div>
+
+    <div class="section-header">
+        <h2 class="section-title">行业<span>标杆案例</span></h2>
+        <p class="section-subtitle">精选各行业数字化转型成功案例，助力企业决策参考</p>
+    </div>
+    
+    <div class="cases-container">
+        <div class="cases-grid" id="casesGrid">
+            <div class="case-card" onclick="openCase(1)" data-name="前锦网络信息技术（上海）有限公司举例" data-industry="互联网, 招聘">
+                <div class="case-header">
+                    <span class="case-number">#1</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">前</span>
+                </div>
+                <h3 class="case-title">前锦网络信息技术（上海）有限公司举例</h3>
+                <span class="case-industry">互联网, 招聘</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>2023</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(10)" data-name="中国电科第十四研究所" data-industry="科技互联网, 国央企">
+                <div class="case-header">
+                    <span class="case-number">#10</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">中</span>
+                </div>
+                <h3 class="case-title">中国电科第十四研究所</h3>
+                <span class="case-industry">科技互联网, 国央企</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(11)" data-name="作业帮教育科技（北京）有限公司" data-industry="教育文化">
+                <div class="case-header">
+                    <span class="case-number">#11</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">作</span>
+                </div>
+                <h3 class="case-title">作业帮教育科技（北京）有限公司</h3>
+                <span class="case-industry">教育文化</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>2024</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(12)" data-name="上海时代天使医疗器械有限公司" data-industry="医疗健康">
+                <div class="case-header">
+                    <span class="case-number">#12</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">上</span>
+                </div>
+                <h3 class="case-title">上海时代天使医疗器械有限公司</h3>
+                <span class="case-industry">医疗健康</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(13)" data-name="沃尔玛（中国）投资有限公司" data-industry="消费零售">
+                <div class="case-header">
+                    <span class="case-number">#13</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">沃</span>
+                </div>
+                <h3 class="case-title">沃尔玛（中国）投资有限公司</h3>
+                <span class="case-industry">消费零售</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>25</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(14)" data-name="绫致时装（天津）有限公司" data-industry="消费零售">
+                <div class="case-header">
+                    <span class="case-number">#14</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">绫</span>
+                </div>
+                <h3 class="case-title">绫致时装（天津）有限公司</h3>
+                <span class="case-industry">消费零售</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(15)" data-name="小红书科技有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#15</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">小</span>
+                </div>
+                <h3 class="case-title">小红书科技有限公司</h3>
+                <span class="case-industry">科技互联网</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>21</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(16)" data-name="比亚迪汽车工业有限公司（新）" data-industry="先进制造">
+                <div class="case-header">
+                    <span class="case-number">#16</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">比</span>
+                </div>
+                <h3 class="case-title">比亚迪汽车工业有限公司（新）</h3>
+                <span class="case-industry">先进制造</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>10</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(17)" data-name="北京字跳网络技术有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#17</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">北</span>
+                </div>
+                <h3 class="case-title">北京字跳网络技术有限公司</h3>
+                <span class="case-industry">科技互联网</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(18)" data-name="西安杨森制药有限公司" data-industry="医疗健康">
+                <div class="case-header">
+                    <span class="case-number">#18</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">西</span>
+                </div>
+                <h3 class="case-title">西安杨森制药有限公司</h3>
+                <span class="case-industry">医疗健康</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>2025</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(19)" data-name="长春金赛药业有限责任公司" data-industry="医疗健康">
+                <div class="case-header">
+                    <span class="case-number">#19</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">长</span>
+                </div>
+                <h3 class="case-title">长春金赛药业有限责任公司</h3>
+                <span class="case-industry">医疗健康</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(2)" data-name="魏桥新能源汽车科技（青岛）有限公司（国际）" data-industry="">
+                <div class="case-header">
+                    <span class="case-number">#2</span>
+                    <span class="case-category">商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">魏</span>
+                </div>
+                <h3 class="case-title">魏桥新能源汽车科技（青岛）有限公司（国际）</h3>
+                <span class="case-industry"></span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(20)" data-name="新兴铸管股份有限公司" data-industry="先进制造, 国央企, （试点阶">
+                <div class="case-header">
+                    <span class="case-number">#20</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">新</span>
+                </div>
+                <h3 class="case-title">新兴铸管股份有限公司</h3>
+                <span class="case-industry">先进制造, 国央企, （试点阶</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(21)" data-name="纳爱斯集团有限公司" data-industry="消费零售">
+                <div class="case-header">
+                    <span class="case-number">#21</span>
+                    <span class="case-category">商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">纳</span>
+                </div>
+                <h3 class="case-title">纳爱斯集团有限公司</h3>
+                <span class="case-industry">消费零售</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(22)" data-name="李宁（中国）体育用品有限公司" data-industry="教育文化">
+                <div class="case-header">
+                    <span class="case-number">#22</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">李</span>
+                </div>
+                <h3 class="case-title">李宁（中国）体育用品有限公司</h3>
+                <span class="case-industry">教育文化</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>10</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(23)" data-name="百胜集团" data-industry="消费零售">
+                <div class="case-header">
+                    <span class="case-number">#23</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">百</span>
+                </div>
+                <h3 class="case-title">百胜集团</h3>
+                <span class="case-industry">消费零售</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>26</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(24)" data-name="扬子江药业集团有限公司" data-industry="医疗健康">
+                <div class="case-header">
+                    <span class="case-number">#24</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">扬</span>
+                </div>
+                <h3 class="case-title">扬子江药业集团有限公司</h3>
+                <span class="case-industry">医疗健康</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>26</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(25)" data-name="迅销（中国）商贸有限公司（店铺）" data-industry="消费零售">
+                <div class="case-header">
+                    <span class="case-number">#25</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">迅</span>
+                </div>
+                <h3 class="case-title">迅销（中国）商贸有限公司（店铺）</h3>
+                <span class="case-industry">消费零售</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(26)" data-name="中信证券股份有限公司" data-industry="金融保险">
+                <div class="case-header">
+                    <span class="case-number">#26</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">中</span>
+                </div>
+                <h3 class="case-title">中信证券股份有限公司</h3>
+                <span class="case-industry">金融保险</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(27)" data-name="爱尔康（中国）眼科产品有限公司" data-industry="医疗健康">
+                <div class="case-header">
+                    <span class="case-number">#27</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">爱</span>
+                </div>
+                <h3 class="case-title">爱尔康（中国）眼科产品有限公司</h3>
+                <span class="case-industry">医疗健康</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(28)" data-name="朗新科技集团股份有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#28</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">朗</span>
+                </div>
+                <h3 class="case-title">朗新科技集团股份有限公司</h3>
+                <span class="case-industry">科技互联网</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>2024</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(29)" data-name="赛力斯集团股份有限公司" data-industry="先进制造">
+                <div class="case-header">
+                    <span class="case-number">#29</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">赛</span>
+                </div>
+                <h3 class="case-title">赛力斯集团股份有限公司</h3>
+                <span class="case-industry">先进制造</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(3)" data-name="力高新能源技术股份有限公司" data-industry="">
+                <div class="case-header">
+                    <span class="case-number">#3</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">力</span>
+                </div>
+                <h3 class="case-title">力高新能源技术股份有限公司</h3>
+                <span class="case-industry"></span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>25</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(30)" data-name="创业慧康科技股份有限公司" data-industry="医疗健康">
+                <div class="case-header">
+                    <span class="case-number">#30</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">创</span>
+                </div>
+                <h3 class="case-title">创业慧康科技股份有限公司</h3>
+                <span class="case-industry">医疗健康</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(31)" data-name="三棵树涂料股份有限公司" data-industry="能源环保">
+                <div class="case-header">
+                    <span class="case-number">#31</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">三</span>
+                </div>
+                <h3 class="case-title">三棵树涂料股份有限公司</h3>
+                <span class="case-industry">能源环保</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(32)" data-name="广州小鹏汽车科技有限公司" data-industry="先进制造">
+                <div class="case-header">
+                    <span class="case-number">#32</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">广</span>
+                </div>
+                <h3 class="case-title">广州小鹏汽车科技有限公司</h3>
+                <span class="case-industry">先进制造</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(33)" data-name="维谛技术有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#33</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">维</span>
+                </div>
+                <h3 class="case-title">维谛技术有限公司</h3>
+                <span class="case-industry">科技互联网</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>20</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(34)" data-name="华润集团" data-industry="专业服务">
+                <div class="case-header">
+                    <span class="case-number">#34</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">华</span>
+                </div>
+                <h3 class="case-title">华润集团</h3>
+                <span class="case-industry">专业服务</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>2024</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(35)" data-name="北京京东-差旅用车" data-industry="专业服务">
+                <div class="case-header">
+                    <span class="case-number">#35</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">北</span>
+                </div>
+                <h3 class="case-title">北京京东-差旅用车</h3>
+                <span class="case-industry">专业服务</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(36)" data-name="安永（中国）企业咨询有限公司" data-industry="专业服务">
+                <div class="case-header">
+                    <span class="case-number">#36</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">安</span>
+                </div>
+                <h3 class="case-title">安永（中国）企业咨询有限公司</h3>
+                <span class="case-industry">专业服务</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(37)" data-name="中移动金融科技有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#37</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">中</span>
+                </div>
+                <h3 class="case-title">中移动金融科技有限公司</h3>
+                <span class="case-industry">科技互联网</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(38)" data-name="中顺洁柔纸业股份有限公司" data-industry="消费零售">
+                <div class="case-header">
+                    <span class="case-number">#38</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">中</span>
+                </div>
+                <h3 class="case-title">中顺洁柔纸业股份有限公司</h3>
+                <span class="case-industry">消费零售</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(39)" data-name="中国银河证券股份有限公司" data-industry="金融保险">
+                <div class="case-header">
+                    <span class="case-number">#39</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">中</span>
+                </div>
+                <h3 class="case-title">中国银河证券股份有限公司</h3>
+                <span class="case-industry">金融保险</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(4)" data-name="强生（中国）投资有限公司" data-industry="医疗健康">
+                <div class="case-header">
+                    <span class="case-number">#4</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">强</span>
+                </div>
+                <h3 class="case-title">强生（中国）投资有限公司</h3>
+                <span class="case-industry">医疗健康</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(40)" data-name="中山康方生物医药有限公司" data-industry="医疗健康">
+                <div class="case-header">
+                    <span class="case-number">#40</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">中</span>
+                </div>
+                <h3 class="case-title">中山康方生物医药有限公司</h3>
+                <span class="case-industry">医疗健康</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(41)" data-name="中电科太力通信科技有限公司北京电科数智科技分公司" data-industry="科技互联网, 国央企">
+                <div class="case-header">
+                    <span class="case-number">#41</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">中</span>
+                </div>
+                <h3 class="case-title">中电科太力通信科技有限公司北京电科数智科技分公司</h3>
+                <span class="case-industry">科技互联网, 国央企</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(42)" data-name="上海宽娱数码科技有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#42</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">上</span>
+                </div>
+                <h3 class="case-title">上海宽娱数码科技有限公司</h3>
+                <span class="case-industry">科技互联网</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(43)" data-name="吉姆西半导体科技（无锡）股份有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#43</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">吉</span>
+                </div>
+                <h3 class="case-title">吉姆西半导体科技（无锡）股份有限公司</h3>
+                <span class="case-industry">科技互联网</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(44)" data-name="中企云链股份有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#44</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">中</span>
+                </div>
+                <h3 class="case-title">中企云链股份有限公司</h3>
+                <span class="case-industry">科技互联网</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>1</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(45)" data-name="亚信科技（中国）有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#45</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">亚</span>
+                </div>
+                <h3 class="case-title">亚信科技（中国）有限公司</h3>
+                <span class="case-industry">科技互联网</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(46)" data-name="沈阳芯源微电子设备股份有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#46</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">沈</span>
+                </div>
+                <h3 class="case-title">沈阳芯源微电子设备股份有限公司</h3>
+                <span class="case-industry">科技互联网</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(47)" data-name="江苏知原药业股份有限公司" data-industry="医疗健康">
+                <div class="case-header">
+                    <span class="case-number">#47</span>
+                    <span class="case-category">商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">江</span>
+                </div>
+                <h3 class="case-title">江苏知原药业股份有限公司</h3>
+                <span class="case-industry">医疗健康</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(48)" data-name="招商银行股份有限公司" data-industry="金融保险">
+                <div class="case-header">
+                    <span class="case-number">#48</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">招</span>
+                </div>
+                <h3 class="case-title">招商银行股份有限公司</h3>
+                <span class="case-industry">金融保险</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>25</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(49)" data-name="上海识装信息科技有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#49</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">上</span>
+                </div>
+                <h3 class="case-title">上海识装信息科技有限公司</h3>
+                <span class="case-industry">科技互联网</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(5)" data-name="武田制药武田（中国）投资有限公司" data-industry="医疗健康">
+                <div class="case-header">
+                    <span class="case-number">#5</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">武</span>
+                </div>
+                <h3 class="case-title">武田制药武田（中国）投资有限公司</h3>
+                <span class="case-industry">医疗健康</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(50)" data-name="诺和诺德（中国）制药有限公司" data-industry="医疗健康">
+                <div class="case-header">
+                    <span class="case-number">#50</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">诺</span>
+                </div>
+                <h3 class="case-title">诺和诺德（中国）制药有限公司</h3>
+                <span class="case-industry">医疗健康</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(51)" data-name="华住企业管理有限公司" data-industry="消费零售">
+                <div class="case-header">
+                    <span class="case-number">#51</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">华</span>
+                </div>
+                <h3 class="case-title">华住企业管理有限公司</h3>
+                <span class="case-industry">消费零售</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(52)" data-name="万华化学（烟台）销售有限公司" data-industry="能源环保">
+                <div class="case-header">
+                    <span class="case-number">#52</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">万</span>
+                </div>
+                <h3 class="case-title">万华化学（烟台）销售有限公司</h3>
+                <span class="case-industry">能源环保</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(53)" data-name="百度在线网络技术（北京）有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#53</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">百</span>
+                </div>
+                <h3 class="case-title">百度在线网络技术（北京）有限公司</h3>
+                <span class="case-industry">科技互联网</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(54)" data-name="用友网络科技股份有限公司（集团）" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#54</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">用</span>
+                </div>
+                <h3 class="case-title">用友网络科技股份有限公司（集团）</h3>
+                <span class="case-industry">科技互联网</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(55)" data-name="岛津企业管理（中国）有限公司" data-industry="其他">
+                <div class="case-header">
+                    <span class="case-number">#55</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">岛</span>
+                </div>
+                <h3 class="case-title">岛津企业管理（中国）有限公司</h3>
+                <span class="case-industry">其他</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(56)" data-name="宁德时代新能源科技股份有限公司" data-industry="能源环保">
+                <div class="case-header">
+                    <span class="case-number">#56</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">宁</span>
+                </div>
+                <h3 class="case-title">宁德时代新能源科技股份有限公司</h3>
+                <span class="case-industry">能源环保</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(57)" data-name="北京北方华创微电子装备有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#57</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">北</span>
+                </div>
+                <h3 class="case-title">北京北方华创微电子装备有限公司</h3>
+                <span class="case-industry">科技互联网</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>25</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(58)" data-name="美的集团股份有限公司" data-industry="先进制造">
+                <div class="case-header">
+                    <span class="case-number">#58</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">美</span>
+                </div>
+                <h3 class="case-title">美的集团股份有限公司</h3>
+                <span class="case-industry">先进制造</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(59)" data-name="建发集团" data-industry="专业服务, 国企">
+                <div class="case-header">
+                    <span class="case-number">#59</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">建</span>
+                </div>
+                <h3 class="case-title">建发集团</h3>
+                <span class="case-industry">专业服务, 国企</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(6)" data-name="兴业证券股份有限公司" data-industry="金融保险">
+                <div class="case-header">
+                    <span class="case-number">#6</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">兴</span>
+                </div>
+                <h3 class="case-title">兴业证券股份有限公司</h3>
+                <span class="case-industry">金融保险</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(60)" data-name="OPPO广东移动通信有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#60</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">O</span>
+                </div>
+                <h3 class="case-title">OPPO广东移动通信有限公司</h3>
+                <span class="case-industry">科技互联网</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>2016</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(61)" data-name="维沃移动通信有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#61</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">维</span>
+                </div>
+                <h3 class="case-title">维沃移动通信有限公司</h3>
+                <span class="case-industry">科技互联网</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>2025</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(62)" data-name="科大讯飞股份有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#62</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">科</span>
+                </div>
+                <h3 class="case-title">科大讯飞股份有限公司</h3>
+                <span class="case-industry">科技互联网</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(63)" data-name="浙商银行股份有限公司（授信）" data-industry="金融保险">
+                <div class="case-header">
+                    <span class="case-number">#63</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">浙</span>
+                </div>
+                <h3 class="case-title">浙商银行股份有限公司（授信）</h3>
+                <span class="case-industry">金融保险</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(64)" data-name="杭州海康威视数字技术股份有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#64</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">杭</span>
+                </div>
+                <h3 class="case-title">杭州海康威视数字技术股份有限公司</h3>
+                <span class="case-industry">科技互联网</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(65)" data-name="新华三技术有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#65</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">新</span>
+                </div>
+                <h3 class="case-title">新华三技术有限公司</h3>
+                <span class="case-industry">科技互联网</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(66)" data-name="浪潮电子信息产业股份有限公司" data-industry="科技互联网">
+                <div class="case-header">
+                    <span class="case-number">#66</span>
+                    <span class="case-category">用车</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">浪</span>
+                </div>
+                <h3 class="case-title">浪潮电子信息产业股份有限公司</h3>
+                <span class="case-industry">科技互联网</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(7)" data-name="上海风语筑文化科技股份有限公司" data-industry="AI">
+                <div class="case-header">
+                    <span class="case-number">#7</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">上</span>
+                </div>
+                <h3 class="case-title">上海风语筑文化科技股份有限公司</h3>
+                <span class="case-industry">AI</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(8)" data-name="四川德康农牧食品集团股份有限公司" data-industry="">
+                <div class="case-header">
+                    <span class="case-number">#8</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">四</span>
+                </div>
+                <h3 class="case-title">四川德康农牧食品集团股份有限公司</h3>
+                <span class="case-industry"></span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+            <div class="case-card" onclick="openCase(9)" data-name="江苏苏美达集团有限公司国企" data-industry="物流贸易, 国央企">
+                <div class="case-header">
+                    <span class="case-number">#9</span>
+                    <span class="case-category">用车+商旅</span>
+                </div>
+                <div class="case-logo-wrap">
+                    <span style="font-size: 20px; font-weight: 600; color: var(--primary-blue);">江</span>
+                </div>
+                <h3 class="case-title">江苏苏美达集团有限公司国企</h3>
+                <span class="case-industry">物流贸易, 国央企</span>
+                <div class="case-meta">
+                    <span class="case-year">合作 <span>-</span> 年</span>
+                    <span class="case-arrow">→</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="no-results" id="noResults">
+            <div class="no-results-icon">🔍</div>
+            <h3>未找到匹配的案例</h3>
+            <p>请尝试其他关键词或清除搜索条件</p>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="caseModal" onclick="closeModal(event)">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">×</button>
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">案例详情</h2>
+                <p class="modal-subtitle" id="modalSubtitle"></p>
+            </div>
+            <div class="modal-body" id="modalBody">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal()">关闭</button>
+                <button class="btn btn-primary" onclick="window.print()">打印</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 客户案例知识库 | 企业版成功案例展示平台</p>
+    </footer>
+
+    <script>
+        let currentCategory = 'all';
+        
+        function filterCases() {
+            const filter = document.getElementById('searchInput').value.trim().toLowerCase().replace(/\s+/g, '');
+            const cards = document.querySelectorAll('.case-card');
+            let visible = 0;
+            
+            cards.forEach(card => {
+                const name = (card.getAttribute('data-name') || '').toLowerCase();
+                const industry = (card.getAttribute('data-industry') || '').toLowerCase();
+                const matchesSearch = !filter || name.includes(filter) || industry.includes(filter);
+                const matchesCategory = currentCategory === 'all' || industry.includes(currentCategory.toLowerCase());
+                
+                if (matchesSearch && matchesCategory) {
+                    card.style.display = '';
+                    visible++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            document.getElementById('searchStatus').textContent = filter || currentCategory !== 'all' 
+                ? `找到 ${visible} 个匹配案例` 
+                : `显示全部 ${cards.length} 个案例`;
+            document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
+        }
+        
+        function filterByCategory(category) {
+            currentCategory = category;
+            
+            // Update tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.closest('.tab-btn').classList.add('active');
+            
+            filterCases();
+        }
+        
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            filterCases();
+        }
+        
+        document.getElementById('searchInput').addEventListener('input', filterCases);
+        
+        function openCase(index) {
+            window.location.href = `cases/case_${index}.html`;
+        }
+        
+        function closeModal(e) {
+            if (!e || e.target.id === 'caseModal' || e.target.classList.contains('close-btn')) {
+                document.getElementById('caseModal').style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>

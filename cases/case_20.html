@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例20：新兴铸管股份有限公司</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif; background: #f5f6f7; color: #1f2329; min-height: 100vh; }
+        .header { background: linear-gradient(135deg, #1a1f2e 0%, #2d3748 100%); color: white; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .header a { color: white; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .hero { background: linear-gradient(135deg, #3370ff 0%, #2b5fd9 100%); color: white; padding: 60px 40px; }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero-number { display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em; margin-bottom: 20px; }
+        .hero-title { font-size: 2.5em; font-weight: 600; margin-bottom: 16px; }
+        .hero-industry { font-size: 1.1em; opacity: 0.9; }
+        
+        .background-section { background: #1a1f2e; color: white; padding: 40px; }
+        .background-content { max-width: 1200px; margin: 0 auto; padding-left: 40px; position: relative; }
+        .background-content::before { content: '"'; position: absolute; top: -20px; left: 0; font-size: 4em; color: rgba(255,255,255,0.1); font-family: Georgia, serif; }
+        .background-label { font-size: 0.85em; color: #3370ff; margin-bottom: 12px; font-weight: 500; }
+        .background-text { font-size: 1.1em; line-height: 1.8; opacity: 0.9; }
+        
+        .info-tags { background: white; padding: 30px 40px; border-bottom: 1px solid #dee0e3; }
+        .info-tags-content { max-width: 1200px; margin: 0 auto; display: flex; gap: 16px; flex-wrap: wrap; }
+        .info-tag { padding: 10px 20px; background: #f2f3f5; border-radius: 8px; font-size: 0.95em; }
+        .info-tag-label { color: #646a73; font-size: 0.85em; margin-right: 8px; }
+        .info-tag-value { color: #1f2329; font-weight: 500; }
+        
+        .main { max-width: 1200px; margin: 0 auto; padding: 40px; }
+        
+        .ppt-container { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 30px; }
+        .ppt-header { background: linear-gradient(135deg, #3370ff 0%, #2b5fd9 100%); color: white; padding: 20px 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center; }
+        .ppt-header-title { font-size: 1.1em; font-weight: 600; margin-bottom: 4px; }
+        .ppt-header-sub { font-size: 0.85em; opacity: 0.8; }
+        
+        .ppt-body { display: grid; grid-template-columns: repeat(3, 1fr); min-height: 400px; }
+        .ppt-column { padding: 30px; border-right: 1px solid #dee0e3; }
+        .ppt-column:last-child { border-right: none; }
+        .ppt-column-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 3px solid #3370ff; }
+        .ppt-column-icon { width: 36px; height: 36px; background: #3370ff; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2em; }
+        .ppt-column-title { font-size: 1.1em; font-weight: 600; }
+        .ppt-column-content { line-height: 1.9; color: #646a73; font-size: 0.95em; white-space: pre-wrap; }
+        
+        .action-bar { background: white; padding: 20px 40px; border-top: 1px solid #dee0e3; position: sticky; bottom: 0; display: flex; gap: 12px; justify-content: center; }
+        .btn { padding: 12px 32px; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: 500; transition: all 0.3s; display: flex; align-items: center; gap: 8px; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .btn-primary { background: #3370ff; color: white; }
+        .btn-secondary { background: #f2f3f5; color: #1f2329; }
+        
+        .section-card { background: white; border-radius: 16px; padding: 30px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section-title { font-size: 1.2em; font-weight: 600; color: #1f2329; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+        .section-title::before { content: ''; width: 4px; height: 20px; background: #3370ff; border-radius: 2px; }
+        .section-content { line-height: 1.9; color: #646a73; white-space: pre-wrap; }
+        
+        @media print { .header, .action-bar { display: none; } .ppt-container { box-shadow: none; } }
+        @media (max-width: 900px) { .ppt-body { grid-template-columns: 1fr; } .ppt-column { border-right: none; border-bottom: 1px solid #dee0e3; } .ppt-header { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="../index.html">← 返回案例库</a>
+    </div>
+    
+    <div class="hero">
+        <div class="hero-content">
+            <span class="hero-number">案例 #20</span>
+            <h1 class="hero-title">新兴铸管股份有限公司</h1>
+            <p class="hero-industry">先进制造
+国央企
+（试点阶段）</p>
+        </div>
+    </div>
+    
+    <div class="background-section">
+        <div class="background-content">
+            <div class="background-label">客户背景</div>
+            <div class="background-text">暂无客户背景信息</div>
+        </div>
+    </div>
+    
+    <div class="info-tags">
+        <div class="info-tags-content">
+            <div class="info-tag"><span class="info-tag-label">企业用量人数</span><span class="info-tag-value">14000</span></div>
+            
+            <div class="info-tag"><span class="info-tag-label">品类</span><span class="info-tag-value">用车+商旅</span></div>
+        </div>
+    </div>
+    
+    <div class="main">
+        <div class="ppt-container">
+            <div class="ppt-header">
+                <div>
+                    <div class="ppt-header-title">企业痛点问题</div>
+                    <div class="ppt-header-sub">Pain Points</div>
+                </div>
+                <div>
+                    <div class="ppt-header-title">解决方案</div>
+                    <div class="ppt-header-sub">Solution</div>
+                </div>
+                <div>
+                    <div class="ppt-header-title">效果收益</div>
+                    <div class="ppt-header-sub">Results</div>
+                </div>
+            </div>
+            <div class="ppt-body">
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">!</div>
+                        <div class="ppt-column-title">核心痛点</div>
+                    </div>
+                    <div class="ppt-column-content">国央企数智化建设，目前内部下发政策要求，需内部平台智能化<br><br>1、从 0 到 1 搭建差旅体系，无成熟平台、无管理经验：历史无差旅平台，线下散订、多渠道报销，数据缺失、管控空白。<br><br>2、多分子公司分散，差标难统一、合规风险高：拥有全资 / 控股子公司 45 家、分支机构 26 家，共计试点上线4家公司，员工总数约 1 万+，后续持续上线全量公司。公司跨区域布局，差标不可控 执行不一、票据不全、费用归集困难，无法满足央企审计要求，线下数据缺失。<br><br>3、内部资源与差标冲突：北京出差需强制入住指定 3 家兄弟单位酒店底价 330 元＞员工差标 300 元，合规与内部利益难以平衡。<br><br>4、财务对账压力大、结算模式要求特殊：要求报销后结算、税点前置、服务费前置<br><br>5、自研系统能力弱，对接难度高、上线易延期：内部费控自研、技术团队无差旅对接经验，接口逻辑混乱、联调周期长。<br><br>6、员工散订比价严重，平台使用率难提升：习惯 C 端低价补贴，对企业平台价格感知差，转化率低、线下预订回流。</div>
+                </div>
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">✓</div>
+                        <div class="ppt-column-title">我们的方案</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">📈</div>
+                        <div class="ppt-column-title">量化成果</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2 class="section-title">实施亮点</h2>
+            <div class="section-content">1、0→1 集团差旅体系搭建：<br>从无到有输出全流程方案 + 行业标杆对标，帮客户明确建设路径。<br><br>2、定制化，破解内部酒店差标冲突：<br>协调兄弟单位议价定价，将3家指定兄弟酒店纳入平台统一管理、完成内部资源价格校准、使员工入住不限制差标，合规与利益双赢。<br><br>3、1+4 试点先行，平稳上线<br>总部 + 4 大核心子公司试点，周会同步、分步推广、降低阻力。<br><br>4、自研系统对接专项保障<br>日会机制 + 产研介入 + 接口纠偏，帮客户拆解开发黑盒、保障按期交付。<br><br>5、管控侧：特殊结算规则全落地<br>财务税点前置、服务费前置、离店结算、机票增值包，全量合规跑通。<br><br>6、数据化运营验证价值<br>输出消费分析与成本节省报告，用数据说服管理层。</div>
+        </div>
+        <div class="section-card">
+            <h2 class="section-title">对标竞品分析</h2>
+            <div class="section-content">1、我们绑着用车一站式打击竞品<br>小交通作为频次最高，客户需要带车服务商<br><br>2、市场活动，客户来滴滴参观，印象比较好<br><br>3、商务客情关系好<br><br>4、价格优势<br><br>5、技术能力优势<br><br>6、前期使用 携程（价格） 同程（技术能力+资质+资金流） 中旅（技术） 抢占先机 ，其他几家车不太好</div>
+        </div>
+    </div>
+    
+    <div class="action-bar">
+        <button onclick="window.print()" class="btn btn-primary">📄 打印 / 保存PDF</button>
+        <button onclick="exportText()" class="btn btn-secondary">📥 导出文本</button>
+        <a href="../index.html" class="btn btn-secondary" style="text-decoration:none;">← 返回列表</a>
+    </div>
+    
+    <script>
+        function exportText() {
+            let text = "案例20：新兴铸管股份有限公司\n\n";
+            text += "行业：先进制造
+国央企
+（试点阶段）\n\n";
+            text += "序号：20\n\n";
+            text += "客户公司名称：新兴铸管股份有限公司\n\n";
+            text += "当前进度 （女警增列）：已出完案例\n\n";
+            text += "品类：用车+商旅\n\n";
+            text += "行业：先进制造\n国央企\n（试点阶段）\n\n";
+            text += "客龄（年）：0.3\n\n";
+            text += "用车CSM支持人员 （主负责人）：于昕尧\n\n";
+            text += "商旅CSM支持人员 （主负责人）：于昕尧\n\n";
+            text += "用车商机所有人：李姗姗\n\n";
+            text += "商旅商机所有人：李姗姗\n\n";
+            text += "企业用量人数：14000\n\n";
+            text += "客户钱包量 年维度：4000w\n\n";
+            text += "用量核心地区 用车核心地区/出差核心地区：用车：\n邯郸\n黄石\n合肥\n郑州\n广州\n\n\n\n商旅：\n合肥市\n郑州市\n黄石市\n嘉兴市\n无锡市\n\n";
+            text += "企业痛点：国央企数智化建设，目前内部下发政策要求，需内部平台智能化\n\n1、从 0 到 1 搭建差旅体系，无成熟平台、无管理经验：历史无差旅平台，线下散订、多渠道报销，数据缺失、管控空白。\n\n2、多分子公司分散，差标难统一、合规风险高：拥有全资 / 控股子公司 45 家、分支机构 26 家，共计试点上线4家公司，员工总数约 1 万+，后续持续上线全量公司。公司跨区域布局，差标不可控 执行不一、票据不全、费用归集困难，无法满足央企审计要求，线下数据缺失。\n\n3、内部资源与差标冲突：北京出差需强制入住指定 3 家兄弟单位酒店底价 330 元＞员工差标 300 元，合规与内部利益难以平衡。\n\n4、财务对账压力大、结算模式要求特殊：要求报销后结算、税点前置、服务费前置\n\n5、自研系统能力弱，对接难度高、上线易延期：内部费控自研、技术团队无差旅对接经验，接口逻辑混乱、联调周期长。\n\n6、员工散订比价严重，平台使用率难提升：习惯 C 端低价补贴，对企业平台价格感知差，转化率低、线下预订回流。\n\n";
+            text += "选择企业版原因 （行业、规模、员工数、出行／差旅年消费规模/我们优于竞品等 具体描述痛点，最好引用客户原话；避免泛化描述）：1、央企制造属性高度匹配：合规优先、成本敏感、多基地管控，滴滴具备成熟央企服务案例。\n\n2、规模与预算高度匹配：14000 人、年商旅 4000 万 +，可支撑集团化统一管理、多主体分账。\n\n3、独家方案 + 定制能力最强：支持APP/H5 独家嵌入内部人事系统，清风强管控，满足合规要求。\n\n4、特殊需求 100% 承接：支持税点 / 服务费前置、离店结算加价、机票增值包、报销后结算改规则。\n\n5、前期对比携程、阿里、浪潮等竞品，关注服务费，企业版价格低廉，为最终选择原因。\n\n";
+            text += "实施-亮点：1、0→1 集团差旅体系搭建：\n从无到有输出全流程方案 + 行业标杆对标，帮客户明确建设路径。\n\n2、定制化，破解内部酒店差标冲突：\n协调兄弟单位议价定价，将3家指定兄弟酒店纳入平台统一管理、完成内部资源价格校准、使员工入住不限制差标，合规与利益双赢。\n\n3、1+4 试点先行，平稳上线\n总部 + 4 大核心子公司试点，周会同步、分步推广、降低阻力。\n\n4、自研系统对接专项保障\n日会机制 + 产研介入 + 接口纠偏，帮客户拆解开发黑盒、保障按期交付。\n\n5、管控侧：特殊结算规则全落地\n财务税点前置、服务费前置、离店结算、机票增值包，全量合规跑通。\n\n6、数据化运营验证价值\n输出消费分析与成本节省报告，用数据说服管理层。\n\n";
+            text += "策略亮点 （①确定性；②价格；③员工福利活动；④站牌；⑤因公因私等）：传统线下报销转线上平台客户\n\n通过制作比价+合规报告，凸显滴滴好价、协议酒店、积分商城等优势；统计多次比价人员名单，KP核查历史报销合规性。\n\n客服+试点问题解决\n\n\n\n① 确定性：\n系统侧：独家入口、刚性差标、试点上线、自研系统专项保障，流程 100% 可控\n\n② 价格：华住 / 如家/亚朵协议托管、比价报告、协议资源直签，提升价格竞争力\n\n③ 员工福利活动：积分商城、机酒火返利、因公因私一体化，提升使用率\n\n⑤ 因公因私（目前跟着大盘走，暂无特殊策略）：因公强管控 + 因私自费用车，双场景覆盖，增强员工粘性\n\n";
+            text += "使用前vs使用后变化 ①使用前：财务、员工、企业成本、效率 ②使用后：财务、员工、企业成本、效率 ③可量化成果·核心 （①财务省时、财务提效%；②员工省时、提效、满意度；③企业降本；④企业合规；⑤碳排放等）：③试点现阶段，可量化核心成果\n试点首月酒店消费：5.2 万元，节省 1.46 万元\n覆盖员工：导入10939 人，激活425 人，逐步全员强制\n独家嵌入：内部人事系统直达，统一入口、统一管控 \n\n数据调研报告\n\n";
+            text += "对标竞品分析：1、我们绑着用车一站式打击竞品\n小交通作为频次最高，客户需要带车服务商\n\n2、市场活动，客户来滴滴参观，印象比较好\n\n3、商务客情关系好\n\n4、价格优势\n\n5、技术能力优势\n\n6、前期使用 携程（价格） 同程（技术能力+资质+资金流） 中旅（技术） 抢占先机 ，其他几家车不太好\n\n";
+            text += "是否是 用车带动商旅/竞品切单：否\n\n";
+            text += "信息收集人：刘雪莹\n\n";
+            text += "备注 可嵌入文档/语音：录制：新兴铸管客户案例-于昕尧沟通\n日期：2026-05-09 11:33:27\n录制文件：https://meeting.tencent.com/v2/cloud-record/share?id=b883e8d7-cb95-4cd5-b523-d49c81b8e87c&from=3&record_type=4(https://meeting.tencent.com/v2/cloud-record/share?id=b883e8d7-cb95-4cd5-b523-d49c81b8e87c&from=3&record_type=4)\n\n\n\n录制：新兴铸管-客户案例-姗姗沟通\n日期：2026-05-12 11:06:22\n录制文件：https://meeting.tencent.com/v2/cloud-record/share?id=c030efe8-9ef7-4e5c-85a6-f477c0272edd&from=3&is-single=false&record_type=2(https://meeting.tencent.com/v2/cloud-record/share?id=c030efe8-9ef7-4e5c-85a6-f477c0272edd&from=3&is-single=false&record_type=2)\n\n";
+            const blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '案例20_新兴铸管股份有限公司.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

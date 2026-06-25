@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例44：中企云链股份有限公司</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif; background: #f5f6f7; color: #1f2329; min-height: 100vh; }
+        .header { background: linear-gradient(135deg, #1a1f2e 0%, #2d3748 100%); color: white; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .header a { color: white; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .hero { background: linear-gradient(135deg, #3370ff 0%, #2b5fd9 100%); color: white; padding: 60px 40px; }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero-number { display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em; margin-bottom: 20px; }
+        .hero-title { font-size: 2.5em; font-weight: 600; margin-bottom: 16px; }
+        .hero-industry { font-size: 1.1em; opacity: 0.9; }
+        
+        .background-section { background: #1a1f2e; color: white; padding: 40px; }
+        .background-content { max-width: 1200px; margin: 0 auto; padding-left: 40px; position: relative; }
+        .background-content::before { content: '"'; position: absolute; top: -20px; left: 0; font-size: 4em; color: rgba(255,255,255,0.1); font-family: Georgia, serif; }
+        .background-label { font-size: 0.85em; color: #3370ff; margin-bottom: 12px; font-weight: 500; }
+        .background-text { font-size: 1.1em; line-height: 1.8; opacity: 0.9; }
+        
+        .info-tags { background: white; padding: 30px 40px; border-bottom: 1px solid #dee0e3; }
+        .info-tags-content { max-width: 1200px; margin: 0 auto; display: flex; gap: 16px; flex-wrap: wrap; }
+        .info-tag { padding: 10px 20px; background: #f2f3f5; border-radius: 8px; font-size: 0.95em; }
+        .info-tag-label { color: #646a73; font-size: 0.85em; margin-right: 8px; }
+        .info-tag-value { color: #1f2329; font-weight: 500; }
+        
+        .main { max-width: 1200px; margin: 0 auto; padding: 40px; }
+        
+        .ppt-container { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 30px; }
+        .ppt-header { background: linear-gradient(135deg, #3370ff 0%, #2b5fd9 100%); color: white; padding: 20px 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center; }
+        .ppt-header-title { font-size: 1.1em; font-weight: 600; margin-bottom: 4px; }
+        .ppt-header-sub { font-size: 0.85em; opacity: 0.8; }
+        
+        .ppt-body { display: grid; grid-template-columns: repeat(3, 1fr); min-height: 400px; }
+        .ppt-column { padding: 30px; border-right: 1px solid #dee0e3; }
+        .ppt-column:last-child { border-right: none; }
+        .ppt-column-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 3px solid #3370ff; }
+        .ppt-column-icon { width: 36px; height: 36px; background: #3370ff; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2em; }
+        .ppt-column-title { font-size: 1.1em; font-weight: 600; }
+        .ppt-column-content { line-height: 1.9; color: #646a73; font-size: 0.95em; white-space: pre-wrap; }
+        
+        .action-bar { background: white; padding: 20px 40px; border-top: 1px solid #dee0e3; position: sticky; bottom: 0; display: flex; gap: 12px; justify-content: center; }
+        .btn { padding: 12px 32px; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: 500; transition: all 0.3s; display: flex; align-items: center; gap: 8px; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .btn-primary { background: #3370ff; color: white; }
+        .btn-secondary { background: #f2f3f5; color: #1f2329; }
+        
+        .section-card { background: white; border-radius: 16px; padding: 30px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section-title { font-size: 1.2em; font-weight: 600; color: #1f2329; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+        .section-title::before { content: ''; width: 4px; height: 20px; background: #3370ff; border-radius: 2px; }
+        .section-content { line-height: 1.9; color: #646a73; white-space: pre-wrap; }
+        
+        @media print { .header, .action-bar { display: none; } .ppt-container { box-shadow: none; } }
+        @media (max-width: 900px) { .ppt-body { grid-template-columns: 1fr; } .ppt-column { border-right: none; border-bottom: 1px solid #dee0e3; } .ppt-header { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="../index.html">← 返回案例库</a>
+    </div>
+    
+    <div class="hero">
+        <div class="hero-content">
+            <span class="hero-number">案例 #44</span>
+            <h1 class="hero-title">中企云链股份有限公司</h1>
+            <p class="hero-industry">科技互联网</p>
+        </div>
+    </div>
+    
+    <div class="background-section">
+        <div class="background-content">
+            <div class="background-label">客户背景</div>
+            <div class="background-text">暂无客户背景信息</div>
+        </div>
+    </div>
+    
+    <div class="info-tags">
+        <div class="info-tags-content">
+            <div class="info-tag"><span class="info-tag-label">企业用量人数</span><span class="info-tag-value">500-600人</span></div>
+            
+            <div class="info-tag"><span class="info-tag-label">品类</span><span class="info-tag-value">用车+商旅</span></div>
+        </div>
+    </div>
+    
+    <div class="main">
+        <div class="ppt-container">
+            <div class="ppt-header">
+                <div>
+                    <div class="ppt-header-title">企业痛点问题</div>
+                    <div class="ppt-header-sub">Pain Points</div>
+                </div>
+                <div>
+                    <div class="ppt-header-title">解决方案</div>
+                    <div class="ppt-header-sub">Solution</div>
+                </div>
+                <div>
+                    <div class="ppt-header-title">效果收益</div>
+                    <div class="ppt-header-sub">Results</div>
+                </div>
+            </div>
+            <div class="ppt-body">
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">!</div>
+                        <div class="ppt-column-title">核心痛点</div>
+                    </div>
+                    <div class="ppt-column-content">1、报销比较复杂，主要是火车票报销管理成本高，需要提效<br>2、不存在用车、商旅安全、体验等方面的问题</div>
+                </div>
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">✓</div>
+                        <div class="ppt-column-title">我们的方案</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">📈</div>
+                        <div class="ppt-column-title">量化成果</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2 class="section-title">实施亮点</h2>
+            <div class="section-content">1、系统为对接金蝶，客户更省心，减少开发成本，省钱、 省心、省力<br>2、用车不限制车型，以项目制月度限额的方式进行管控，不用申请单，方便高效；<br>3、商旅为预算总额度管控，一次出差提一个总预算包，本次差旅的机酒火统一管控在本次申请单中，协助财务更好实现预算管控</div>
+        </div>
+        <div class="section-card">
+            <h2 class="section-title">对标竞品分析</h2>
+            <div class="section-content">用车：竞对为分贝通并行1年，独家为滴滴的原因是分贝通的行业口碑不利于中企云联上市<br>商旅：从携程切换为滴滴，主要是火车票有数电票，客情维护比较好，一站式方案有利于降低沟通合作成本</div>
+        </div>
+    </div>
+    
+    <div class="action-bar">
+        <button onclick="window.print()" class="btn btn-primary">📄 打印 / 保存PDF</button>
+        <button onclick="exportText()" class="btn btn-secondary">📥 导出文本</button>
+        <a href="../index.html" class="btn btn-secondary" style="text-decoration:none;">← 返回列表</a>
+    </div>
+    
+    <script>
+        function exportText() {
+            let text = "案例44：中企云链股份有限公司\n\n";
+            text += "行业：科技互联网\n\n";
+            text += "序号：44\n\n";
+            text += "客户公司名称：中企云链股份有限公司\n\n";
+            text += "当前进度 （女警增列）：已出完案例\n\n";
+            text += "品类：用车+商旅\n\n";
+            text += "行业：科技互联网\n\n";
+            text += "客龄（年）：10.7\n\n";
+            text += "用车CSM支持人员 （主负责人）：魏新\n\n";
+            text += "商旅CSM支持人员 （主负责人）：魏新\n\n";
+            text += "用车商机所有人：魏新\n\n";
+            text += "商旅商机所有人：魏新\n\n";
+            text += "企业用量人数：500-600人\n\n";
+            text += "客户钱包量 年维度：用车：700w/年\n商旅：700w/年\n\n";
+            text += "用量核心地区 用车核心地区/出差核心地区：总部为烟台\n用车：烟台、上海、福州、宁波、青岛、广州、北京\n商旅：烟台、上海、成都、北京、宁波、广州、深圳\n\n";
+            text += "企业痛点：1、报销比较复杂，主要是火车票报销管理成本高，需要提效\n2、不存在用车、商旅安全、体验等方面的问题\n\n";
+            text += "选择企业版原因 （行业、规模、员工数、出行／差旅年消费规模/我们优于竞品等 具体描述痛点，最好引用客户原话；避免泛化描述）：1、用车选择滴滴企业版：主要是合规、提效、滴滴在网约车市场的品牌背书\n2、商旅：主要是滴滴火车票可以提供数电票，相对方便；系统对接方案成熟，能提供商旅和用车一站式服务\n\n";
+            text += "实施-亮点：1、系统为对接金蝶，客户更省心，减少开发成本，省钱、 省心、省力\n2、用车不限制车型，以项目制月度限额的方式进行管控，不用申请单，方便高效；\n3、商旅为预算总额度管控，一次出差提一个总预算包，本次差旅的机酒火统一管控在本次申请单中，协助财务更好实现预算管控\n\n";
+            text += "策略亮点 （①确定性；②价格；③员工福利活动；④站牌；⑤因公因私等）：1、降本无要求\n2、确定性：不限车型，确定性体验服务更高\n3、员工福利：自费用车使用良好，员工反馈积极，做过地推活动\n\n";
+            text += "使用前vs使用后变化 ①使用前：财务、员工、企业成本、效率 ②使用后：财务、员工、企业成本、效率 ③可量化成果·核心 （①财务省时、财务提效%；②员工省时、提效、满意度；③企业降本；④企业合规；⑤碳排放等）：用车：上线后，目前已全量线上化，整体带动内部管理提效，财务核算及报销提效，人效提升50%；对于员工出行便捷操作效率提升30%，因私出行有更多选择；\n商旅：从携程切换为滴滴独家，机酒火整体提效，尤其是火车票数电票，财务提效x%\n机酒火车滴滴企业版独家，一站式服务，对于员工使用体验有促进作用\n\n";
+            text += "对标竞品分析：用车：竞对为分贝通并行1年，独家为滴滴的原因是分贝通的行业口碑不利于中企云联上市\n商旅：从携程切换为滴滴，主要是火车票有数电票，客情维护比较好，一站式方案有利于降低沟通合作成本\n\n";
+            text += "是否是 用车带动商旅/竞品切单：是·用车带动商旅\n\n";
+            text += "信息收集人：赵校杰\n\n";
+            const blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '案例44_中企云链股份有限公司.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

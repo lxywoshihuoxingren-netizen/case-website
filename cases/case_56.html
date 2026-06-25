@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例56：宁德时代新能源科技股份有限公司</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif; background: #f5f6f7; color: #1f2329; min-height: 100vh; }
+        .header { background: linear-gradient(135deg, #1a1f2e 0%, #2d3748 100%); color: white; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .header a { color: white; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .hero { background: linear-gradient(135deg, #3370ff 0%, #2b5fd9 100%); color: white; padding: 60px 40px; }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero-number { display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em; margin-bottom: 20px; }
+        .hero-title { font-size: 2.5em; font-weight: 600; margin-bottom: 16px; }
+        .hero-industry { font-size: 1.1em; opacity: 0.9; }
+        
+        .background-section { background: #1a1f2e; color: white; padding: 40px; }
+        .background-content { max-width: 1200px; margin: 0 auto; padding-left: 40px; position: relative; }
+        .background-content::before { content: '"'; position: absolute; top: -20px; left: 0; font-size: 4em; color: rgba(255,255,255,0.1); font-family: Georgia, serif; }
+        .background-label { font-size: 0.85em; color: #3370ff; margin-bottom: 12px; font-weight: 500; }
+        .background-text { font-size: 1.1em; line-height: 1.8; opacity: 0.9; }
+        
+        .info-tags { background: white; padding: 30px 40px; border-bottom: 1px solid #dee0e3; }
+        .info-tags-content { max-width: 1200px; margin: 0 auto; display: flex; gap: 16px; flex-wrap: wrap; }
+        .info-tag { padding: 10px 20px; background: #f2f3f5; border-radius: 8px; font-size: 0.95em; }
+        .info-tag-label { color: #646a73; font-size: 0.85em; margin-right: 8px; }
+        .info-tag-value { color: #1f2329; font-weight: 500; }
+        
+        .main { max-width: 1200px; margin: 0 auto; padding: 40px; }
+        
+        .ppt-container { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 30px; }
+        .ppt-header { background: linear-gradient(135deg, #3370ff 0%, #2b5fd9 100%); color: white; padding: 20px 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center; }
+        .ppt-header-title { font-size: 1.1em; font-weight: 600; margin-bottom: 4px; }
+        .ppt-header-sub { font-size: 0.85em; opacity: 0.8; }
+        
+        .ppt-body { display: grid; grid-template-columns: repeat(3, 1fr); min-height: 400px; }
+        .ppt-column { padding: 30px; border-right: 1px solid #dee0e3; }
+        .ppt-column:last-child { border-right: none; }
+        .ppt-column-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 3px solid #3370ff; }
+        .ppt-column-icon { width: 36px; height: 36px; background: #3370ff; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2em; }
+        .ppt-column-title { font-size: 1.1em; font-weight: 600; }
+        .ppt-column-content { line-height: 1.9; color: #646a73; font-size: 0.95em; white-space: pre-wrap; }
+        
+        .action-bar { background: white; padding: 20px 40px; border-top: 1px solid #dee0e3; position: sticky; bottom: 0; display: flex; gap: 12px; justify-content: center; }
+        .btn { padding: 12px 32px; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: 500; transition: all 0.3s; display: flex; align-items: center; gap: 8px; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .btn-primary { background: #3370ff; color: white; }
+        .btn-secondary { background: #f2f3f5; color: #1f2329; }
+        
+        .section-card { background: white; border-radius: 16px; padding: 30px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section-title { font-size: 1.2em; font-weight: 600; color: #1f2329; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+        .section-title::before { content: ''; width: 4px; height: 20px; background: #3370ff; border-radius: 2px; }
+        .section-content { line-height: 1.9; color: #646a73; white-space: pre-wrap; }
+        
+        @media print { .header, .action-bar { display: none; } .ppt-container { box-shadow: none; } }
+        @media (max-width: 900px) { .ppt-body { grid-template-columns: 1fr; } .ppt-column { border-right: none; border-bottom: 1px solid #dee0e3; } .ppt-header { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="../index.html">← 返回案例库</a>
+    </div>
+    
+    <div class="hero">
+        <div class="hero-content">
+            <span class="hero-number">案例 #56</span>
+            <h1 class="hero-title">宁德时代新能源科技股份有限公司</h1>
+            <p class="hero-industry">能源环保</p>
+        </div>
+    </div>
+    
+    <div class="background-section">
+        <div class="background-content">
+            <div class="background-label">客户背景</div>
+            <div class="background-text">暂无客户背景信息</div>
+        </div>
+    </div>
+    
+    <div class="info-tags">
+        <div class="info-tags-content">
+            
+            
+            <div class="info-tag"><span class="info-tag-label">品类</span><span class="info-tag-value">用车</span></div>
+        </div>
+    </div>
+    
+    <div class="main">
+        <div class="ppt-container">
+            <div class="ppt-header">
+                <div>
+                    <div class="ppt-header-title">企业痛点问题</div>
+                    <div class="ppt-header-sub">Pain Points</div>
+                </div>
+                <div>
+                    <div class="ppt-header-title">解决方案</div>
+                    <div class="ppt-header-sub">Solution</div>
+                </div>
+                <div>
+                    <div class="ppt-header-title">效果收益</div>
+                    <div class="ppt-header-sub">Results</div>
+                </div>
+            </div>
+            <div class="ppt-body">
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">!</div>
+                        <div class="ppt-column-title">核心痛点</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">✓</div>
+                        <div class="ppt-column-title">我们的方案</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">📈</div>
+                        <div class="ppt-column-title">量化成果</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="action-bar">
+        <button onclick="window.print()" class="btn btn-primary">📄 打印 / 保存PDF</button>
+        <button onclick="exportText()" class="btn btn-secondary">📥 导出文本</button>
+        <a href="../index.html" class="btn btn-secondary" style="text-decoration:none;">← 返回列表</a>
+    </div>
+    
+    <script>
+        function exportText() {
+            let text = "案例56：宁德时代新能源科技股份有限公司\n\n";
+            text += "行业：能源环保\n\n";
+            text += "序号：56\n\n";
+            text += "客户公司名称：宁德时代新能源科技股份有限公司\n\n";
+            text += "品类：用车\n\n";
+            text += "行业：能源环保\n\n";
+            text += "客龄（年）：2.4\n\n";
+            text += "用车CSM支持人员 （主负责人）：孙田田\n\n";
+            text += "用车商机所有人：孙田田\n\n";
+            const blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '案例56_宁德时代新能源科技股份有限公司.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

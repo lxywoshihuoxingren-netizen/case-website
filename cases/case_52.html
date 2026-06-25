@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例52：万华化学（烟台）销售有限公司</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif; background: #f5f6f7; color: #1f2329; min-height: 100vh; }
+        .header { background: linear-gradient(135deg, #1a1f2e 0%, #2d3748 100%); color: white; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .header a { color: white; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .hero { background: linear-gradient(135deg, #3370ff 0%, #2b5fd9 100%); color: white; padding: 60px 40px; }
+        .hero-content { max-width: 1200px; margin: 0 auto; }
+        .hero-number { display: inline-block; background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9em; margin-bottom: 20px; }
+        .hero-title { font-size: 2.5em; font-weight: 600; margin-bottom: 16px; }
+        .hero-industry { font-size: 1.1em; opacity: 0.9; }
+        
+        .background-section { background: #1a1f2e; color: white; padding: 40px; }
+        .background-content { max-width: 1200px; margin: 0 auto; padding-left: 40px; position: relative; }
+        .background-content::before { content: '"'; position: absolute; top: -20px; left: 0; font-size: 4em; color: rgba(255,255,255,0.1); font-family: Georgia, serif; }
+        .background-label { font-size: 0.85em; color: #3370ff; margin-bottom: 12px; font-weight: 500; }
+        .background-text { font-size: 1.1em; line-height: 1.8; opacity: 0.9; }
+        
+        .info-tags { background: white; padding: 30px 40px; border-bottom: 1px solid #dee0e3; }
+        .info-tags-content { max-width: 1200px; margin: 0 auto; display: flex; gap: 16px; flex-wrap: wrap; }
+        .info-tag { padding: 10px 20px; background: #f2f3f5; border-radius: 8px; font-size: 0.95em; }
+        .info-tag-label { color: #646a73; font-size: 0.85em; margin-right: 8px; }
+        .info-tag-value { color: #1f2329; font-weight: 500; }
+        
+        .main { max-width: 1200px; margin: 0 auto; padding: 40px; }
+        
+        .ppt-container { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 30px; }
+        .ppt-header { background: linear-gradient(135deg, #3370ff 0%, #2b5fd9 100%); color: white; padding: 20px 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center; }
+        .ppt-header-title { font-size: 1.1em; font-weight: 600; margin-bottom: 4px; }
+        .ppt-header-sub { font-size: 0.85em; opacity: 0.8; }
+        
+        .ppt-body { display: grid; grid-template-columns: repeat(3, 1fr); min-height: 400px; }
+        .ppt-column { padding: 30px; border-right: 1px solid #dee0e3; }
+        .ppt-column:last-child { border-right: none; }
+        .ppt-column-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 3px solid #3370ff; }
+        .ppt-column-icon { width: 36px; height: 36px; background: #3370ff; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2em; }
+        .ppt-column-title { font-size: 1.1em; font-weight: 600; }
+        .ppt-column-content { line-height: 1.9; color: #646a73; font-size: 0.95em; white-space: pre-wrap; }
+        
+        .action-bar { background: white; padding: 20px 40px; border-top: 1px solid #dee0e3; position: sticky; bottom: 0; display: flex; gap: 12px; justify-content: center; }
+        .btn { padding: 12px 32px; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: 500; transition: all 0.3s; display: flex; align-items: center; gap: 8px; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .btn-primary { background: #3370ff; color: white; }
+        .btn-secondary { background: #f2f3f5; color: #1f2329; }
+        
+        .section-card { background: white; border-radius: 16px; padding: 30px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .section-title { font-size: 1.2em; font-weight: 600; color: #1f2329; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+        .section-title::before { content: ''; width: 4px; height: 20px; background: #3370ff; border-radius: 2px; }
+        .section-content { line-height: 1.9; color: #646a73; white-space: pre-wrap; }
+        
+        @media print { .header, .action-bar { display: none; } .ppt-container { box-shadow: none; } }
+        @media (max-width: 900px) { .ppt-body { grid-template-columns: 1fr; } .ppt-column { border-right: none; border-bottom: 1px solid #dee0e3; } .ppt-header { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="../index.html">← 返回案例库</a>
+    </div>
+    
+    <div class="hero">
+        <div class="hero-content">
+            <span class="hero-number">案例 #52</span>
+            <h1 class="hero-title">万华化学（烟台）销售有限公司</h1>
+            <p class="hero-industry">能源环保</p>
+        </div>
+    </div>
+    
+    <div class="background-section">
+        <div class="background-content">
+            <div class="background-label">客户背景</div>
+            <div class="background-text">暂无客户背景信息</div>
+        </div>
+    </div>
+    
+    <div class="info-tags">
+        <div class="info-tags-content">
+            <div class="info-tag"><span class="info-tag-label">企业用量人数</span><span class="info-tag-value">全球员工约29000+人
+用车约10000人至15000人
+商旅</span></div>
+            
+            <div class="info-tag"><span class="info-tag-label">品类</span><span class="info-tag-value">用车+商旅</span></div>
+        </div>
+    </div>
+    
+    <div class="main">
+        <div class="ppt-container">
+            <div class="ppt-header">
+                <div>
+                    <div class="ppt-header-title">企业痛点问题</div>
+                    <div class="ppt-header-sub">Pain Points</div>
+                </div>
+                <div>
+                    <div class="ppt-header-title">解决方案</div>
+                    <div class="ppt-header-sub">Solution</div>
+                </div>
+                <div>
+                    <div class="ppt-header-title">效果收益</div>
+                    <div class="ppt-header-sub">Results</div>
+                </div>
+            </div>
+            <div class="ppt-body">
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">!</div>
+                        <div class="ppt-column-title">核心痛点</div>
+                    </div>
+                    <div class="ppt-column-content">1、业务需求的出行及商旅量增长高，但线下报销复杂，对账及审计成本较高<br>2、供应商模式下，部分供应商收费成本高，增加企业成本<br>3、效率低，数据整理为人工手动处理</div>
+                </div>
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">✓</div>
+                        <div class="ppt-column-title">我们的方案</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+                <div class="ppt-column">
+                    <div class="ppt-column-header">
+                        <div class="ppt-column-icon">📈</div>
+                        <div class="ppt-column-title">量化成果</div>
+                    </div>
+                    <div class="ppt-column-content">暂无数据</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h2 class="section-title">实施亮点</h2>
+            <div class="section-content">1、采用云简费控系统，作为统一预定入口、实现对公结算、一站式差旅预定（机、酒、火、车），单点登录<br>2、支持滴滴企业版app入口和H5<br>3、协议航司、酒店集团、单体协议酒店收集并上线<br>4、制度为分职级分城市差标等级配置</div>
+        </div>
+        <div class="section-card">
+            <h2 class="section-title">对标竞品分析</h2>
+            <div class="section-content">酒店竞对：携程、在途<br>机票竞对：携程、在途、鹏翔（山东本地）、滴滴<br>火车票：滴滴独家<br>用车竞对：高德<br>全品类GMV份额占比：鹏翔20%、滴滴40%、携程40%<br><br>携程：服务费高、缺少个性化服务支持、服务响应不及时</div>
+        </div>
+    </div>
+    
+    <div class="action-bar">
+        <button onclick="window.print()" class="btn btn-primary">📄 打印 / 保存PDF</button>
+        <button onclick="exportText()" class="btn btn-secondary">📥 导出文本</button>
+        <a href="../index.html" class="btn btn-secondary" style="text-decoration:none;">← 返回列表</a>
+    </div>
+    
+    <script>
+        function exportText() {
+            let text = "案例52：万华化学（烟台）销售有限公司\n\n";
+            text += "行业：能源环保\n\n";
+            text += "序号：52\n\n";
+            text += "客户公司名称：万华化学（烟台）销售有限公司\n\n";
+            text += "当前进度 （女警增列）：已出完案例\n\n";
+            text += "品类：用车+商旅\n\n";
+            text += "行业：能源环保\n\n";
+            text += "客龄（年）：7.2\n\n";
+            text += "用车CSM支持人员 （主负责人）：邵旭东\n\n";
+            text += "商旅CSM支持人员 （主负责人）：邵旭东\n\n";
+            text += "用车商机所有人：邵旭东\n\n";
+            text += "商旅商机所有人：邵旭东\n\n";
+            text += "企业用量人数：全球员工约29000+人\n用车约10000人至15000人\n商旅\n\n";
+            text += "客户钱包量 年维度：商旅：1亿/年，火车票4万张/年\n用车：2000万/年\n\n";
+            text += "用量核心地区 用车核心地区/出差核心地区：总部为烟台\n用车：烟台、上海、福州、宁波、青岛、广州、北京\n商旅：烟台、上海、成都、北京、宁波、广州、深圳\n\n";
+            text += "企业痛点：1、业务需求的出行及商旅量增长高，但线下报销复杂，对账及审计成本较高\n2、供应商模式下，部分供应商收费成本高，增加企业成本\n3、效率低，数据整理为人工手动处理\n\n";
+            text += "选择企业版原因 （行业、规模、员工数、出行／差旅年消费规模/我们优于竞品等 具体描述痛点，最好引用客户原话；避免泛化描述）：1、合作价值高：\n1）具备资源及服务费优势\n2）系统上能契合万华痛点，支持快速满足个性化定制需求\n3）es后台在商旅管理上更为实用便捷\n\n2、对接方案简单，无更多对接及开发成本\n3、支持保留原云简的后控方案，快速实现数据同步\n\n";
+            text += "实施-亮点：1、采用云简费控系统，作为统一预定入口、实现对公结算、一站式差旅预定（机、酒、火、车），单点登录\n2、支持滴滴企业版app入口和H5\n3、协议航司、酒店集团、单体协议酒店收集并上线\n4、制度为分职级分城市差标等级配置\n\n";
+            text += "策略亮点 （①确定性；②价格；③员工福利活动；④站牌；⑤因公因私等）：1、价格：根据大盘上线企业特价快车、远必省\n2、因私福利：开放因私入口，上线车酒联动活动，获得员工好评；各类自费福利活动高频上线并内宣\n3、搭建员工微信群，保障用户体验\n4、商务政策，为增量阶梯返方案\n\n";
+            text += "对标竞品分析：酒店竞对：携程、在途\n机票竞对：携程、在途、鹏翔（山东本地）、滴滴\n火车票：滴滴独家\n用车竞对：高德\n全品类GMV份额占比：鹏翔20%、滴滴40%、携程40%\n\n携程：服务费高、缺少个性化服务支持、服务响应不及时\n\n";
+            text += "是否是 用车带动商旅/竞品切单：是·用车带动商旅\n\n";
+            text += "信息收集人：赵校杰\n\n";
+            const blob = new Blob([text], {type: 'text/plain;charset=utf-8'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '案例52_万华化学（烟台）销售有限公司.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
